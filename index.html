@@ -188,6 +188,58 @@ strong { color:var(--text); font-weight:500; }
 .rho-box { display:flex; flex-direction:column; align-items:flex-start; gap:6px; background:var(--bg3); border:1px solid var(--border); padding:12px 16px; border-radius:2px; margin:8px 0 20px; }
 .rho-val { font-family:'Fraunces',serif; font-size:28px; font-weight:700; color:var(--accent); line-height:1; }
 .rho-desc { font-size:13px; color:#6A6D85; max-width:100%; line-height:1.4; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  /* Layout */
+  .wrap { padding:0 20px; }
+  .section { padding:48px 0; }
+  .hero { padding:56px 0 40px; }
+  .hero-sub { font-size:16px; }
+  .hero-stats { gap:28px; }
+  .stat-num { font-size:28px; }
+
+  /* All 2-col grids → single column */
+  .two-col,
+  .col-narrow-wide,
+  .lever-grid,
+  .paw-grid,
+  .donut-grid,
+  .top20-grid,
+  .insight-cards { grid-template-columns:1fr !important; gap:24px !important; }
+
+  /* Persona grid: 5 → 2 cols */
+  .persona-grid { grid-template-columns:repeat(2,1fr); }
+
+  /* Pull quote grid: 3 → 1 col */
+  .pq-grid { grid-template-columns:1fr; }
+
+  /* Routing matrix: make it horizontally scrollable */
+  .routing-matrix { grid-template-columns:repeat(5,minmax(140px,1fr)); overflow-x:auto; }
+
+  /* Venn float → full width block */
+  .venn-float { float:none !important; width:100% !important; margin-left:0 !important; margin-bottom:24px !important; }
+
+  /* Heatmap: ensure scroll container */
+  .heatmap-table { font-size:10px; }
+  .heatmap-table th.bh { width:100px; }
+
+  /* Cards */
+  .chart-wrap { padding:20px; }
+  .callout { padding:20px; }
+
+  /* Big quote */
+  .big-quote { padding:32px 0; }
+
+  /* Appendix tables already have overflow-x:auto */
+}
+
+@media (max-width: 480px) {
+  .wrap { padding:0 16px; }
+  .persona-grid { grid-template-columns:1fr 1fr; gap:10px; }
+  .routing-matrix { grid-template-columns:repeat(5,minmax(120px,1fr)); }
+  .paw-bar-lbl { width:70px; font-size:9px; }
+}
 </style>
 </head>
 <body>
@@ -322,7 +374,7 @@ strong { color:var(--text); font-weight:500; }
       <!-- Fragmentation Donuts -->
       <div class="card chart-wrap no-mt">
         <div class="chart-label">Market Fragmentation — Share of AI Mentions by Brand Tier</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+        <div class="donut-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
           <div>
             <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--text);text-align:center;margin-bottom:14px;">Fast Food Brands</div>
             <div style="position:relative;width:160px;margin:0 auto;">
@@ -357,7 +409,7 @@ strong { color:var(--text); font-weight:500; }
   <!-- Top 20 bar charts — QSR + Agency side by side -->
   <div class="card chart-wrap">
     <div class="chart-label">Top 20 Brands by Mention Count — Fast Food &amp; Agency</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
+    <div class="top20-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
       <div>
         <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Fast Food</div>
         <canvas id="top20QSR" height="280"></canvas>
@@ -381,7 +433,7 @@ strong { color:var(--text); font-weight:500; }
 
   <p class="wide">Even though we ran the same controlled experiment across both categories, the results looked very different. Here are the patterns that emerged.</p>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0 8px;">
+  <div class="insight-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0 8px;">
 
     <!-- <div style="background:var(--card);border:1px solid var(--border);border-top:3px solid var(--accent);padding:28px;">
       <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">01 — Fragmentation</div>
@@ -597,7 +649,7 @@ strong { color:var(--text); font-weight:500; }
   <h2>One company.<br><em>Two different conversations.</em></h2>
 
   <div style="overflow:hidden;">
-    <div style="float:right;width:58%;margin-left:52px;margin-bottom:8px;">
+    <div class="venn-float" style="float:right;width:58%;margin-left:52px;margin-bottom:8px;">
       <!-- Venn-style side-by-side -->
       <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;display:flex;align-items:center;gap:10px;">Franchise Marketing — Recommended Agency Ecosystems<div style="flex:1;height:1px;background:var(--border);"></div></div>
       <div style="display:grid;grid-template-columns:1fr 88px 1fr;gap:0;margin-bottom:4px;">
