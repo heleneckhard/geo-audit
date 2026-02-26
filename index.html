@@ -148,9 +148,9 @@ strong { color:var(--text); font-weight:500; }
 .paw-track { flex:1; height:10px; background:var(--bg3); border-radius:2px; overflow:hidden; }
 .paw-fill { height:100%; border-radius:2px; }
 .paw-val { font-family:'Fraunces',serif; font-size:14px; font-weight:700; width:36px; flex-shrink:0; }
-.paw-concentration { background:var(--bg3); padding:12px 14px; display:flex; justify-content:space-between; align-items:center; }
-.paw-conc-label { font-size:12px; color:#6A6D85; }
-.paw-conc-stat { font-family:'Fraunces',serif; font-size:20px; font-weight:700; }
+.paw-concentration { background:var(--bg3); padding:12px 14px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.paw-conc-label { font-size:12px; color:#6A6D85; flex-shrink:1; min-width:0; }
+.paw-conc-stat { font-family:'Fraunces',serif; font-size:20px; font-weight:700; white-space:nowrap; flex-shrink:0; }
 
 /* ── HEATMAP ── */
 .heatmap-table { width:100%; border-collapse:collapse; }
@@ -185,9 +185,9 @@ strong { color:var(--text); font-weight:500; }
 .scale-label { font-family:'Syne',sans-serif; font-size:10px; color:var(--text-dim); }
 
 /* ── STAT INLINE ── */
-.rho-box { display:inline-flex; align-items:baseline; gap:8px; background:var(--bg3); border:1px solid var(--border); padding:10px 16px; border-radius:2px; margin:8px 0 20px; }
-.rho-val { font-family:'Fraunces',serif; font-size:28px; font-weight:700; color:var(--accent); }
-.rho-desc { font-size:13px; color:#6A6D85; max-width:260px; line-height:1.4; }
+.rho-box { display:flex; flex-direction:column; align-items:flex-start; gap:6px; background:var(--bg3); border:1px solid var(--border); padding:12px 16px; border-radius:2px; margin:8px 0 20px; }
+.rho-val { font-family:'Fraunces',serif; font-size:28px; font-weight:700; color:var(--accent); line-height:1; }
+.rho-desc { font-size:13px; color:#6A6D85; max-width:100%; line-height:1.4; }
 </style>
 </head>
 <body>
@@ -591,26 +591,19 @@ strong { color:var(--text); font-weight:500; }
 
  <div class="big-quote">ChatGPT doesn't just recommend "the best" brand. It recommends the brand <em>that best fits the buyer</em>.</div>
 
-
 <!-- ════════════════ 04 FRANCHISE ════════════════ -->
 <div class="wrap"><div class="section">
   <div class="section-num">04 — Case Study</div>
-  <h2>Same company.<br><em>Different planet.</em></h2>
+  <h2>One company.<br><em>Two different conversations.</em></h2>
 
-  <div class="col-narrow-wide">
-    <div>
-      <p>Christine and Derek both work at franchise companies. Same industry, same org chart. When you look at who the AI routes them to, they might as well be in different markets entirely.</p>
-      <p>Christine's problem is <strong>coordination at scale</strong> — managing brand standards and multi-location consistency across hundreds of franchisees. The AI routes her to platforms and tech-enabled agencies: Scorpion, SOCi, Location3, BrandMuscle. "Technology" appears as a top attribute for nearly every result.</p>
-      <p>Derek's problem is <strong>franchisee recruitment</strong> — building a pipeline of qualified candidates, navigating FDD processes, closing development deals. The AI routes him to a separate category altogether: Franchise Performance Group, Curious Jane, Franchise FastLane, Brand Journalists. "Technology" barely appears. "Niche expertise" and "strategy" take its place.</p>
-      <p>These agencies serve different buyer problems, require different content, different vocabulary, different positioning. Almost no general digital agency has built serious content for either segment — let alone both.</p>
-    </div>
-    <div>
+  <div style="overflow:hidden;">
+    <div style="float:right;width:58%;margin-left:52px;margin-bottom:8px;">
       <!-- Venn-style side-by-side -->
-      <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;display:flex;align-items:center;gap:10px;">Christine vs. Derek — Recommended Agency Ecosystems<div style="flex:1;height:1px;background:var(--border);"></div></div>
+      <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;display:flex;align-items:center;gap:10px;">Franchise Marketing — Recommended Agency Ecosystems<div style="flex:1;height:1px;background:var(--border);"></div></div>
       <div style="display:grid;grid-template-columns:1fr 88px 1fr;gap:0;margin-bottom:4px;">
         <div style="background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-right:none;padding:18px 16px;">
           <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--purple);margin-bottom:4px;">CHRISTINE</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-bottom:16px;font-style:italic;">Franchise operations</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:16px;font-style:italic;">National & local store marketing</div>
           <div id="christineVenn"></div>
           <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(167,139,250,0.15);">
             <div style="font-family:'Syne',sans-serif;font-size:9px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Attributes cited</div>
@@ -632,7 +625,11 @@ strong { color:var(--text); font-weight:500; }
           </div>
         </div>
       </div>
-    </div>
+    </div><!-- end float -->
+      <p>Two of our study personas, Christine and Derek, work in franchise marketing for the same brand. But even though they represent the same company, when you look at the brands ChatGPT recommends them, they might as well be in different markets entirely.</p>
+      <p>Christine's problem is <strong>coordination at scale</strong>—managing national brand standards and multi-location marketing across hundreds of franchisees. ChatGPT routes her to automation platforms and tech-enabled agencies: Scorpion, SOCi, and Location3.</p>
+      <p>Derek's goal is <strong>franchisee recruitment</strong>—building a pipeline of qualified candidates and closing development deals. ChatGPT routes him to niche agencies like Franchise Performance Group, Curious Jane, and Franchise FastLane.</p>
+      <p>The only agency appearing prominently for both personas is <strong>Scorpion</strong> — #1 for Christine with 52 mentions and #1 for Derek with 41, reflecting the agency's considerable content investment in both franchise segments: operations and development. Every other agency in any given persona's top 10 is essentially absent from every other persona's list.</p>
   </div>
 
   <!-- <div class="callout" style="border-left-color:var(--amber);margin-top:40px;">
@@ -645,48 +642,46 @@ strong { color:var(--text); font-weight:500; }
 
 <!-- ════════════════ 05 HYPOTHESIS ════════════════ -->
 <div class="wrap"><div class="section">
-  <div class="phase-tag">Phase 1 → Phase 2</div>
-  <div class="section-num">05 — The Hypothesis Phase 1 Generated</div>
-  <h2>We noticed a pattern.<br><em>So we tested it.</em></h2>
+  <div class="phase-tag">Phase 2</div>
+  <div class="section-num">05 — Our Hypothesis</div>
+  <h2>In the age of GEO, <em>is content still king?</em></h2>
 
   <div class="col-narrow-wide">
     <div>
-      <p>The per-persona routing in Phase 1 pointed at a mechanism. KickStart Dental gets routed to Ray because its entire web presence speaks dental practice growth language. Refine Labs gets routed to Jordan because its content speaks B2B SaaS demand generation. The content seemed to matter — not just the brand's size or fame.</p>
-      <p>Our hypothesis: if you measure how closely a brand's website language overlaps with what ChatGPT says about that brand to a specific buyer, that overlap score should predict how often the AI recommends the brand to that buyer. Brands speaking their buyer's language clearly should get routed more. Brands with a mismatch should get routed less — or get recommended despite their site, not because of it.</p>
-      <p>To test this, we crawled the top brands from Phase 1 and built what we call a <strong>content alignment score</strong>: a measure of how conceptually close a brand's website content is to the AI's responses for each buyer type, on a 0–100 scale. Think of it as measuring whether the brand and the AI are speaking the same language for a given buyer. A score of 60 means they're using very similar vocabulary and concepts. A score of 30 means they're in different conceptual worlds.</p>
-      <div class="callout" style="margin-top:24px;">
-        <div class="callout-label">How we measured it</div>
-        <p>Both the brand website content and the AI's persona responses were converted to high-dimensional numerical vectors using the same embedding model (text-embedding-3-large). We then measured the cosine similarity between them — essentially the angle between two vectors in a 3,072-dimensional space. A score near 1 (we scale to 100) means the language is pointing in the same direction. A score near 0 means they're pointing in different directions entirely. The result is a number between 0 and 100 that captures conceptual overlap without requiring an exact vocabulary match.</p>
-      </div>
+      <p>In Phase 1, there seemed to be a clear relationship between a brand's web presence and persona(s) it was routed to. These results got us thinking. Can the content on your website predict how often ChatGPT recommends you to a specific buyer persona?</p>
+      <!-- <p>Our hypothesis: if you measure how closely a brand's website language overlaps with what ChatGPT says about that brand to a specific buyer, that overlap score should predict how often the AI recommends the brand to that buyer. Brands speaking their buyer's language clearly should get routed more. Brands with a mismatch should get routed less — or get recommended despite their site, not because of it.</p> -->
+      <p>To test this, we crawled the websites of the top brands from each category from Phase 1 and calculated what we call a <strong>content alignment score</strong>: a measure of how conceptually close a brand's website content is to the ChatGPT's responses for each buyer type. <strong>This score, based on NLP embedding models, effectively measures whether the brand and the AI are speaking the same language for a given buyer.</strong></p>
+      <h3 style="margin-top:32px;">Did the hypothesis hold?</h3>
+      <p>Yes! Fast food brands with higher content alignment scores received more persona-specific recommendations, with an aggregate Spearman correlation of ρ = +0.60 across 85 brand-persona combinations. That's a strong positive relationship by any standard benchmark.</p>
+      <!-- <div class="rho-box">
+        <span class="rho-val">ρ = +0.60</span>
+        <span class="rho-desc">QSR: content alignment vs. persona-specific mention frequency (17 brands × 5 personas). A ρ above 0.5 is considered a strong positive correlation.</span>
+      </div> -->
+      <p>With 84% of agency brands appearing for a single persona, there was not enough cross-persona variance to compute a meaningful aggregate correlation. What <strong>is</strong> clear is that brands with the highest per-persona alignment scores (FPG at 74.7 for Derek, Pain-Free at 77.8 for Ray) are also among the most frequently recommended to those personas, suggesting a clear positive relationship.</p>
+
     </div>
     <div>
       <div class="card chart-wrap no-mt">
-        <div class="chart-label">Content Alignment in Context — What the Numbers Mean</div>
+        <div class="chart-label">Content Alignment — What the Numbers Mean</div>
         <div style="display:flex;flex-direction:column;gap:14px;">
           <div style="background:var(--bg3);padding:16px;">
             <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;">Low alignment (28–35)</div>
-            <div style="font-size:13px;color:#6A6D85;">Website and AI responses are conceptually far apart. Brand may still get recommended — but for reasons unrelated to its own content.</div>
+            <div style="font-size:13px;color:#6A6D85;">Website and ChatGPT responses are conceptually far apart. A brand may still get recommended, but not necessarily because of its owned content.</div>
           </div>
           <div style="background:var(--bg3);padding:16px;">
             <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;">Medium alignment (35–50)</div>
-            <div style="font-size:13px;color:#6A6D85;">Some overlap, typical range for general-audience brands. Website covers relevant topics but not with buyer-specific depth.</div>
+            <div style="font-size:13px;color:#6A6D85;">Some overlap, typical range for general-audience brands. The brand's website covers relevant topics, but often not with buyer-specific depth.</div>
           </div>
           <div style="background:rgba(227,28,121,0.08);border:1px solid var(--accent-dim);padding:16px;">
             <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;">High alignment (51+)</div>
-            <div style="font-size:13px;color:#8A6A7A;">Website speaks the same language as the AI's recommendations for this specific buyer. Strong predictor of persona-specific routing.</div>
+            <div style="font-size:13px;color:#8A6A7A;">Website speaks the same language as the ChatGPT's recommendations for this specific buyer. This is a strong predictor of persona-specific routing.</div>
           </div>
         </div>
-
-        <!-- Rho explanation -->
-        <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-          <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Did the hypothesis hold?</div>
-          <p style="font-size:14px;max-width:100%;margin-bottom:12px;">Yes — in our QSR Phase 2 sample, brands with higher content alignment scores tended to receive more persona-specific recommendations. We measured this using Spearman's rho (ρ), a standard statistical measure of correlation that runs from −1 (perfectly inverse) to +1 (perfectly aligned). A value of 0 means no relationship at all. Anything above 0.5 is generally considered a strong positive correlation in social science research.</p>
-          <div class="rho-box">
-            <span class="rho-val">ρ = +0.60</span>
-            <span class="rho-desc">Content alignment vs. persona-specific mention frequency, across 85 brand-persona combinations in the QSR sample</span>
-          </div>
-          <p style="font-size:13px;color:#5A5C70;max-width:100%;font-style:italic;">One honest caveat: correlation doesn't prove causation. The relationship could reflect direct causation — your content shapes the training signal. Or both could reflect the same signals absorbed from the broader web. The recommended action is the same either way. And as more AI tools retrieve live content at query time, the path from your site to the AI's answer is getting shorter.</p>
-        </div>
+      </div>
+      <div class="callout" style="margin-top:20px;">
+        <div class="callout-label">A Note on Methodology</div>
+        <p>Brand website content and ChatGPT outputs were converted to high-dimensional numerical vectors using the same embedding model (OpenAI's text-embedding-3-large). We measured the cosine similarity between these values and scaled to 100. A score of 60 means they're using very similar vocabulary and concepts. A score of 30 means they're in different conceptual worlds.</p>
+        <p>Correlation doesn't prove causation. It's possible that brands speaking a buyer's language get recommended more <em>because</em> the AI learned from their content. It's also possible that both the content and the AI's recommendations are downstream of the same broader signals: industry press, third-party reviews, and link patterns that shaped training data. Either way, the practical implication is the same: speak your buyer's language clearly, and ChatGPT is more likely to route them to you. As more AI tools retrieve live content at query time, the connection between what's on your site and what the AI says about you is only getting more direct.</p>
       </div>
     </div>
   </div>
@@ -696,24 +691,24 @@ strong { color:var(--text); font-weight:500; }
 
 <!-- ════════════════ 06 PHASE 2 ════════════════ -->
 <div class="wrap"><div class="section">
-  <div class="phase-tag">Phase 2 — Hypothesis Test</div>
+  <div class="phase-tag">Conclusion</div>
   <div class="section-num">06 — Punching Above Your Weight</div>
-  <h2>Brand ubiquity matters.<br>Until <em>content alignment</em> matters more.</h2>
+  <h2>Content alignment is your<br><em>secret weapon.</em></h2>
 
   <div class="col-narrow-wide">
     <div>
-      <p>In our QSR sample, web authority — the standard measure of how much of the web is talking about a brand — does correlate with total AI mention volume. Bigger brands get mentioned more overall. That makes sense: the AI learned from the web, and brands with the deepest presence have the deepest training signal.</p>
-      <p>But web authority doesn't tell you which buyers the AI routes to you. Content alignment does. When we looked at both together, they turned out to be almost completely independent — meaning a brand can have enormous web authority and poor content alignment, or limited web authority and strong alignment. They don't move together, so they can be addressed separately.</p>
-      <p>That independence is the opening for brands that don't have household-name authority. You can't close a domain authority gap in a quarter. You can close a content alignment gap. And for specialized markets, a sufficiently specific content strategy can outperform brands with dramatically more web presence — for the buyer those brands aren't speaking to.</p>
+      <p>In the fast food world, web authority drives a significant portion of mention volume–and that makes sense. Brands like Wendy's and McDonald's have a massive global presence and decades of cultural saturation behind them. Any brand entering this space will always have a steep hill to climb.</p>
+      <p>But web authority doesn't always tell you which buyers ChatGPT routes to you. And it doesn't tell you what ChatGPT says about you when it does. A brand can have enormous web presence but get recommend to the wrong buyer for the wrong reasons. That gap is the competitive advantage that smaller brands can leverage to get ahead.</p>
+      <!-- <p>That independence is the opening for brands that don't have household-name authority. You can't close a domain authority gap in a quarter. You can close a content alignment gap. And for specialized markets, a sufficiently specific content strategy can outperform brands with dramatically more web presence — for the buyer those brands aren't speaking to.</p> -->
     </div>
     <div>
       <!-- Two-lever visual -->
       <div class="lever-grid">
         <div class="lever-card">
           <div class="lever-num">01</div>
-          <div class="lever-title-label">Web Authority</div>
-          <div class="lever-h">How much of the web talks about you</div>
-          <div class="lever-desc">Reflects years of press coverage, backlinks, and brand building. Brands with the highest authority get the most total mentions — but authority is slow to move and tells the AI nothing about which buyers you're right for.</div>
+          <div class="lever-title-label">Domain Authority (DA)</div>
+          <div class="lever-h">How much does the rest of the web talk about you?</div>
+          <div class="lever-desc">Your DA reflects years of press coverage, backlinks, and brand building. Brands with higher authority tend to receive more mentions. Start building this now, as it often takes years to move the needle.</div>
           <!-- <div class="lever-examples">
             <div style="font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:4px;">Domain Authority examples</div>
             <div class="lever-ex"><span class="lever-ex-brand">Starbucks</span><span class="lever-ex-val" style="color:var(--text-muted);">DA 92</span></div>
@@ -726,8 +721,8 @@ strong { color:var(--text); font-weight:500; }
         <div class="lever-card active">
           <div class="lever-num">02</div>
           <div class="lever-title-label">Content Alignment</div>
-          <div class="lever-h">How fluently you speak to a specific buyer</div>
-          <div class="lever-desc">Measures whether your website uses the same vocabulary, addresses the same concerns, and reflects the same priorities as the buyer you're trying to reach. This is the lever you can move this quarter.</div>
+          <div class="lever-h">Are you speaking to your ideal customer?</div>
+          <div class="lever-desc">Your content alignment score measures whether your website uses the same vocabulary, addresses the same concerns, and reflects the same priorities as the buyer you're trying to reach. This is the lever you can move this quarter.</div>
           <!-- <div class="lever-examples">
             <div style="font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:4px;">Content alignment scores (0–100)</div>
             <div class="lever-ex"><span class="lever-ex-brand">Starbucks (any persona)</span><span class="lever-ex-val" style="color:var(--coral);">30–34</span></div>
@@ -744,7 +739,7 @@ strong { color:var(--text); font-weight:500; }
   <!-- Punch above weight -->
   <h3 style="margin-top:64px;">What it looks like in practice</h3>
   <div class="paw-intro">
-    <p>Below are four brands — two QSR, two agency — where content alignment is doing visible work. None of them lead on web authority. All of them dramatically outperform their authority profile for a specific buyer type, and the concentration of their mentions tells you exactly why. When a brand's content alignment score is strong for a specific persona, those are the recommendations they receive — and they're concentrated in that persona almost exclusively.</p>
+    <p>Here are four brands from our study  where content alignment is clearly working. These brands don't lead their category in Domain Authority, but they dramatically outperform with their ideal customer persona. When a brand's content alignment score is strong for a specific persona, those are the recommendations they receive—and they're concentrated in that persona almost exclusively.</p>
   </div>
 
   <div class="paw-grid">
@@ -763,13 +758,13 @@ strong { color:var(--text); font-weight:500; }
         </div>
         <div class="paw-bar-row">
           <div class="paw-bar-lbl">Content Align.</div>
-          <div class="paw-track"><div class="paw-fill" style="width:76%;background:var(--accent);"></div></div>
-          <div class="paw-val" style="color:var(--accent);">50.0</div>
+          <div class="paw-track"><div class="paw-fill" style="width:76%;background:var(--purple);"></div></div>
+          <div class="paw-val" style="color:var(--purple);">50.0</div>
         </div>
       </div>
       <div class="paw-concentration">
         <span class="paw-conc-label">Priya's share of all Sweetgreen mentions</span>
-        <span class="paw-conc-stat" style="color:var(--accent);">10 / 12 · 83%</span>
+        <span class="paw-conc-stat" style="color:var(--purple);">10 / 12 · 83%</span>
       </div>
     </div>
 
@@ -849,9 +844,9 @@ strong { color:var(--text); font-weight:500; }
     </div>
   </div>
 
-  <p style="margin-top:32px;" class="wide">The pattern across all four: a content alignment score that's high relative to domain authority, and a mention profile concentrated almost entirely in one persona. These brands are not getting broadly recommended — they're getting precisely recommended to the buyer their content speaks to. For brands and agencies competing in specialized categories, that's a more valuable outcome than broad exposure to buyers who aren't a fit.</p>
+  <!-- <p style="margin-top:32px;" class="wide">The pattern across all four: a content alignment score that's high relative to domain authority, and a mention profile concentrated almost entirely in one persona. These brands are not getting broadly recommended — they're getting precisely recommended to the buyer their content speaks to. For brands and agencies competing in specialized categories, that's a more valuable outcome than broad exposure to buyers who aren't a fit.</p> -->
 
-  <p style="margin-top:12px;" class="wide">Full content alignment scores for all 17 QSR brands and all 18 agency brands are in the appendix (A1).</p>
+  <p style="margin-top:12px;" class="wide">Full content alignment scores for all brands are in the appendix (A1).</p>
 </div></div>
 
 <!-- ════════════════ 07 TAKEAWAYS (commented out for internal use) ════════════════ -->
@@ -1112,7 +1107,7 @@ new Chart(document.getElementById('top20QSR'), {
   type: 'bar',
   data: {
     labels: qsrLabels.slice(0,20),
-    datasets: [{ data: qsrValues.slice(0,20), backgroundColor: '#F472B6', borderWidth: 0, borderRadius: 2 }]
+    datasets: [{ data: qsrValues.slice(0,20), backgroundColor: '#E31C79', borderWidth: 0, borderRadius: 2 }]
   },
   options: top20ChartOpts(237)
 });
@@ -1124,7 +1119,7 @@ new Chart(document.getElementById('top20Agency'), {
   type: 'bar',
   data: {
     labels: agTop20Labels,
-    datasets: [{ data: agTop20Values, backgroundColor: '#F472B6', borderWidth: 0, borderRadius: 2 }]
+    datasets: [{ data: agTop20Values, backgroundColor: '#E31C79', borderWidth: 0, borderRadius: 2 }]
   },
   options: top20ChartOpts(106)
 });
