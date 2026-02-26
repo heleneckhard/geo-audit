@@ -1,0 +1,154 @@
+# Question bank for GEO audit — Stage 1
+# 5 categories × 5 questions = 25 total
+# All questions are persona-neutral in phrasing.
+# Persona context is injected entirely via system prompt.
+
+questions:
+
+  # ── Category 1: Spontaneous Occasion ──────────────────────────────────────
+  # Tests what gets surfaced under minimal constraint — pure ambient recommendation.
+
+  - id: Q1_01
+    category: spontaneous_occasion
+    category_label: "Spontaneous Occasion"
+    text: "I have about 20 minutes for lunch. What should I get?"
+
+  - id: Q1_02
+    category: spontaneous_occasion
+    category_label: "Spontaneous Occasion"
+    text: "I'm on a road trip and need to stop for food. What's a good option?"
+
+  - id: Q1_03
+    category: spontaneous_occasion
+    category_label: "Spontaneous Occasion"
+    text: "What's a good place to grab a quick breakfast before work?"
+
+  - id: Q1_04
+    category: spontaneous_occasion
+    category_label: "Spontaneous Occasion"
+    text: "I need to pick up dinner tonight — something fast. What would you recommend?"
+
+  - id: Q1_05
+    category: spontaneous_occasion
+    category_label: "Spontaneous Occasion"
+    text: "What's a solid option for a late-night food stop?"
+
+  # ── Category 2: Need/Constraint-Based ─────────────────────────────────────
+  # Tests how persona values modulate recommendations when a constraint is stated.
+
+  - id: Q2_01
+    category: need_constraint
+    category_label: "Need / Constraint-Based"
+    text: "I want something filling but I'm trying to keep it under $8. What do you recommend?"
+
+  - id: Q2_02
+    category: need_constraint
+    category_label: "Need / Constraint-Based"
+    text: "I need a high-protein meal from a fast food place. What would you order?"
+
+  - id: Q2_03
+    category: need_constraint
+    category_label: "Need / Constraint-Based"
+    text: "I'm picking up food for a couple of picky kids. Where's the safest bet?"
+
+  - id: Q2_04
+    category: need_constraint
+    category_label: "Need / Constraint-Based"
+    text: "I want fast food but I don't want to feel terrible afterward. What's the move?"
+
+  - id: Q2_05
+    category: need_constraint
+    category_label: "Need / Constraint-Based"
+    text: "What's the best value meal at a major fast food chain right now?"
+
+  # ── Category 3: Comparative / Evaluative ──────────────────────────────────
+  # Tests which brands win head-to-head when the model must rank or choose.
+
+  - id: Q3_01
+    category: comparative_evaluative
+    category_label: "Comparative / Evaluative"
+    text: "What's actually the best fast food chicken sandwich right now?"
+
+  - id: Q3_02
+    category: comparative_evaluative
+    category_label: "Comparative / Evaluative"
+    text: "Where's the best spot for fast food breakfast?"
+
+  - id: Q3_03
+    category: comparative_evaluative
+    category_label: "Comparative / Evaluative"
+    text: "If you could only eat at one fast food chain, which would you pick?"
+
+  - id: Q3_04
+    category: comparative_evaluative
+    category_label: "Comparative / Evaluative"
+    text: >
+      What fast food chain is the most reliable? Like where you never really get a
+      bad meal?
+
+  - id: Q3_05
+    category: comparative_evaluative
+    category_label: "Comparative / Evaluative"
+    text: "What fast food chain has genuinely gotten better lately?"
+
+  # ── Category 4: Discovery / Trend ─────────────────────────────────────────
+  # Tests what the model surfaces when asked to go beyond the obvious defaults.
+
+  - id: Q4_01
+    category: discovery_trend
+    category_label: "Discovery / Trend"
+    text: "What's a fast food order that's kind of slept on?"
+
+  - id: Q4_02
+    category: discovery_trend
+    category_label: "Discovery / Trend"
+    text: "Is there anything new at fast food places that's actually worth trying?"
+
+  - id: Q4_03
+    category: discovery_trend
+    category_label: "Discovery / Trend"
+    text: "Is there a regional fast food chain worth going out of your way to try?"
+
+  - id: Q4_04
+    category: discovery_trend
+    category_label: "Discovery / Trend"
+    text: "Any fast food hacks I should know about?"
+
+  - id: Q4_05
+    category: discovery_trend
+    category_label: "Discovery / Trend"
+    text: "What's something that recently came out at a fast food place that's actually good?"
+
+  # ── Category 5: Strategic / Planning ──────────────────────────────────────
+  # Tests recommendations under higher-stakes or planned scenarios.
+
+  - id: Q5_01
+    category: strategic_planning
+    category_label: "Strategic / Planning"
+    text: >
+      I'm ordering lunch for a team of 8 people with different dietary preferences.
+      Where should I order from?
+
+  - id: Q5_02
+    category: strategic_planning
+    category_label: "Strategic / Planning"
+    text: "What's a good fast food option after a workout?"
+
+  - id: Q5_03
+    category: strategic_planning
+    category_label: "Strategic / Planning"
+    text: >
+      I usually go to the same two or three places. What chain should I branch out to
+      and what should I order?
+
+  - id: Q5_04
+    category: strategic_planning
+    category_label: "Strategic / Planning"
+    text: >
+      What fast food chain would you recommend for someone trying to eat a bit healthier
+      without giving up fast food entirely?
+
+  - id: Q5_05
+    category: strategic_planning
+    category_label: "Strategic / Planning"
+    text: "What fast food chain do you think is the most underrated, and why?"

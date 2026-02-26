@@ -1,0 +1,186 @@
+# Brand alias map — maps variant names to canonical display names.
+# Keys are lowercase for fuzzy matching.
+#
+# IMPORTANT: This file is seeded with agencies likely to surface.
+# After Stage 1 runs, review entity extraction output and add any
+# additional variants or agencies that appeared.
+
+aliases:
+  # Large holding company agencies
+  "ogilvy":                     "Ogilvy"
+  "ogilvy & mather":            "Ogilvy"
+  "ogilvy and mather":          "Ogilvy"
+
+  "bbdo":                       "BBDO"
+
+  "leo burnett":                "Leo Burnett"
+
+  "mccann":                     "McCann"
+  "mccann worldgroup":          "McCann"
+  "mccann erickson":            "McCann"
+
+  "ddb":                        "DDB"
+  "ddb worldwide":              "DDB"
+
+  "saatchi & saatchi":          "Saatchi & Saatchi"
+  "saatchi and saatchi":        "Saatchi & Saatchi"
+
+  "grey":                       "Grey"
+  "grey advertising":           "Grey"
+
+  "vml":                        "VML"
+  "wunderman thompson":         "VML"
+  "jwt":                        "VML"
+  "j. walter thompson":         "VML"
+
+  "foote cone & belding":       "FCB"
+  "fcb":                        "FCB"
+
+  # Digital / integrated agencies
+  "r/ga":                       "R/GA"
+  "rga":                        "R/GA"
+
+  "akqa":                       "AKQA"
+
+  "digitas":                    "Digitas"
+
+  "razorfish":                  "Razorfish"
+
+  "huge":                       "Huge"
+  "huge inc":                   "Huge"
+
+  "iprospect":                  "iProspect"
+
+  "performics":                 "Performics"
+
+  "icrossing":                  "iCrossing"
+
+  "publicis sapient":           "Publicis Sapient"
+
+  "dentsu":                     "Dentsu"
+  "dentsu creative":            "Dentsu"
+
+  # Independent / notable boutiques
+  "wieden+kennedy":             "Wieden+Kennedy"
+  "wieden & kennedy":           "Wieden+Kennedy"
+  "w+k":                        "Wieden+Kennedy"
+
+  "72andsunny":                 "72andSunny"
+  "72 and sunny":               "72andSunny"
+
+  "droga5":                     "Droga5"
+
+  "goodby silverstein":         "Goodby Silverstein & Partners"
+  "goodby silverstein & partners": "Goodby Silverstein & Partners"
+  "gs&p":                       "Goodby Silverstein & Partners"
+
+  "the martin agency":          "The Martin Agency"
+  "martin agency":              "The Martin Agency"
+
+  "merkle":                     "Merkle"
+
+  # Performance / growth agencies
+  "webfx":                      "WebFX"
+
+  "thrive":                     "Thrive Internet Marketing Agency"
+  "thrive internet marketing":  "Thrive Internet Marketing Agency"
+  "thrive agency":              "Thrive Internet Marketing Agency"
+
+  "disruptive advertising":     "Disruptive Advertising"
+
+  "klientboost":                "KlientBoost"
+
+  "np digital":                 "NP Digital"
+  "neil patel digital":         "NP Digital"
+
+  "single grain":               "Single Grain"
+
+  "directive":                  "Directive Consulting"
+  "directive consulting":       "Directive Consulting"
+
+  "ignite digital":             "Ignite Digital"
+  "ignite visibility":          "Ignite Visibility"
+
+  # B2B demand gen / performance agencies (surfaced from Stage 1)
+  "refine labs":                "Refine Labs"
+
+  "wonderist":                  "Wonderist Agency"
+  "wonderist agency":           "Wonderist Agency"
+
+  "firegang":                   "Firegang Dental Marketing"
+  "firegang dental":            "Firegang Dental Marketing"
+  "firegang dental marketing":  "Firegang Dental Marketing"
+
+  "location3":                  "Location3"
+  "location 3":                 "Location3"
+
+  "kickstart dental":           "KickStart Dental Marketing"
+  "kickstart":                  "KickStart Dental Marketing"
+  "kickstart dental marketing": "KickStart Dental Marketing"
+
+  "pain-free dental":           "Pain-Free Dental Marketing"
+  "pain free dental":           "Pain-Free Dental Marketing"
+  "pain free dental marketing": "Pain-Free Dental Marketing"
+
+  "soci":                       "SOCi"
+  "meet soci":                  "SOCi"
+  "meetsoci":                   "SOCi"
+
+  "smartbug":                   "SmartBug Media"
+  "smartbug media":             "SmartBug Media"
+
+  "cardinal digital":           "Cardinal Digital Marketing"
+  "cardinal digital marketing": "Cardinal Digital Marketing"
+  "cardinaldm":                 "Cardinal Digital Marketing"
+
+  "nogood":                     "NoGood"
+  "no good":                    "NoGood"
+  "no good agency":             "NoGood"
+
+  "great dental websites":      "Great Dental Websites"
+
+  "curious jane":               "Curious Jane"
+
+  "powered by search":          "Powered by Search"
+
+  "new breed":                  "New Breed"
+  "new breed revenue":          "New Breed"
+
+  # Franchise-specialist agencies (likely for P4/P5 personas)
+  "topfire media":              "TopFire Media"
+
+  "integrated digital strategies": "Integrated Digital Strategies"
+  "ids":                        "Integrated Digital Strategies"
+
+  "rallio":                     "Rallio"
+
+  "brandmuscle":                "BrandMuscle"
+  "brand muscle":               "BrandMuscle"
+
+  "fishman pr":                 "Fishman PR"
+
+  "ifranchise group":           "iFranchise Group"
+  "i franchise group":          "iFranchise Group"
+
+  "franchise marketing systems": "Franchise Marketing Systems"
+  "fms":                        "Franchise Marketing Systems"
+
+  "localiq":                    "LocaliQ"
+  "local iq":                   "LocaliQ"
+
+  "buxton":                     "Buxton"
+
+  "scorpion":                   "Scorpion"
+
+  "hibu":                       "Hibu"
+
+  # Raintree acquired by Franchise FastLane (2022) — normalize both to current brand
+  "raintree":                   "Franchise FastLane"
+  "raintree franchise":         "Franchise FastLane"
+  "franchise fastlane":         "Franchise FastLane"
+  "franchise fast lane":        "Franchise FastLane"
+
+  "franchise performance group": "Franchise Performance Group"
+  "fpg":                        "Franchise Performance Group"
+
+  "curious jane":               "Curious Jane"

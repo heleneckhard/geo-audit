@@ -1,0 +1,144 @@
+# Brand alias map — maps any variant to the canonical display name.
+# Keys are lowercase, apostrophes stripped, for fuzzy matching.
+# Add entries here whenever a new normalization issue is spotted.
+
+aliases:
+  # Panera
+  "panera":                 "Panera Bread"
+  "panera bread":           "Panera Bread"
+
+  # Wendy's (handles straight vs curly apostrophe variants)
+  "wendys":                 "Wendy's"
+  "wendy's":                "Wendy's"
+
+  # McDonald's
+  "mcdonalds":              "McDonald's"
+  "mcdonald's":             "McDonald's"
+  "mickey d's":             "McDonald's"
+  "mickey ds":              "McDonald's"
+
+  # Chick-fil-A
+  "chick fil a":            "Chick-fil-A"
+  "chick-fil-a":            "Chick-fil-A"
+  "chick fila":             "Chick-fil-A"
+  "cfa":                    "Chick-fil-A"
+
+  # Taco Bell
+  "taco bell":              "Taco Bell"
+
+  # Burger King
+  "burger king":            "Burger King"
+  "bk":                     "Burger King"
+
+  # Starbucks
+  "starbucks":              "Starbucks"
+  "sbux":                   "Starbucks"
+
+  # Subway
+  "subway":                 "Subway"
+
+  # Chipotle
+  "chipotle":               "Chipotle"
+  "chipotle mexican grill": "Chipotle"
+
+  # Popeyes
+  "popeyes":                "Popeyes"
+  "popeye's":               "Popeyes"
+  "popeyes louisiana kitchen": "Popeyes"
+
+  # Dunkin'
+  "dunkin":                 "Dunkin'"
+  "dunkin'":                "Dunkin'"
+  "dunkin donuts":          "Dunkin'"
+  "dunkin' donuts":         "Dunkin'"
+
+  # KFC
+  "kfc":                    "KFC"
+  "kentucky fried chicken": "KFC"
+
+  # Arby's
+  "arbys":                  "Arby's"
+  "arby's":                 "Arby's"
+
+  # Jack in the Box
+  "jack in the box":        "Jack in the Box"
+  "jack in box":            "Jack in the Box"
+
+  # Culver's
+  "culvers":                "Culver's"
+  "culver's":               "Culver's"
+
+  # Domino's
+  "dominos":                "Domino's"
+  "domino's":               "Domino's"
+  "domino's pizza":         "Domino's"
+
+  # Panda Express
+  "panda express":          "Panda Express"
+
+  # Wawa
+  "wawa":                   "Wawa"
+
+  # Shake Shack
+  "shake shack":            "Shake Shack"
+
+  # Five Guys
+  "five guys":              "Five Guys"
+  "5 guys":                 "Five Guys"
+
+  # In-N-Out
+  "in-n-out":               "In-N-Out Burger"
+  "in n out":               "In-N-Out Burger"
+  "in-n-out burger":        "In-N-Out Burger"
+
+  # Whataburger
+  "whataburger":            "Whataburger"
+
+  # Sonic
+  "sonic":                  "Sonic"
+  "sonic drive-in":         "Sonic"
+
+  # Hardee's / Carl's Jr.
+  "hardees":                "Hardee's"
+  "hardee's":               "Hardee's"
+  "carls jr":               "Carl's Jr."
+  "carl's jr":              "Carl's Jr."
+  "carl's jr.":             "Carl's Jr."
+  "carls jr.":              "Carl's Jr."
+  # combo entries (AI listed both brands together — map to Hardee's)
+  "hardees / carls jr.":    "Hardee's"
+  "hardees/carls jr.":      "Hardee's"
+
+  # Raising Cane's
+  "raising canes":          "Raising Cane's"
+  "raising cane's":         "Raising Cane's"
+
+  # Zaxby's
+  "zaxbys":                 "Zaxby's"
+  "zaxby's":                "Zaxby's"
+
+  # CAVA
+  "cava":                   "CAVA"
+
+  # Bojangles (rebranded without apostrophe in 2020)
+  "bojangles":              "Bojangles"
+
+  # QDOBA
+  "qdoba":                  "QDOBA"
+
+  # Jersey Mike's
+  "jersey mikes":           "Jersey Mike's"
+  "jersey mikes subs":      "Jersey Mike's"
+
+  # Jimmy John's
+  "jimmy johns":            "Jimmy John's"
+
+  # Moe's Southwest Grill
+  "moes southwest grill":   "Moe's Southwest Grill"
+
+  # Portillo's
+  "portillos":              "Portillo's"
+
+  # Zoe's Kitchen (also handles ë umlaut variant)
+  "zoes kitchen":           "Zoe's Kitchen"
+  "zoës kitchen":           "Zoe's Kitchen"

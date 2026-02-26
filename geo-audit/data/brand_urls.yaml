@@ -1,0 +1,136 @@
+# Curated URL list per brand.
+# Pages are selected for brand-voice content: homepage, about/story, quality/menu philosophy.
+# Avoid: franchise info, careers, investor relations, store locators.
+# Add new brands as needed — any brand in the entities output can be added here.
+
+brands:
+
+  "Wendy's":
+    urls:
+      - https://www.wendys.com
+      - https://www.wendys.com/about-wendys
+      - https://www.wendys.com/food-quality
+
+  "Chick-fil-A":
+    urls:
+      - https://www.chick-fil-a.com
+      - https://www.chick-fil-a.com/about
+      - https://www.chick-fil-a.com/food-quality
+
+  "McDonald's":
+    urls:
+      - https://www.mcdonalds.com/us/en-us.html
+      - https://corporate.mcdonalds.com/corpmcd/our-company/who-we-are.html
+      - https://www.mcdonalds.com/us/en-us/about-our-food/see-what-were-made-of.html
+
+  "Chipotle":
+    urls:
+      - https://www.chipotle.com
+      - https://www.chipotle.com/about-real-food
+      - https://www.chipotle.com/real-food
+
+  "Taco Bell":
+    urls:
+      - https://www.tacobell.com
+      - https://www.tacobell.com/about
+
+  "Subway":
+    urls:
+      - https://www.subway.com/en-US
+      - https://www.subway.com/en-US/about-us
+
+  "Panera Bread":
+    urls:
+      - https://www.panerabread.com
+      - https://www.panerabread.com/en-us/articles/our-food-values.html
+
+  "Starbucks":
+    urls:
+      - https://www.starbucks.com
+      - https://www.starbucks.com/about-us
+
+  "Burger King":
+    urls:
+      - https://www.bk.com/about-bk
+      - https://www.bk.com
+
+  "Arby's":
+    urls:
+      - https://www.arbys.com
+      - https://www.arbys.com/about
+
+  "Jack in the Box":
+    urls:
+      - https://www.jackinthebox.com
+      - https://www.jackinthebox.com/about
+
+  "Popeyes":
+    urls:
+      - https://www.popeyes.com
+      - https://www.popeyes.com/story
+
+  "Culver's":
+    urls:
+      - https://www.culvers.com
+      - https://www.culvers.com/about-culvers
+      - https://www.culvers.com/fresh-never-frozen
+
+  "Dunkin'":
+    urls:
+      - https://www.dunkindonuts.com/en
+      - https://www.dunkindonuts.com/en/about
+
+  "KFC":
+    urls:
+      - https://www.kfc.com
+      - https://www.kfc.com/about
+
+  "Domino's":
+    urls:
+      - https://www.dominos.com/en/
+      - https://www.dominos.com/en/about/
+
+  "Panda Express":
+    urls:
+      - https://www.pandaexpress.com
+      - https://www.pandaexpress.com/about-us
+
+  "Wawa":
+    urls:
+      - https://www.wawa.com
+      - https://www.wawa.com/about-wawa
+
+  "Shake Shack":
+    urls:
+      - https://www.shakeshack.com
+      - https://www.shakeshack.com/mission-values/
+
+  "Five Guys":
+    urls:
+      - https://www.fiveguys.com
+      - https://www.fiveguys.com/fans/the-five-guys-story
+
+  "In-N-Out Burger":
+    urls:
+      - https://www.in-n-out.com
+      - https://www.in-n-out.com/about-us.aspx
+
+  "Whataburger":
+    urls:
+      - https://whataburger.com
+      - https://whataburger.com/pages/our-story
+
+  "Sonic":
+    urls:
+      - https://www.sonicdrivein.com
+      - https://www.sonicdrivein.com/about
+
+  "Raising Cane's":
+    urls:
+      - https://www.raisingcanes.com
+      - https://www.raisingcanes.com/our-story
+
+  "Zaxby's":
+    urls:
+      - https://www.zaxbys.com
+      - https://www.zaxbys.com/about

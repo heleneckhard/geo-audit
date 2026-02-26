@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How AI Recommends Your Brand — GEO Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #0B0C14; --bg2: #12141F; --bg3: #1A1D2E;
+  --accent: #E31C79; --accent-light: rgba(227,28,121,0.12); --accent-dim: rgba(227,28,121,0.35);
+  --text: #F0F0F0; --text-muted: #7A7D92; --text-dim: #3D4060;
+  --border: #22253A; --card: #161829;
+  --coral: #FF6B6B; --teal: #4FC4CF; --purple: #A78BFA; --amber: #F59E0B;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; }
+
+/* ── LAYOUT ── */
+.wrap { max-width:1200px; margin:0 auto; padding:0 60px; }
+.section { padding:80px 0; }
+.divider { height:1px; background:var(--border); }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+.col-narrow-wide { display:grid; grid-template-columns:2fr 3fr; gap:60px; align-items:start; }
+
+/* ── TYPE ── */
+.eyebrow {
+  font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.2em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:20px;
+  display:flex; align-items:center; gap:12px;
+}
+.eyebrow::before { content:''; width:28px; height:2px; background:var(--accent); flex-shrink:0; }
+.section-num { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+h1 { font-family:'Fraunces',serif; font-size:clamp(44px,6vw,82px); font-weight:900; line-height:1.0; }
+h1 em { color:var(--accent); font-style:italic; }
+h2 { font-family:'Fraunces',serif; font-size:clamp(28px,4vw,50px); font-weight:700; line-height:1.1; margin-bottom:20px; }
+h2 em { color:var(--accent); font-style:italic; }
+h3 { font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:16px; margin-top:48px; }
+p { color:#B4B6CC; font-size:16px; line-height:1.85; max-width:680px; margin-bottom:20px; }
+p.wide { max-width:860px; }
+strong { color:var(--text); font-weight:500; }
+
+/* ── HERO ── */
+.hero { padding:100px 0 80px; }
+.hero-sub { font-size:18px; color:var(--text-muted); max-width:580px; margin:20px 0 56px; font-weight:300; }
+.hero-stats { display:flex; gap:48px; flex-wrap:wrap; padding-top:40px; border-top:1px solid var(--border); }
+.stat-item { display:flex; flex-direction:column; gap:4px; }
+.stat-num { font-family:'Fraunces',serif; font-size:38px; font-weight:700; line-height:1; }
+.stat-lbl { font-family:'Syne',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-muted); }
+
+/* ── PHASE TAG ── */
+.phase-tag { display:inline-block; background:var(--bg3); border:1px solid var(--accent); color:var(--accent); padding:4px 12px; font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; border-radius:2px; margin-bottom:20px; }
+
+/* ── CARDS ── */
+.card { background:var(--card); border:1px solid var(--border); border-radius:2px; }
+.chart-wrap { padding:32px; margin-top:32px; }
+.chart-wrap.no-mt { margin-top:0; }
+.chart-label { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-muted); margin-bottom:22px; display:flex; align-items:center; gap:10px; }
+.chart-label::after { content:''; flex:1; height:1px; background:var(--border); }
+.chart-note { font-family:'DM Sans',sans-serif; font-size:12px; color:var(--text-dim); margin-top:14px; font-style:italic; line-height:1.6; color: #7A7D92;}
+
+/* ── CALLOUT ── */
+.callout { background:var(--card); border:1px solid var(--border); border-left:3px solid var(--accent); padding:28px 32px; margin:40px 0; }
+.callout-label { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
+.callout p { font-size:15px; color:#8A8CA8; max-width:100%; }
+
+/* ── BIG QUOTE ── */
+.big-quote { font-family:'Fraunces',serif; font-size:clamp(18px,2.2vw,26px); font-weight:300; font-style:italic; color:var(--text-muted); line-height:1.55; padding:48px 0; max-width:820px; border-top:1px solid var(--border); border-bottom:1px solid var(--border); margin:48px 0; }
+.big-quote em { color:var(--accent); font-style:normal; }
+
+/* ── PERSONA GRID ── */
+.persona-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:36px; }
+.persona-card { background:var(--card); border:1px solid var(--border); padding:22px 18px; position:relative; overflow:hidden; }
+.persona-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+.pc1::before{background:var(--coral);} .pc2::before{background:var(--teal);} .pc3::before{background:var(--accent);} .pc4::before{background:var(--purple);} .pc5::before{background:var(--amber);}
+.p-emoji { font-size:26px; display:block; margin-bottom:10px; }
+.p-name { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--text); display:block; margin-bottom:3px; }
+.p-title { font-size:11px; color:var(--text-muted); display:block; margin-bottom:10px; font-style:italic; }
+.p-desc { font-size:12px; color:#6A6D85; line-height:1.5; margin-bottom:10px; }
+.p-tags { display:flex; flex-wrap:wrap; gap:4px; }
+.tag { font-family:'Syne',sans-serif; font-size:9px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:3px 6px; background:var(--bg3); color:var(--text-muted); }
+
+/* ── PULL QUOTES ── */
+.pq-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:32px; }
+.pq-card { background:var(--bg2); border:1px solid var(--border); padding:26px 22px; position:relative; overflow:hidden; }
+.pq-card::before { content:'"'; position:absolute; top:-8px; left:14px; font-family:'Fraunces',serif; font-size:110px; font-weight:900; color:var(--accent); opacity:0.07; line-height:1; }
+.pq-persona { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:3px; }
+.pq-brand { font-family:'Fraunces',serif; font-size:15px; font-weight:700; color:var(--text); margin-bottom:14px; }
+.pq-text { font-size:13px; color:#8A8CA8; line-height:1.7; font-style:italic; position:relative; z-index:1; }
+.pq-q { font-family:'Syne',sans-serif; font-size:10px; color:var(--text-muted); margin-top:14px; display:flex; gap:6px; line-height:1.4; }
+.pq-q::before { content:'Q:'; color:var(--accent); font-weight:700; flex-shrink:0; }
+
+/* ── ROUTING MATRIX ── */
+.routing-matrix { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:36px; }
+.rcol { background:var(--card); border:1px solid var(--border); overflow:hidden; }
+.rcol-head { padding:14px 14px 12px; border-bottom:1px solid var(--border); }
+.rcol-persona { font-family:'Syne',sans-serif; font-size:12px; font-weight:700; color:var(--text); display:block; margin-bottom:2px; }
+.rcol-meta { font-size:10px; color:var(--text-muted); }
+.rcol-item { display:flex; align-items:center; gap:8px; padding:9px 14px; border-bottom:1px solid var(--bg3); }
+.rcol-item:last-child { border-bottom:none; }
+.rcol-rank { font-family:'Fraunces',serif; font-size:10px; color:var(--text-dim); width:14px; flex-shrink:0; }
+.rcol-name { font-size:11px; color:#8A8CA8; flex:1; line-height:1.3; min-width:0; }
+.rcol-num { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; flex-shrink:0; }
+.rcol-bar { height:2px; margin-top:3px; border-radius:1px; opacity:0.3; }
+
+/* ── VENN DIAGRAM ── */
+.venn-wrap { display:flex; flex-direction:column; align-items:center; gap:0; margin-top:36px; }
+.venn-row { display:grid; grid-template-columns:1fr 140px 1fr; gap:0; width:100%; align-items:start; margin-top:20px; }
+.venn-col { background:var(--card); border:1px solid var(--border); padding:20px; }
+.venn-col-head { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px; }
+.venn-col-sub { font-size:11px; color:var(--text-muted); margin-bottom:14px; font-style:italic; }
+.venn-agency-row { font-size:12px; color:#8A8CA8; padding:5px 0; border-bottom:1px solid var(--bg3); display:flex; justify-content:space-between; }
+.venn-agency-row:last-child { border-bottom:none; }
+.venn-agency-num { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; }
+.venn-center { background:var(--accent-light); border:1px solid var(--accent-dim); border-left:none; border-right:none; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px 12px; text-align:center; min-height:200px; }
+.venn-overlap-label { font-family:'Syne',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
+.venn-overlap-brand { font-family:'Fraunces',serif; font-size:18px; font-weight:700; color:var(--accent); line-height:1.1; }
+.venn-attr-tag { display:inline-block; font-family:'Syne',sans-serif; font-size:9px; font-weight:600; padding:3px 6px; margin:2px; background:var(--bg3); color:var(--text-muted); }
+
+/* ── TWO LEVER ── */
+.lever-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:36px; }
+.lever-card { background:var(--card); border:1px solid var(--border); padding:28px; }
+.lever-card.active { border-color:var(--accent); }
+.lever-num { font-family:'Fraunces',serif; font-size:48px; font-weight:900; line-height:1; margin-bottom:12px; color:var(--text-dim); }
+.lever-card.active .lever-num { color:var(--accent-dim); }
+.lever-title-label { font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
+.lever-card.active .lever-title-label { color:var(--accent); }
+.lever-h { font-family:'Fraunces',serif; font-size:22px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.2; }
+.lever-desc { font-size:14px; color:#6A6D85; line-height:1.7; max-width:100%; }
+.lever-examples { margin-top:20px; padding-top:20px; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:8px; }
+.lever-ex { display:flex; justify-content:space-between; align-items:center; font-size:12px; }
+.lever-ex-brand { color:#8A8CA8; }
+.lever-ex-val { font-family:'Syne',sans-serif; font-size:11px; font-weight:700; }
+
+/* ── PUNCH ABOVE WEIGHT ── */
+.paw-intro { max-width:820px; margin-bottom:36px; }
+.paw-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+.paw-card { background:var(--card); border:1px solid var(--border); padding:28px; }
+.paw-brand-row { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px; }
+.paw-brand-name { font-family:'Fraunces',serif; font-size:22px; font-weight:700; color:var(--text); }
+.paw-persona-tag { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; }
+.paw-sub { font-size:12px; color:var(--text-muted); margin-bottom:22px; font-style:italic; }
+.paw-bars { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+.paw-bar-row { display:flex; align-items:center; gap:10px; }
+.paw-bar-lbl { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; color:var(--text-muted); width:88px; text-align:right; flex-shrink:0; text-transform:uppercase; letter-spacing:0.06em; }
+.paw-track { flex:1; height:10px; background:var(--bg3); border-radius:2px; overflow:hidden; }
+.paw-fill { height:100%; border-radius:2px; }
+.paw-val { font-family:'Fraunces',serif; font-size:14px; font-weight:700; width:36px; flex-shrink:0; }
+.paw-concentration { background:var(--bg3); padding:12px 14px; display:flex; justify-content:space-between; align-items:center; }
+.paw-conc-label { font-size:12px; color:#6A6D85; }
+.paw-conc-stat { font-family:'Fraunces',serif; font-size:20px; font-weight:700; }
+
+/* ── HEATMAP ── */
+.heatmap-table { width:100%; border-collapse:collapse; }
+.heatmap-table th { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); padding:8px 10px; text-align:center; }
+.heatmap-table th.bh { text-align:right; padding-right:14px; width:140px; }
+.heatmap-table td { padding:0; }
+.heatmap-table td.bn { font-family:'Syne',sans-serif; font-size:11px; font-weight:600; color:var(--text-muted); text-align:right; padding:4px 14px 4px 0; white-space:nowrap; }
+.hcell { display:block; padding:9px 6px; font-family:'Syne',sans-serif; font-size:10px; font-weight:700; text-align:center; }
+
+/* ── APPENDIX TABLE ── */
+.app-table-wrap { overflow-x:auto; margin-top:24px; }
+.app-table { width:100%; border-collapse:collapse; font-size:12px; }
+.app-table th { font-family:'Syne',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); padding:8px 12px; text-align:right; border-bottom:1px solid var(--border); white-space:nowrap; }
+.app-table th:first-child { text-align:left; }
+.app-table td { padding:7px 12px; border-bottom:1px solid var(--bg3); color:#8A8CA8; text-align:right; font-family:'DM Sans',sans-serif; }
+.app-table td:first-child { text-align:left; color:var(--text-muted); font-weight:400; }
+.app-table td.total { font-family:'Syne',sans-serif; font-weight:700; color:var(--text); }
+.app-table tr:hover td { background:var(--bg2); }
+
+/* ── QUESTION LIST ── */
+.q-category { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin:24px 0 10px; }
+.q-item { font-size:13px; color:#8A8CA8; padding:6px 0; border-bottom:1px solid var(--bg3); }
+.q-item:last-child { border-bottom:none; }
+
+/* ── FOOTNOTE ── */
+.footnote { background:var(--bg2); border-top:1px solid var(--border); padding:40px 0; }
+.footnote p { font-size:12px; color:var(--text-dim); max-width:100%; }
+
+/* ── COLOR SCALE ── */
+.scale-row { display:flex; align-items:center; gap:12px; margin-top:14px; }
+.scale-bar { height:10px; flex:0 0 140px; border-radius:2px; }
+.scale-label { font-family:'Syne',sans-serif; font-size:10px; color:var(--text-dim); }
+
+/* ── STAT INLINE ── */
+.rho-box { display:inline-flex; align-items:baseline; gap:8px; background:var(--bg3); border:1px solid var(--border); padding:10px 16px; border-radius:2px; margin:8px 0 20px; }
+.rho-val { font-family:'Fraunces',serif; font-size:28px; font-weight:700; color:var(--accent); }
+.rho-desc { font-size:13px; color:#6A6D85; max-width:260px; line-height:1.4; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════ HERO ════════════════ -->
+<div class="wrap">
+<div class="hero">
+  <div class="eyebrow">Elysium Marketing Group</div>
+  <h1>We tried to get <em>ChatGPT</em> to recommend our brand. Here's what happened.</h1>
+  <!-- <p class="hero-sub">What started as a curiosity turned into a two-phase study on how AI decides who to recommend — and whether the language on your website has anything to do with it.</p> -->
+  <br>
+  <div class="hero-stats">
+    <div class="stat-item"><span class="stat-num">750</span><span class="stat-lbl">ChatGPT Queries</span></div>
+    <div class="stat-item"><span class="stat-num">10</span><span class="stat-lbl">Buyer Personas</span></div>
+    <div class="stat-item"><span class="stat-num">3,196</span><span class="stat-lbl">Unique Brand Mentions</span></div>
+    <!-- <div class="stat-item"><span class="stat-num">68</span><span class="stat-lbl">QSR Brands Surfaced</span></div>
+    <div class="stat-item"><span class="stat-num">407</span><span class="stat-lbl">Agencies Surfaced</span></div> -->
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ════════════════ 00 WHY ════════════════ -->
+<div class="wrap"><div class="section">
+  <div class="col-narrow-wide">
+    <div>
+      <div class="section-num">00 — The State of GEO</div>
+      <h2>Lots of theories,<br><em>little data.</em></h2>
+    </div>
+    <div>
+     <p>Generative Engine Optimization (GEO) has a speculation problem. The field is still new, the research is still limited, and the "best practices" being floated around to help you show up in AI search seem to change every five minutes. Every digital marketing agency has an answer for GEO. Almost none of them have evidence.</p>
+     <p>We decided to find some. Two simple questions guided our experiment: When ChatGPT recommends brands, which ones does it pick? And can we figure out <em>why?</em></p>
+    </div>
+  </div>
+</div></div>
+
+<div class="divider"></div>
+
+<!-- ════════════════ 01 PERSONAS ════════════════ -->
+<div class="wrap"><div class="section">
+  <div class="section-num">01 — The Setup</div>
+  <h2>What happens when 10 people ask ChatGPT <em>the same question?</h2>
+  <p class="wide">We ran the same experiment across two separate industries: fast-food dining and digital marketing agencies. (Okay yes, that second category was a bit self-serving—we're a marketing agency after all. We wanted to know if ChatGPT was recommending our team, and if so, to who.)</p>
+  <p class="wide">For each industry, we build five distinct, detailed customer personas that included personal background, budget, decision context, and relationship to the category. Each persona asked ChatGPT the same 25 questions, divided among five intent types (see Appendices 6-7). To improve the sample, each persona posed each query three times. And we logged every single brand mention and reason cited. </p>
+
+  <h3><Fast-Food></Fast-Food> Personas</h3>
+  <div class="persona-grid">
+    <div class="persona-card pc1">
+      <span class="p-emoji">⚡</span>
+      <span class="p-name">Marcus</span><span class="p-title">The Lunch Rusher</span>
+      <p class="p-desc">Marcus is a Project Manager who's tied to his desk. He tends to be loyal to a few chains and has their mobile apps bookmarked.</p>
+      <div class="p-tags"><span class="tag">Mobile-first</span><span class="tag">$10–15</span></div>
+    </div>
+    <div class="persona-card pc2">
+      <span class="p-emoji">🥦</span>
+      <span class="p-name">Jenna</span><span class="p-title">The Conscious Parent</span>
+      <p class="p-desc">Jenna is a health- and price-conscious mom of three. She always reads food labels and feels mild guilt about fast food—but she's got three kids to feed.</p>
+      <div class="p-tags"><span class="tag">Health-aware</span><span class="tag">$25–35</span></div>
+    </div>
+    <div class="persona-card pc3">
+      <span class="p-emoji">💸</span>
+      <span class="p-name">Tyler</span><span class="p-title">The Deal Hunter</span>
+      <p class="p-desc">Tyler is a Junior in college on a tight budget. He loves following food trends on TikTok and will download any app for a BOGO.</p>
+      <div class="p-tags"><span class="tag">App-native</span><span class="tag">$5–8</span></div>
+    </div>
+    <div class="persona-card pc4">
+      <span class="p-emoji">🏋️</span>
+      <span class="p-name">Priya</span><span class="p-title">The Macro Counter</span>
+      <p class="p-desc">Priya is a CrossFit instructor who always checks the nutrition info before ordering. She's skeptical of "healthy" marketing with nothing behind it.</p>
+      <div class="p-tags"><span class="tag">High-protein</span><span class="tag">$12–18</span></div>
+    </div>
+    <div class="persona-card pc5">
+      <span class="p-emoji">🔧</span>
+      <span class="p-name">Dale</span><span class="p-title">The On-the-Go Eater</span>
+      <p class="p-desc">Dale is an HVAC contractor who usually eatsfrom his truck between jobs. He's looking for something fast, filling, familiar—and without the hassle of an app download.</p>
+      <div class="p-tags"><span class="tag">Value-driven</span><span class="tag">$8–12</span></div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:44px;">Agency Personas</h3>
+  <div class="persona-grid">
+    <div class="persona-card pc1">
+      <span class="p-emoji">🚀</span>
+      <span class="p-name">Jordan</span><span class="p-title">The Startup Founder</span>
+      <p class="p-desc">Jordan is the founder of a growing B2B SaaS company. They're looking to make their first marketing hire and are focused on growing their pipeline.</p>
+      <div class="p-tags"><span class="tag">B2B SaaS</span><span class="tag">Pipeline-first</span></div>
+    </div>
+    <div class="persona-card pc2">
+      <span class="p-emoji">📊</span>
+      <span class="p-name">Sandra</span><span class="p-title">The Mid-Market VP</span>
+      <p class="p-desc">Sandra is VP of Marketing for a $50M company. She needs to show ROI to the board, but she's been burned by agencies in the past.</p>
+      <div class="p-tags"><span class="tag">ROI-focused</span><span class="tag">Board-accountable</span></div>
+    </div>
+    <div class="persona-card pc3">
+      <span class="p-emoji">🦷</span>
+      <span class="p-name">Ray</span><span class="p-title">The Dental Practice Owner</span>
+      <p class="p-desc">Ray own a local dental practice with several locations. He's looking for an agency with a proven track record in patient acquisition.</p>
+      <div class="p-tags"><span class="tag">Healthcare</span><span class="tag">Local SEO</span></div>
+    </div>
+    <div class="persona-card pc4">
+      <span class="p-emoji">🏢</span>
+      <span class="p-name">Christine</span><span class="p-title">The Franchise Brand Director</span>
+      <p class="p-desc">Christine manages national and local store marketing for an established franchise system. She's looking for a team that can support both.</p>
+      <div class="p-tags"><span class="tag">Multi-location</span><span class="tag">Brand standards</span></div>
+    </div>
+    <div class="persona-card pc5">
+      <span class="p-emoji">📋</span>
+      <span class="p-name">Derek</span><span class="p-title">The Franchise Dev VP</span>
+      <p class="p-desc">Derek is responsible for recruiting new franchisees. He needs qualified leads to fill his development pipeline.</p>
+      <div class="p-tags"><span class="tag">Franchisee recruitment</span><span class="tag">Dev pipeline</span></div>
+    </div>
+  </div>
+
+  <!-- <p style="margin-top:32px;" class="wide">Each persona got 25 questions across five intent types: spontaneous recommendations, need-based queries, direct comparisons, discovery questions, and planning scenarios. Every question was run three times. We logged every brand mentioned and every reason the AI gave for each recommendation.</p> -->
+</div></div>
+
+<div class="divider"></div>
+
+<!-- ════════════════ 02 QSR PHASE 1 ════════════════ -->
+<div class="wrap"><div class="section">
+  <div class="phase-tag">Phase 1 — Observation</div>
+  <div class="section-num">02 — What We Found</div>
+  <h2><em>First,</em> the numbers</h2>
+
+  <div class="col-narrow-wide" style="align-items:start;">
+    <div>
+      <p>The fast-food study surfaced <strong>68 distinct brands</strong> across 1,598 total mentions. Three brands — Wendy's, Chick-fil-A, McDonald's — account for 36% of all mentions. The top 10 together brands capture 73%. The remaining 58 brands shared the rest.</p>
+      <p>The agency experiment surfaced <strong>407 distinct brands</strong>. across 1,549 total mentions. Here, the top 3 brands own just 13% of the conversation, and 71% of mentions are scattered across the long tail, revealing a far more fragmented and specialized market.</p>
+    </div>
+    <div>
+      <!-- Fragmentation Donuts -->
+      <div class="card chart-wrap no-mt">
+        <div class="chart-label">Market Fragmentation — Share of AI Mentions by Brand Tier</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--text);text-align:center;margin-bottom:14px;">Fast Food Brands</div>
+            <div style="position:relative;width:160px;margin:0 auto;">
+              <canvas id="donutQSR" width="160" height="160"></canvas>
+              <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;">
+                <div style="font-family:'Fraunces',serif;font-size:28px;font-weight:900;line-height:1;color:var(--text);">68</div>
+                <div style="font-family:'Syne',sans-serif;font-size:9px;color:var(--text-muted);letter-spacing:0.05em;">brands</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--text);text-align:center;margin-bottom:14px;">Marketing Agencies</div>
+            <div style="position:relative;width:160px;margin:0 auto;">
+              <canvas id="donutAG" width="160" height="160"></canvas>
+              <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;">
+                <div style="font-family:'Fraunces',serif;font-size:28px;font-weight:900;line-height:1;color:var(--text);">407</div>
+                <div style="font-family:'Syne',sans-serif;font-size:9px;color:var(--text-muted);letter-spacing:0.05em;">brands</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Legend -->
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted);"><span style="width:12px;height:12px;border-radius:50%;background:#E31C79;flex-shrink:0;"></span>#1-3 &nbsp;&nbsp;</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted);"><span style="width:12px;height:12px;border-radius:50%;background:#4FC4CF;flex-shrink:0;"></span> #4–10</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted);"><span style="width:12px;height:12px;border-radius:50%;background:#1C2240;flex-shrink:0;border:1px solid var(--border);"></span>#11+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top 20 bar charts — QSR + Agency side by side -->
+  <div class="card chart-wrap">
+    <div class="chart-label">Top 20 Brands by Mention Count — Fast Food &amp; Agency</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Fast Food</div>
+        <canvas id="top20QSR" height="280"></canvas>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Agency</div>
+        <canvas id="top20Agency" height="280"></canvas>
+      </div>
+    </div>
+    <div class="chart-note">Top 20 brands by total positive mentions across all personas. Full breakdowns (68 QSR brands, 407 agency brands) available in the appendix.</div>
+  </div>
+
+
+<div class="divider"></div>
+
+<!-- ════════════════ 03 AGENCY PHASE 1 ════════════════ -->
+<div class="wrap"><div class="section">
+  <div class="phase-tag">Phase 1 — Observation</div>
+  <div class="section-num">03 — Personalized Recommendations</div>
+  <h2>When <em>ChatGPT</em> recommends you, why?</h2>
+
+  <p class="wide">Even though we ran the same controlled experiment across both categories, the results looked very different. Here are the patterns that emerged.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0 8px;">
+
+    <!-- <div style="background:var(--card);border:1px solid var(--border);border-top:3px solid var(--accent);padding:28px;">
+      <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">01 — Fragmentation</div>
+      <div style="font-family:'Fraunces',serif;font-size:19px;font-weight:700;line-height:1.25;color:var(--text);margin-bottom:12px;">Established markets have dominant players.<br><em style="color:var(--accent);font-style:italic;">Specialized markets don't.</em></div>
+      <p style="font-size:14px;max-width:100%;margin:0;color:#7A7D92;line-height:1.75;">In QSR, three brands capture 36% of all AI recommendations. In the agency market, the top three capture only 13% — and 407 different agencies were surfaced across all queries. The long tail isn't a rounding error; it's the market.</p>
+    </div> -->
+
+    <div style="background:var(--card);border:1px solid var(--border);border-top:3px solid var(--teal);padding:28px;">
+      <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;">Pattern #1 — Routing</div>
+      <div style="font-family:'Fraunces',serif;font-size:19px;font-weight:700;line-height:1.25;color:var(--text);margin-bottom:12px;">Different buyers get routed to<br><em style="color:var(--teal);font-style:italic;">entirely different brands.</em></div>
+      <p style="font-size:14px;max-width:100%;margin:0;color:#7A7D92;line-height:1.75;">This was true in both categories, but the pattern was especially pronounced in the fragmented agency market. ChatGPT doesn't appear to work from a single list and filter down—instead, it produces completely independent competitive universes depending on who's asking.</p>
+    </div>
+
+<div style="background:var(--card);border:1px solid var(--border);border-top:3px solid var(--amber);padding:28px;">
+      <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;">Pattern #2 — Brand Ubiquity</div>
+      <div style="font-family:'Fraunces',serif;font-size:19px;font-weight:700;line-height:1.25;color:var(--text);margin-bottom:12px;">Cross-persona presence is rare —<br><em style="color:var(--amber);font-style:italic;">and meaningful when it exists.</em></div>
+      <p style="font-size:14px;max-width:100%;margin:0;color:#7A7D92;line-height:1.75;">When a brand is recommended widely across personas, it reflects a significant competitive advantage. In the fast food category, many of the winning brands have established such a level of cultural ubiquity that ChatGPT reaches for them regardless of context. In the more specialized agency market, most brands struggled to span buyer types.</p>
+    </div>
+
+  </div>
+
+  <!-- Persona specificity chart -->
+  <div class="card chart-wrap">
+    <div class="chart-label">Persona Specificity — How Many Buyer Types Does Each Brand Reach?</div>
+    <canvas id="specificityChart" height="120"></canvas>
+    <div class="chart-note">Major fast food brands tend to reach multiple buyer types — 38% appear across 4 or 5 personas. Agency brands are far more specialized: 84% appear for one persona only. ChatGPT routes agency buyers to completely different competitive universes depending on who's asking the same question.</div>
+  </div>
+
+  <!-- QSR routing matrix -->
+  <div class="card chart-wrap" style="margin-top:32px;">
+    <div class="chart-label">Top 10 Fast Food Recommendations by Persona</div>
+    <div class="routing-matrix">
+      <div class="rcol">
+        <div class="rcol-head" style="border-top:3px solid var(--coral);">
+          <span class="rcol-persona">Marcus</span>
+          <span class="rcol-meta">The Lunch Rusher · App-savvy, time-pressed</span>
+        </div>
+        <div id="marcusList"></div>
+      </div>
+      <div class="rcol">
+        <div class="rcol-head" style="border-top:3px solid var(--teal);">
+          <span class="rcol-persona">Jenna</span>
+          <span class="rcol-meta">The Conscious Parent · Nutrition &amp; price-focused</span>
+        </div>
+        <div id="jennaList"></div>
+      </div>
+      <div class="rcol">
+        <div class="rcol-head" style="border-top:3px solid var(--accent);">
+          <span class="rcol-persona">Tyler</span>
+          <span class="rcol-meta">The Deal Hunter · Budget-driven college student</span>
+        </div>
+        <div id="tylerList"></div>
+      </div>
+      <div class="rcol">
+        <div class="rcol-head" style="border-top:3px solid var(--purple);">
+          <span class="rcol-persona">Priya</span>
+          <span class="rcol-meta">The Macro Counter · Fitness &amp; protein-focused</span>
+        </div>
+        <div id="priyaList"></div>
+      </div>
+      <div class="rcol">
+        <div class="rcol-head" style="border-top:3px solid var(--amber);">
+          <span class="rcol-persona">Dale</span>
+          <span class="rcol-meta">The On-the-Go Eater · Practical tradesperson</span>
+        </div>
+        <div id="daleList"></div>
+      </div>
+    </div>
+    <div class="chart-note" style="margin-top:20px;">Each column reflects what ChatGPT recommended to that buyer type across 75 queries. Wendy's, Chick-fil-A, and McDonald's appear across all five but are cited for completely different reasons.</div>
+  </div>
+
+  <!-- Agency routing matrix -->
+  <div class="card chart-wrap" style="margin-top:32px;">
+    <div class="chart-label">Top 10 Agency Brand Recommendations by Persona</div>
+    <div class="routing-matrix">
+      <div class="rcol">
+        <div class="rcol-head" style="border-top:3px solid var(--coral);">
+          <span class="rcol-persona">Jordan</span>
+          <span class="rcol-meta">Startup Founder · B2B SaaS demand gen</span>
+        </div>
+        <div id="jordanList"></div>
+      </div>
+      <div class="rcol">
+        <div class="rcol-head" style="border-top:3px solid var(--teal);">
+          <span class="rcol-persona">Sandra</span>
+          <span class="rcol-meta">Mid-Market VP · Full-funnel ROI focus</span>
+        </div>
+        <div id="sandraList"></div>
+      </div>
+      <div class="rcol">
+        <div class="rcol-head" style="border-top:3px solid var(--accent);">
+          <span class="rcol-persona">Ray</span>
+          <span class="rcol-meta">Dental Owner · Dental specialists only</span>
+        </div>
+        <div id="rayList"></div>
+      </div>
+      <div class="rcol">
+        <div class="rcol-head" style="border-top:3px solid var(--purple);">
+          <span class="rcol-persona">Christine</span>
+          <span class="rcol-meta">Franchise Brand Dir. · Operations at scale</span>
+        </div>
+        <div id="christineList"></div>
+      </div>
+      <div class="rcol">
+        <div class="rcol-head" style="border-top:3px solid var(--amber);">
+          <span class="rcol-persona">Derek</span>
+          <span class="rcol-meta">Franchise Dev VP · Franchisee recruitment</span>
+        </div>
+        <div id="derekList"></div>
+      </div>
+    </div>
+    <div class="chart-note" style="margin-top:20px;">Each column reflects what ChatGPT recommended to that buyer type across 75 queries. The minimal overlap suggests genuinely distinct, competitive ecosystems per buyer problem.</div>
+  </div>
+<br>
+  <!-- <p style="margin-top:32px;" class="wide">The only agency appearing prominently across more than one persona is <strong>Scorpion</strong> — #1 for Christine with 52 mentions and #1 for Derek with 41, reflecting the agency's considerable content investment in both franchise segments: operations and development. Every other agency in any given persona's top 10 is essentially absent from every other persona's list.</p> -->
+
+ <div style="background:var(--card);border:1px solid var(--border);border-top:3px solid var(--purple);padding:28px;">
+      <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple);margin-bottom:12px;">Pattern #3 — Rationale</div>
+      <div style="font-family:'Fraunces',serif;font-size:19px;font-weight:700;line-height:1.25;color:var(--text);margin-bottom:12px;">Even when the same brand appears for multiple buyers,<br><em style="color:var(--purple);font-style:italic;">the reasoning changes.</em></div>
+      <p style="font-size:14px;max-width:100%;margin:0;color:#7A7D92;line-height:1.75;">An agency recommended to a startup founder gets framed around demand generation and pipeline velocity. Recommended to a franchise development VP, the same brand surfaces in the context of multi-location systems and local market coverage. In the fast food segment, the same chain gets recommended to one buyer for speed and app convenience, while it's recommended to another for nutritional transparency.</p><br>
+      <p style="margin-top:12px;font-size:14px;max-width:100%;margin:0;color:#7A7D92;line-height:1.75;">In other words, ChatGPT doesn't just recommend "the best" brand. It recommends the brand <em>that best fits the buyer</em>.</p>
+    </div>
+    
+
+  <h3>What ChatGPT Actually Said</h3>
+  <p class="wide">Below are direct excerpts from ChatGPT's responses to distinct buyer types.</p>
+
+  <div class="pq-grid">
+    <!-- Marcus / Chick-fil-A
+    <div class="pq-card">
+      <div class="pq-persona" style="color:var(--coral);">Marcus → Chick-fil-A</div>
+      <p class="pq-text">"Order ahead through the app at your go-to places (like <strong>Chick-fil-A</strong>, McDonald's, or Taco Bell). Not only can you skip the line, but most apps have deals, points, and freebies."</p>
+      <div class="pq-q">Any fast food hacks I should know about?</div>
+    </div> -->
+    <!-- Jenna / Chick-fil-A -->
+    <div class="pq-card">
+      <div class="pq-persona" style="color:var(--teal);">Jenna → Chick-fil-A</div>
+      <div class="pq-brand">The Conscious Parent</div>
+      <p class="pq-text">"<strong>Chick-fil-A</strong> — the grilled nuggets and fruit cup are a hit with kids and not as heavy as burgers and fries. They also list ingredients and calorie counts right there."</p>
+      <div class="pq-q">I'm on a road trip and need to stop for food. What's a good option?</div>
+    </div>
+    <!-- Tyler / Taco Bell -->
+    <div class="pq-card">
+      <div class="pq-persona" style="color:var(--accent);">Tyler → Taco Bell</div>
+      <div class="pq-brand">The Deal Hunter</div>
+      <p class="pq-text">"<strong>Taco Bell</strong>: Cheesy Gordita Crunch is super filling (around $5 with tax), or hit up their Cravings Value Menu — get a Beefy Melt Burrito and a value side and you'll still have $ for a Baja Blast."</p>
+      <div class="pq-q">I want something filling but I'm trying to keep it under $8.</div>
+    </div>
+    <!-- Priya / Chipotle
+    <div class="pq-card">
+      <div class="pq-persona" style="color:var(--purple);">Priya → Chipotle</div>
+      <p class="pq-text">"<strong>Chipotle</strong> — Bowl: Double chicken or steak, brown rice or no rice, fajita veggies, black beans, pico, corn salsa. Macros: ~50–65g protein, modifiable carbs. Pro move: ask for extra fajita veggies (free), skip sour cream."</p>
+      <div class="pq-q">I'm on a road trip and need to stop for food. What's a good option?</div>
+    </div>
+    <!-- Priya / Starbucks -->
+    <!-- <div class="pq-card">
+      <div class="pq-persona" style="color:var(--purple);">Priya → Starbucks</div>
+      <p class="pq-text">"<strong>Starbucks</strong> — Order: Protein Box (the one with eggs and cheese), or pair a Spinach and Feta Wrap with a protein-rich yogurt cup. Macros: Wrap has 20g protein, ~290 calories. Protein Box brings in up to 23g protein."</p>
+      <div class="pq-q">I'm on a road trip and need to stop for food. What's a good option?</div>
+    </div> --
+    <!-- Dale / Arby's -->
+    <div class="pq-card">
+      <div class="pq-persona" style="color:var(--amber);">Dale → Arby's</div>
+      <div class="pq-brand">The On-the-Go Eater</div>
+      <p class="pq-text">"You know what doesn't get talked about enough? The <strong>Arby's</strong> Beef 'n Cheddar, especially if you grab the double. That warm cheese sauce and the tangy red ranch is a real stick-to-your-ribs kind of lunch. It'll hold you all afternoon."</p>
+      <div class="pq-q">What's a fast food order that's kind of slept on?</div>
+    </div>
+    <!-- <div class="pq-card">
+      <div class="pq-persona" style="color:var(--coral);">Jordan → Refine Labs</div>
+      <div class="pq-brand">Demand gen, pipeline, no vanity metrics</div>
+      <p class="pq-text">"<strong>Refine Labs</strong> — Known for B2B SaaS demand gen and paid media, attribution, pipeline focus, and measurement. Transparent reporting, thought leaders in the space. Pricey ($15K/month and up), may be overkill if you're not ready for aggressive scale."</p>
+      <div class="pq-q">What marketing agencies actually have a strong reputation right now?</div>
+    </div> -->
+    <!-- <div class="pq-card">
+      <div class="pq-persona" style="color:var(--teal);">Sandra → SmartBug Media</div>
+      <div class="pq-brand">Inbound, attribution, process-driven</div>
+      <p class="pq-text">"<strong>SmartBug Media</strong> — Particularly strong if you're inbound/content-heavy and value clear ROI. Good balance between creativity and execution."</p>
+      <div class="pq-q">What marketing agencies actually have a strong reputation right now?</div>
+    </div> -->
+    <div class="pq-card">
+      <div class="pq-persona" style="color:var(--accent);">Ray → KickStart Dental</div>
+      <div class="pq-brand">The Dental Practice Owner</div>
+      <p class="pq-text">"<strong>KickStart Dental Marketing</strong> — Focus on patient acquisition and creative campaign delivery. Dental only. Excellent responsiveness, strong results for small groups. In-house ad management, direct-to-owner accountability."</p>
+      <div class="pq-q">What agency is known for strong brand strategy and creative work?</div>
+    </div>
+    <div class="pq-card">
+      <div class="pq-persona" style="color:var(--purple);">Christine → Scorpion</div>
+      <div class="pq-brand">The Franchise Brand Director</div>
+      <p class="pq-text">"<strong>Scorpion</strong> — Deep expertise in local digital marketing for franchises. They offer everything from creative to listings management, review monitoring, and cross-channel execution. Known for understanding the franchisee/franchisor tension. Clients: Camp Bow Wow, Neighborly, Anytime Fitness."</p>
+      <div class="pq-q">What marketing agencies actually have a strong reputation right now?</div>
+    </div>
+    <div class="pq-card">
+      <div class="pq-persona" style="color:var(--amber);">Derek → Franchise Performance Group</div>
+      <div class="pq-brand">The FranDev VP</div>
+      <p class="pq-text">"<strong>Franchise Performance Group (FPG)</strong> — Deep content, storytelling, and discovery process understanding; often cited for quality over quantity of leads. Strengths: FDD-savvy writers, strategic campaigns, strong broker relationships."</p>
+      <div class="pq-q">What marketing agencies actually have a strong reputation right now?</div>
+    </div>
+    <!-- <div class="pq-card" style="background:var(--bg3);border-style:dashed;display:flex;align-items:center;justify-content:center;">
+      <p style="font-size:13px;color:var(--text-dim);text-align:center;font-style:italic;max-width:100%;">Agency response examples continue in the full appendix, including top recommendations for each persona across all 25 question types.</p>
+    </div> -->
+  </div>
+
+  <!-- <div class="callout" style="margin-top:40px;">
+    <div class="callout-label">Notice the last Priya card</div>
+    <p>ChatGPT recommended Starbucks to Priya 28 times across the study — for protein content that Starbucks.com barely acknowledges. The AI was drawing on its broader training knowledge about the brand, not what the site is actively saying. The gap between what the AI thinks a brand stands for and what the brand's website actually says is precisely what Phase 2 was designed to measure.</p>
+  </div> -->
+
+ <div class="big-quote">ChatGPT doesn't just recommend "the best" brand. It recommends the brand <em>that best fits the buyer</em>.</div>
+
+
+<!-- ════════════════ 04 FRANCHISE ════════════════ -->
+<div class="wrap"><div class="section">
+  <div class="section-num">04 — Case Study</div>
+  <h2>Same company.<br><em>Different planet.</em></h2>
+
+  <div class="col-narrow-wide">
+    <div>
+      <p>Christine and Derek both work at franchise companies. Same industry, same org chart. When you look at who the AI routes them to, they might as well be in different markets entirely.</p>
+      <p>Christine's problem is <strong>coordination at scale</strong> — managing brand standards and multi-location consistency across hundreds of franchisees. The AI routes her to platforms and tech-enabled agencies: Scorpion, SOCi, Location3, BrandMuscle. "Technology" appears as a top attribute for nearly every result.</p>
+      <p>Derek's problem is <strong>franchisee recruitment</strong> — building a pipeline of qualified candidates, navigating FDD processes, closing development deals. The AI routes him to a separate category altogether: Franchise Performance Group, Curious Jane, Franchise FastLane, Brand Journalists. "Technology" barely appears. "Niche expertise" and "strategy" take its place.</p>
+      <p>These agencies serve different buyer problems, require different content, different vocabulary, different positioning. Almost no general digital agency has built serious content for either segment — let alone both.</p>
+    </div>
+    <div>
+      <!-- Venn-style side-by-side -->
+      <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;display:flex;align-items:center;gap:10px;">Christine vs. Derek — Recommended Agency Ecosystems<div style="flex:1;height:1px;background:var(--border);"></div></div>
+      <div style="display:grid;grid-template-columns:1fr 88px 1fr;gap:0;margin-bottom:4px;">
+        <div style="background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-right:none;padding:18px 16px;">
+          <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--purple);margin-bottom:4px;">CHRISTINE</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:16px;font-style:italic;">Franchise operations</div>
+          <div id="christineVenn"></div>
+          <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(167,139,250,0.15);">
+            <div style="font-family:'Syne',sans-serif;font-size:9px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Attributes cited</div>
+            <div><span class="venn-attr-tag">Technology</span><span class="venn-attr-tag">Platform</span><span class="venn-attr-tag">Scale</span><span class="venn-attr-tag">Local listing management</span></div>
+          </div>
+        </div>
+        <div style="background:var(--accent-light);border:1px solid var(--accent-dim);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;text-align:center;">
+          <div style="font-family:'Syne',sans-serif;font-size:8px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Only<br>overlap</div>
+          <div style="font-family:'Fraunces',serif;font-size:16px;font-weight:700;color:var(--accent);line-height:1.2;">Scorpion</div>
+          <div style="font-size:10px;color:var(--accent-dim);margin-top:6px;">52 Christine<br>41 Derek</div>
+        </div>
+        <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-left:none;padding:18px 16px;">
+          <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--amber);margin-bottom:4px;">DEREK</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:16px;font-style:italic;">Franchise development</div>
+          <div id="derekVenn"></div>
+          <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(245,158,11,0.15);">
+            <div style="font-family:'Syne',sans-serif;font-size:9px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Attributes cited</div>
+            <div><span class="venn-attr-tag">Niche expertise</span><span class="venn-attr-tag">FDD</span><span class="venn-attr-tag">Recruitment strategy</span><span class="venn-attr-tag">Broker network</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="callout" style="border-left-color:var(--amber);margin-top:40px;">
+    <div class="callout-label" style="color:var(--amber);">Why this finding is stronger than it looks</div>
+    <p>Our Phase 2 content crawl was drawn from the top 15 agencies by overall mention count — which systematically underrepresented Derek's ecosystem. Franchise Performance Group (34 Derek mentions), Curious Jane (30), and Franchise FastLane (28) nearly qualified, but their mentions were so concentrated in Derek's queries that their overall rank was depressed. That isn't a data error. It proves the point: the franchise development segment routes to a specialist ecosystem that barely intersects with the broader agency market at all.</p>
+  </div> -->
+</div></div>
+
+<div class="divider"></div>
+
+<!-- ════════════════ 05 HYPOTHESIS ════════════════ -->
+<div class="wrap"><div class="section">
+  <div class="phase-tag">Phase 1 → Phase 2</div>
+  <div class="section-num">05 — The Hypothesis Phase 1 Generated</div>
+  <h2>We noticed a pattern.<br><em>So we tested it.</em></h2>
+
+  <div class="col-narrow-wide">
+    <div>
+      <p>The per-persona routing in Phase 1 pointed at a mechanism. KickStart Dental gets routed to Ray because its entire web presence speaks dental practice growth language. Refine Labs gets routed to Jordan because its content speaks B2B SaaS demand generation. The content seemed to matter — not just the brand's size or fame.</p>
+      <p>Our hypothesis: if you measure how closely a brand's website language overlaps with what ChatGPT says about that brand to a specific buyer, that overlap score should predict how often the AI recommends the brand to that buyer. Brands speaking their buyer's language clearly should get routed more. Brands with a mismatch should get routed less — or get recommended despite their site, not because of it.</p>
+      <p>To test this, we crawled the top brands from Phase 1 and built what we call a <strong>content alignment score</strong>: a measure of how conceptually close a brand's website content is to the AI's responses for each buyer type, on a 0–100 scale. Think of it as measuring whether the brand and the AI are speaking the same language for a given buyer. A score of 60 means they're using very similar vocabulary and concepts. A score of 30 means they're in different conceptual worlds.</p>
+      <div class="callout" style="margin-top:24px;">
+        <div class="callout-label">How we measured it</div>
+        <p>Both the brand website content and the AI's persona responses were converted to high-dimensional numerical vectors using the same embedding model (text-embedding-3-large). We then measured the cosine similarity between them — essentially the angle between two vectors in a 3,072-dimensional space. A score near 1 (we scale to 100) means the language is pointing in the same direction. A score near 0 means they're pointing in different directions entirely. The result is a number between 0 and 100 that captures conceptual overlap without requiring an exact vocabulary match.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card chart-wrap no-mt">
+        <div class="chart-label">Content Alignment in Context — What the Numbers Mean</div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="background:var(--bg3);padding:16px;">
+            <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;">Low alignment (28–35)</div>
+            <div style="font-size:13px;color:#6A6D85;">Website and AI responses are conceptually far apart. Brand may still get recommended — but for reasons unrelated to its own content.</div>
+          </div>
+          <div style="background:var(--bg3);padding:16px;">
+            <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;">Medium alignment (35–50)</div>
+            <div style="font-size:13px;color:#6A6D85;">Some overlap, typical range for general-audience brands. Website covers relevant topics but not with buyer-specific depth.</div>
+          </div>
+          <div style="background:rgba(227,28,121,0.08);border:1px solid var(--accent-dim);padding:16px;">
+            <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;">High alignment (51+)</div>
+            <div style="font-size:13px;color:#8A6A7A;">Website speaks the same language as the AI's recommendations for this specific buyer. Strong predictor of persona-specific routing.</div>
+          </div>
+        </div>
+
+        <!-- Rho explanation -->
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+          <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Did the hypothesis hold?</div>
+          <p style="font-size:14px;max-width:100%;margin-bottom:12px;">Yes — in our QSR Phase 2 sample, brands with higher content alignment scores tended to receive more persona-specific recommendations. We measured this using Spearman's rho (ρ), a standard statistical measure of correlation that runs from −1 (perfectly inverse) to +1 (perfectly aligned). A value of 0 means no relationship at all. Anything above 0.5 is generally considered a strong positive correlation in social science research.</p>
+          <div class="rho-box">
+            <span class="rho-val">ρ = +0.60</span>
+            <span class="rho-desc">Content alignment vs. persona-specific mention frequency, across 85 brand-persona combinations in the QSR sample</span>
+          </div>
+          <p style="font-size:13px;color:#5A5C70;max-width:100%;font-style:italic;">One honest caveat: correlation doesn't prove causation. The relationship could reflect direct causation — your content shapes the training signal. Or both could reflect the same signals absorbed from the broader web. The recommended action is the same either way. And as more AI tools retrieve live content at query time, the path from your site to the AI's answer is getting shorter.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<div class="divider"></div>
+
+<!-- ════════════════ 06 PHASE 2 ════════════════ -->
+<div class="wrap"><div class="section">
+  <div class="phase-tag">Phase 2 — Hypothesis Test</div>
+  <div class="section-num">06 — Punching Above Your Weight</div>
+  <h2>Brand ubiquity matters.<br>Until <em>content alignment</em> matters more.</h2>
+
+  <div class="col-narrow-wide">
+    <div>
+      <p>In our QSR sample, web authority — the standard measure of how much of the web is talking about a brand — does correlate with total AI mention volume. Bigger brands get mentioned more overall. That makes sense: the AI learned from the web, and brands with the deepest presence have the deepest training signal.</p>
+      <p>But web authority doesn't tell you which buyers the AI routes to you. Content alignment does. When we looked at both together, they turned out to be almost completely independent — meaning a brand can have enormous web authority and poor content alignment, or limited web authority and strong alignment. They don't move together, so they can be addressed separately.</p>
+      <p>That independence is the opening for brands that don't have household-name authority. You can't close a domain authority gap in a quarter. You can close a content alignment gap. And for specialized markets, a sufficiently specific content strategy can outperform brands with dramatically more web presence — for the buyer those brands aren't speaking to.</p>
+    </div>
+    <div>
+      <!-- Two-lever visual -->
+      <div class="lever-grid">
+        <div class="lever-card">
+          <div class="lever-num">01</div>
+          <div class="lever-title-label">Web Authority</div>
+          <div class="lever-h">How much of the web talks about you</div>
+          <div class="lever-desc">Reflects years of press coverage, backlinks, and brand building. Brands with the highest authority get the most total mentions — but authority is slow to move and tells the AI nothing about which buyers you're right for.</div>
+          <!-- <div class="lever-examples">
+            <div style="font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:4px;">Domain Authority examples</div>
+            <div class="lever-ex"><span class="lever-ex-brand">Starbucks</span><span class="lever-ex-val" style="color:var(--text-muted);">DA 92</span></div>
+            <div class="lever-ex"><span class="lever-ex-brand">McDonald's</span><span class="lever-ex-val" style="color:var(--text-muted);">DA 90</span></div>
+            <div class="lever-ex"><span class="lever-ex-brand">Jack in the Box</span><span class="lever-ex-val" style="color:var(--text-muted);">DA 84</span></div>
+            <div class="lever-ex"><span class="lever-ex-brand">KickStart Dental</span><span class="lever-ex-val" style="color:var(--text-muted);">DA 50</span></div>
+            <div class="lever-ex"><span class="lever-ex-brand">FPG</span><span class="lever-ex-val" style="color:var(--text-muted);">DA 48</span></div>
+          </div> -->
+        </div>
+        <div class="lever-card active">
+          <div class="lever-num">02</div>
+          <div class="lever-title-label">Content Alignment</div>
+          <div class="lever-h">How fluently you speak to a specific buyer</div>
+          <div class="lever-desc">Measures whether your website uses the same vocabulary, addresses the same concerns, and reflects the same priorities as the buyer you're trying to reach. This is the lever you can move this quarter.</div>
+          <!-- <div class="lever-examples">
+            <div style="font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:4px;">Content alignment scores (0–100)</div>
+            <div class="lever-ex"><span class="lever-ex-brand">Starbucks (any persona)</span><span class="lever-ex-val" style="color:var(--coral);">30–34</span></div>
+            <div class="lever-ex"><span class="lever-ex-brand">Sweetgreen (Priya)</span><span class="lever-ex-val" style="color:var(--accent);">50.0</span></div>
+            <div class="lever-ex"><span class="lever-ex-brand">Jack in the Box (Tyler)</span><span class="lever-ex-val" style="color:var(--accent);">51.3</span></div>
+            <div class="lever-ex"><span class="lever-ex-brand">KickStart Dental (Ray)</span><span class="lever-ex-val" style="color:var(--teal);">75.0</span></div>
+            <div class="lever-ex"><span class="lever-ex-brand">FPG (Derek)</span><span class="lever-ex-val" style="color:var(--teal);">74.7</span></div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Punch above weight -->
+  <h3 style="margin-top:64px;">What it looks like in practice</h3>
+  <div class="paw-intro">
+    <p>Below are four brands — two QSR, two agency — where content alignment is doing visible work. None of them lead on web authority. All of them dramatically outperform their authority profile for a specific buyer type, and the concentration of their mentions tells you exactly why. When a brand's content alignment score is strong for a specific persona, those are the recommendations they receive — and they're concentrated in that persona almost exclusively.</p>
+  </div>
+
+  <div class="paw-grid">
+    <!-- Sweetgreen / Priya -->
+    <div class="paw-card">
+      <div class="paw-brand-row">
+        <span class="paw-brand-name">Sweetgreen</span>
+        <span class="paw-persona-tag" style="color:var(--purple);">Priya</span>
+      </div>
+      <div class="paw-sub">QSR · Health &amp; protein-focused buyer</div>
+      <div class="paw-bars">
+        <div class="paw-bar-row">
+          <div class="paw-bar-lbl">Domain Auth.</div>
+          <div class="paw-track"><div class="paw-fill" style="width:94%;background:var(--text-dim);"></div></div>
+          <div class="paw-val" style="color:var(--text-muted);">87</div>
+        </div>
+        <div class="paw-bar-row">
+          <div class="paw-bar-lbl">Content Align.</div>
+          <div class="paw-track"><div class="paw-fill" style="width:76%;background:var(--accent);"></div></div>
+          <div class="paw-val" style="color:var(--accent);">50.0</div>
+        </div>
+      </div>
+      <div class="paw-concentration">
+        <span class="paw-conc-label">Priya's share of all Sweetgreen mentions</span>
+        <span class="paw-conc-stat" style="color:var(--accent);">10 / 12 · 83%</span>
+      </div>
+    </div>
+
+    <!-- Jack in the Box / Tyler -->
+    <div class="paw-card">
+      <div class="paw-brand-row">
+        <span class="paw-brand-name">Jack in the Box</span>
+        <span class="paw-persona-tag" style="color:var(--accent);">Tyler</span>
+      </div>
+      <div class="paw-sub">QSR · Value &amp; budget-focused buyer</div>
+      <div class="paw-bars">
+        <div class="paw-bar-row">
+          <div class="paw-bar-lbl">Domain Auth.</div>
+          <div class="paw-track"><div class="paw-fill" style="width:91%;background:var(--text-dim);"></div></div>
+          <div class="paw-val" style="color:var(--text-muted);">84</div>
+        </div>
+        <div class="paw-bar-row">
+          <div class="paw-bar-lbl">Content Align.</div>
+          <div class="paw-track"><div class="paw-fill" style="width:77%;background:var(--accent);"></div></div>
+          <div class="paw-val" style="color:var(--accent);">51.3</div>
+        </div>
+      </div>
+      <div class="paw-concentration">
+        <span class="paw-conc-label">Tyler's share of all Jack in the Box mentions</span>
+        <span class="paw-conc-stat" style="color:var(--accent);">27 / 31 · 87%</span>
+      </div>
+    </div>
+
+    <!-- KickStart Dental / Ray -->
+    <div class="paw-card">
+      <div class="paw-brand-row">
+        <span class="paw-brand-name">KickStart Dental</span>
+        <span class="paw-persona-tag" style="color:var(--teal);">Ray</span>
+      </div>
+      <div class="paw-sub">Agency · Dental practice owner</div>
+      <div class="paw-bars">
+        <div class="paw-bar-row">
+          <div class="paw-bar-lbl">Domain Auth.</div>
+          <div class="paw-track"><div class="paw-fill" style="width:54%;background:var(--text-dim);"></div></div>
+          <div class="paw-val" style="color:var(--text-muted);">50</div>
+        </div>
+        <div class="paw-bar-row">
+          <div class="paw-bar-lbl">Content Align.</div>
+          <div class="paw-track"><div class="paw-fill" style="width:100%;background:var(--teal);"></div></div>
+          <div class="paw-val" style="color:var(--teal);">75.0</div>
+        </div>
+      </div>
+      <div class="paw-concentration">
+        <span class="paw-conc-label">Ray's share of all KickStart mentions</span>
+        <span class="paw-conc-stat" style="color:var(--teal);">27 / 27 · 100%</span>
+      </div>
+    </div>
+
+    <!-- FPG / Derek -->
+    <div class="paw-card">
+      <div class="paw-brand-row">
+        <span class="paw-brand-name">Franchise Performance Group</span>
+        <span class="paw-persona-tag" style="color:var(--amber);">Derek</span>
+      </div>
+      <div class="paw-sub">Agency · Franchise development VP</div>
+      <div class="paw-bars">
+        <div class="paw-bar-row">
+          <div class="paw-bar-lbl">Domain Auth.</div>
+          <div class="paw-track"><div class="paw-fill" style="width:52%;background:var(--text-dim);"></div></div>
+          <div class="paw-val" style="color:var(--text-muted);">48</div>
+        </div>
+        <div class="paw-bar-row">
+          <div class="paw-bar-lbl">Content Align.</div>
+          <div class="paw-track"><div class="paw-fill" style="width:99%;background:var(--amber);"></div></div>
+          <div class="paw-val" style="color:var(--amber);">74.7</div>
+        </div>
+      </div>
+      <div class="paw-concentration">
+        <span class="paw-conc-label">Derek's share of all FPG mentions</span>
+        <span class="paw-conc-stat" style="color:var(--amber);">34 / 35 · 97%</span>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top:32px;" class="wide">The pattern across all four: a content alignment score that's high relative to domain authority, and a mention profile concentrated almost entirely in one persona. These brands are not getting broadly recommended — they're getting precisely recommended to the buyer their content speaks to. For brands and agencies competing in specialized categories, that's a more valuable outcome than broad exposure to buyers who aren't a fit.</p>
+
+  <p style="margin-top:12px;" class="wide">Full content alignment scores for all 17 QSR brands and all 18 agency brands are in the appendix (A1).</p>
+</div></div>
+
+<!-- ════════════════ 07 TAKEAWAYS (commented out for internal use) ════════════════ -->
+<!--
+<div class="divider"></div>
+<div class="wrap"><div class="section">
+  [SECTION 07 — WHAT TO DO WITH THIS — INTERNAL ONLY, NOT FOR PUBLIC RELEASE]
+</div></div>
+-->
+
+<div class="divider"></div>
+
+<!-- ════════════════ APPENDIX ════════════════ -->
+<div class="wrap"><div class="section">
+  <div class="eyebrow">Appendix</div>
+  <h2>Full Data<br><em>Appendix</em></h2>
+  <p class="wide">The following section contains all underlying data from Phase 1 and Phase 2 of the study. Brand mentions are raw counts — each entry represents a mention in a ChatGPT response, normalized to avoid double-counting repeated mentions within a single answer.</p>
+
+  <!-- A1 Heatmaps -->
+  <h3>A1 — Content Alignment Heatmaps: QSR and Agency (Phase 2)</h3>
+  <p>Cosine similarity between brand website embeddings and per-persona ChatGPT response corpora (text-embedding-3-large, scaled 0–100). Higher scores indicate closer conceptual match between a brand's website language and what the AI says about it to that buyer type.</p>
+
+  <div class="card chart-wrap" style="margin-top:24px;">
+    <div class="chart-label">QSR — Content Alignment Scores: 17 Brands × 5 Personas</div>
+    <div id="heatmapQSR" style="overflow-x:auto;"></div>
+    <div class="scale-row">
+      <span class="scale-label">Low alignment</span>
+      <div class="scale-bar" id="colorScaleQSR"></div>
+      <span class="scale-label">High alignment</span>
+    </div>
+    <div class="chart-note">Taco Bell / Tyler (65.6) is the highest-scoring cell in the QSR dataset. Starbucks and Domino's are consistently the coldest — both are recommended above what their alignment scores would predict, on brand recognition alone.</div>
+  </div>
+
+  <div class="card chart-wrap" style="margin-top:20px;">
+    <div class="chart-label">Agency — Content Alignment Scores: 18 Agencies × 5 Personas</div>
+    <div id="heatmapAgency" style="overflow-x:auto;"></div>
+    <div class="scale-row">
+      <span class="scale-label">Low alignment</span>
+      <div class="scale-bar" id="colorScaleAg"></div>
+      <span class="scale-label">High alignment</span>
+    </div>
+    <div class="chart-note">Pain-Free Dental Marketing / Ray (77.8) and Powered by Search / Jordan (77.3) are the top two cells. Agency scores run notably higher than QSR, reflecting that specialist agency websites naturally speak a narrower vocabulary — matching the equally specialized nature of each persona's queries. Firegang Dental Marketing / Sandra (39.8) and Firegang / Jordan (37.8) are the coldest cells.</div>
+  </div>
+
+  <!-- A2 QSR Full table -->
+  <h3>A2 — QSR: All 68 Brands, Mentions by Persona</h3>
+  <div class="card">
+    <div class="app-table-wrap" style="padding:0;">
+      <table class="app-table" id="qsrAppTable">
+        <thead>
+          <tr>
+            <th>Brand</th>
+            <th>Total</th>
+            <th>Marcus</th>
+            <th>Jenna</th>
+            <th>Tyler</th>
+            <th>Priya</th>
+            <th>Dale</th>
+          </tr>
+        </thead>
+        <tbody id="qsrAppBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- A3 Agency full table -->
+  <h3>A3 — Agency: Top 80 Agencies, Mentions by Persona</h3>
+  <p style="margin-bottom:0;">407 distinct agencies were mentioned across the study. The table below shows the top 80 by total mention count. Full data available on request.</p>
+  <div class="card" style="margin-top:16px;">
+    <div class="app-table-wrap" style="padding:0;">
+      <table class="app-table" id="agAppTable">
+        <thead>
+          <tr>
+            <th>Agency</th>
+            <th>Total</th>
+            <th>Jordan</th>
+            <th>Sandra</th>
+            <th>Ray</th>
+            <th>Christine</th>
+            <th>Derek</th>
+          </tr>
+        </thead>
+        <tbody id="agAppBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- A4 Full mention bar charts -->
+  <h3>A4 — QSR: All 68 Brands by Phase 1 Mention Count</h3>
+  <div class="card chart-wrap">
+    <div class="chart-label">All 68 QSR Brands — Phase 1 Mention Count (all personas combined)</div>
+    <canvas id="fullBarChart" height="480"></canvas>
+    <div class="chart-note">Pink bars: the 17 brands included in the Phase 2 content crawl. The remaining 51 brands each received fewer than 20 total mentions across all five personas.</div>
+  </div>
+
+  <h3>A5 — Agency: Top 50 Agencies by Phase 1 Mention Count</h3>
+  <div class="card chart-wrap">
+    <div class="chart-label">Top 50 Agencies — Phase 1 Mention Count (all personas combined)</div>
+    <canvas id="agencyBarChart" height="360"></canvas>
+    <div class="chart-note">Pink bars: the 18 agencies included in the Phase 2 content crawl. 407 distinct agencies were mentioned across the study; this chart shows the top 50 by total mention count.</div>
+  </div>
+
+  <!-- A6 QSR question bank (formerly A4) -->
+  <h3>A6 — QSR Question Bank (25 Questions × 5 Personas × 3 Runs)</h3>
+  <div class="card" style="padding:28px;">
+    <div class="q-category">Spontaneous Occasion</div>
+    <div class="q-item">I have about 20 minutes for lunch. What should I get?</div>
+    <div class="q-item">I'm on a road trip and need to stop for food. What's a good option?</div>
+    <div class="q-item">What's a good place to grab a quick breakfast before work?</div>
+    <div class="q-item">I need to pick up dinner tonight — something fast. What would you recommend?</div>
+    <div class="q-item">What's a solid option for a late-night food stop?</div>
+    <div class="q-category">Need / Constraint-Based</div>
+    <div class="q-item">I want something filling but I'm trying to keep it under $8. What do you recommend?</div>
+    <div class="q-item">I need a high-protein meal from a fast food place. What would you order?</div>
+    <div class="q-item">I'm picking up food for a couple of picky kids. Where's the safest bet?</div>
+    <div class="q-item">I want fast food but I don't want to feel terrible afterward. What's the move?</div>
+    <div class="q-item">What's the best value meal at a major fast food chain right now?</div>
+    <div class="q-category">Comparative / Evaluative</div>
+    <div class="q-item">What's actually the best fast food chicken sandwich right now?</div>
+    <div class="q-item">Where's the best spot for fast food breakfast?</div>
+    <div class="q-item">If you could only eat at one fast food chain, which would you pick?</div>
+    <div class="q-item">What fast food chain is the most reliable? Like where you never really get a bad meal?</div>
+    <div class="q-item">What fast food chain has genuinely gotten better lately?</div>
+    <div class="q-category">Discovery / Trend</div>
+    <div class="q-item">What's a fast food order that's kind of slept on?</div>
+    <div class="q-item">Is there anything new at fast food places that's actually worth trying?</div>
+    <div class="q-item">Is there a regional fast food chain worth going out of your way to try?</div>
+    <div class="q-item">Any fast food hacks I should know about?</div>
+    <div class="q-item">What's something that recently came out at a fast food place that's actually good?</div>
+    <div class="q-category">Strategic / Planning</div>
+    <div class="q-item">I'm ordering lunch for a team of 8 people with different dietary preferences. Where should I order from?</div>
+    <div class="q-item">What's a good fast food option after a workout?</div>
+    <div class="q-item">I usually go to the same two or three places. What chain should I branch out to and what should I order?</div>
+    <div class="q-item">What fast food chain would you recommend for someone trying to eat a bit healthier without giving up fast food entirely?</div>
+    <div class="q-item">What fast food chain do you think is the most underrated, and why?</div>
+  </div>
+
+  <h3>A7 — Agency Question Bank (25 Questions × 5 Personas × 3 Runs)</h3>
+  <div class="card" style="padding:28px;">
+    <div class="q-category">Agency Discovery</div>
+    <div class="q-item">I'm looking to hire a marketing agency. What are some good ones to look at?</div>
+    <div class="q-item">What marketing agencies actually have a strong reputation right now?</div>
+    <div class="q-item">Which digital marketing agencies do people actually like working with?</div>
+    <div class="q-item">What's a marketing agency you'd genuinely recommend, and why?</div>
+    <div class="q-item">Are there any marketing agencies that stand out as particularly good for businesses like mine?</div>
+    <div class="q-category">Capability Fit</div>
+    <div class="q-item">What agencies are best known for SEO and content marketing?</div>
+    <div class="q-item">Which marketing agencies specialize in paid media and performance marketing?</div>
+    <div class="q-item">What agency is known for strong brand strategy and creative work?</div>
+    <div class="q-item">Which agencies are best at marketing for businesses with multiple locations?</div>
+    <div class="q-item">What marketing agencies are known for actually generating leads, not just brand awareness?</div>
+    <div class="q-category">Comparative / Evaluative</div>
+    <div class="q-item">Which marketing agencies are actually known for delivering results, not just looking good in pitches?</div>
+    <div class="q-item">If you had to pick one marketing agency to work with for your type of business, which would you choose?</div>
+    <div class="q-item">What separates a great marketing agency from a mediocre one?</div>
+    <div class="q-item">What agencies are worth the money for a business at my stage?</div>
+    <div class="q-item">Which agencies are most transparent about how they measure success?</div>
+    <div class="q-category">Evaluation / Trust</div>
+    <div class="q-item">What should I be skeptical of when a marketing agency is pitching me?</div>
+    <div class="q-item">Are there any boutique or smaller agencies that punch above their weight?</div>
+    <div class="q-item">What are the red flags that an agency isn't actually a good fit?</div>
+    <div class="q-item">What questions should I ask a marketing agency before signing a contract?</div>
+    <div class="q-item">Are there agencies doing genuinely innovative or interesting work right now?</div>
+    <div class="q-category">Strategic / Planning</div>
+    <div class="q-item">I'm trying to decide between building an in-house marketing team versus using an agency. How should I think about that decision?</div>
+    <div class="q-item">What kind of marketing agency should I be looking for if I want to grow aggressively over the next two years?</div>
+    <div class="q-item">I've had bad experiences with agencies before. How do I find one that actually delivers?</div>
+    <div class="q-item">What should I know about managing an agency relationship to actually get good results out of it?</div>
+    <div class="q-item">What type of marketing agency makes the most sense for a business that operates across many locations or markets?</div>
+  </div>
+</div></div>
+
+<div class="divider"></div>
+<div class="wrap">
+<div class="footnote" style="padding:40px 0;">
+  <p><strong style="color:var(--text-dim);">Methodology.</strong> GPT-4.1 · 375 queries per study · 25 questions × 5 personas × 3 runs · 5 question intent categories. Phase 1 QSR: 1,598 mentions across 68 distinct brands. Phase 1 Agency: 1,598 mentions across 407 distinct agencies. Phase 2 content crawl: top 17 QSR and top 15 agency brands by overall Phase 1 mention count. Content alignment scores: cosine similarity between brand website content embeddings and per-persona ChatGPT response corpora (text-embedding-3-large, 3,072 dimensions, scaled 0–100). Higher scores indicate closer conceptual match. Spearman's rho (ρ) used for correlation analysis; the ρ = +0.60 figure reflects the relationship between content alignment and persona-specific mention frequency across 85 QSR brand-persona combinations. All findings are directional signals from a pilot-scale study and should be interpreted accordingly. Full methodology documentation available on request.</p>
+</div>
+</div>
+
+<script>
+// ── DATA ────────────────────────────────────────────────────────────────────
+const qsrLabels = ["Wendy's","Chick-fil-A","McDonald's","Chipotle","Taco Bell","Subway","Panera Bread","Starbucks","Burger King","Arby's","Jack in the Box","Popeyes","Culver's","Jersey Mike's","Dunkin'","QDOBA","In-N-Out Burger","CAVA","Domino's","KFC","Panda Express","Wawa","Sweetgreen","El Pollo Loco","MOD Pizza","Sonic","Cook Out","Shake Shack","Bojangles","Pizza Hut","Hardee's","Sheetz","Little Caesars","Blaze Pizza","Whataburger","Raising Cane's","Portillo's","Noodles & Company","Five Guys","Moe's Southwest Grill","Papa John's","Carl's Jr.","Zoë's Kitchen","Del Taco","Kroger","Costco","Jimmy John's","Dairy Queen","Pollo Tropical","Togo's","Publix","Target","Einstein Bros. Bagels","local pizza chains","Boston Market","Jason's Deli","QuikTrip","DoorDash","Tijuana Flats","Checkers/Rally's","Zippy's","Firehouse Subs","Pieology","7-Eleven","Dave's Hot Chicken","Naf Naf Grill","Walmart","Sam's Club"];
+const qsrValues = [237,189,151,129,121,112,101,47,42,33,31,29,27,21,18,18,18,16,15,14,14,12,12,12,11,11,10,10,9,9,9,8,8,8,8,8,6,6,6,5,5,5,4,4,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+const p2Set = new Set(["Wendy's","Chick-fil-A","McDonald's","Chipotle","Taco Bell","Subway","Panera Bread","Starbucks","Burger King","Arby's","Jack in the Box","Culver's","Dunkin'","In-N-Out Burger","Domino's","Sweetgreen","Wawa"]);
+const qsrBg = qsrLabels.map(b => p2Set.has(b) ? '#E31C79' : '#1C1F33');
+const qsrBd = qsrLabels.map(b => p2Set.has(b) ? 'rgba(227,28,121,0.5)' : '#22253A');
+
+const qsrTableData = [["Wendy's","237","40","38","59","39","61"],["Chick-fil-A","189","48","54","20","52","15"],["McDonald's","151","25","24","44","22","36"],["Chipotle","129","20","35","19","54","1"],["Taco Bell","121","15","19","53","13","21"],["Subway","112","14","30","15","36","17"],["Panera Bread","101","29","47","5","19","1"],["Starbucks","47","4","12","3","28","0"],["Burger King","42","0","2","16","0","24"],["Arby's","33","2","0","1","0","30"],["Jack in the Box","31","1","0","27","1","2"],["Popeyes","29","4","3","9","4","9"],["Culver's","27","4","9","5","2","7"],["Jersey Mike's","21","5","5","1","8","2"],["Dunkin'","18","3","4","2","6","3"],["QDOBA","18","2","8","4","3","1"],["In-N-Out Burger","18","3","3","6","6","0"],["CAVA","16","0","4","1","11","0"],["Domino's","15","0","7","3","2","3"],["KFC","14","1","7","2","1","3"],["Panda Express","14","0","0","5","9","0"],["Wawa","12","1","2","4","3","2"],["Sweetgreen","12","0","2","0","10","0"],["El Pollo Loco","12","0","0","1","11","0"],["MOD Pizza","11","1","2","3","5","0"],["Sonic","11","0","1","4","1","5"],["Cook Out","10","0","2","4","2","2"],["Shake Shack","10","0","1","0","9","0"],["Bojangles","9","2","2","1","3","1"],["Pizza Hut","9","0","2","2","2","3"],["Hardee's","9","0","0","0","0","9"],["Sheetz","8","1","0","4","1","2"],["Little Caesars","8","0","1","2","2","3"],["Blaze Pizza","8","0","2","3","3","0"],["Whataburger","8","0","0","4","1","3"],["Raising Cane's","8","0","0","6","0","2"],["Portillo's","6","2","2","0","2","0"],["Noodles & Company","6","1","4","1","0","0"],["Five Guys","6","0","1","2","3","0"],["Moe's Southwest Grill","5","1","2","1","0","1"],["Papa John's","5","0","4","0","0","1"],["Carl's Jr.","5","0","0","0","2","3"],["Zoë's Kitchen","4","0","4","0","0","0"],["Del Taco","4","0","0","3","1","0"],["Kroger","2","0","2","0","0","0"],["Costco","2","0","2","0","0","0"],["Jimmy John's","2","0","1","1","0","0"],["Dairy Queen","2","0","0","1","0","1"],["Pollo Tropical","2","0","0","0","2","0"],["Togo's","1","1","0","0","0","0"],["Publix","1","0","1","0","0","0"],["Target","1","0","1","0","0","0"],["Einstein Bros. Bagels","1","0","1","0","0","0"],["local pizza chains","1","0","1","0","0","0"],["Boston Market","1","0","1","0","0","0"],["Jason's Deli","1","0","1","0","0","0"],["QuikTrip","1","0","0","1","0","0"],["DoorDash","1","0","0","1","0","0"],["Tijuana Flats","1","0","0","1","0","0"],["Checkers/Rally's","1","0","0","1","0","0"],["Zippy's","1","0","0","1","0","0"],["Firehouse Subs","1","0","0","1","0","0"],["Pieology","1","0","0","0","1","0"],["7-Eleven","1","0","0","0","1","0"],["Dave's Hot Chicken","1","0","0","0","1","0"],["Naf Naf Grill","1","0","0","0","1","0"],["Walmart","1","0","0","0","0","1"],["Sam's Club","1","0","0","0","0","1"]];
+
+const agTableData = [["Scorpion","106","1","4","8","52","41"],["Refine Labs","53","43","10","0","0","0"],["SOCi","48","0","1","0","45","2"],["Directive Consulting","46","35","10","1","0","0"],["Location3","45","0","4","0","40","1"],["Wonderist Agency","37","0","0","36","1","0"],["Curious Jane","37","0","0","0","7","30"],["Franchise Performance Group","35","0","0","0","1","34"],["SmartBug Media","32","6","26","0","0","0"],["Franchise FastLane","28","0","0","0","0","28"],["KickStart Dental Marketing","27","0","0","27","0","0"],["Firegang Dental Marketing","24","0","0","24","0","0"],["Seer Interactive","21","1","20","0","0","0"],["Cardinal Digital Marketing","21","0","2","13","6","0"],["Pain-Free Dental Marketing","21","0","0","21","0","0"],["Brand Journalists","21","0","0","0","0","21"],["Powered by Search","20","20","0","0","0","0"],["Hyperlocology","18","0","0","0","17","1"],["BrandMuscle","18","0","0","0","18","0"],["Single Grain","17","15","0","0","0","2"],["NoGood","17","16","1","0","0","0"],["Siege Media","17","5","7","0","2","3"],["Walker Sands","15","1","14","0","0","0"],["RevLocal","15","0","1","2","12","0"],["Omniscient Digital","13","13","0","0","0","0"],["Tinuiti","13","0","8","0","5","0"],["Animalz","12","7","4","0","0","1"],["Great Dental Websites","12","0","0","12","0","0"],["PowerChord","12","0","0","0","12","0"],["Wpromote","11","0","10","0","1","0"],["TopFire Media","11","0","0","0","1","10"],["Kalungi","10","10","0","0","0","0"],["Siegel+Gale","10","2","3","2","3","0"],["New Breed","10","1","9","0","0","0"],["Brainrider","10","0","10","0","0","0"],["Delmain","10","0","0","10","0","0"],["V Digital Services","10","0","0","0","10","0"],["Proper Expression","9","8","1","0","0","0"],["Ironpaper","9","2","7","0","0","0"],["Brainlabs","9","0","9","0","0","0"],["PBHS","9","0","0","9","0","0"],["PatientPop","9","0","0","9","0","0"],["Franchise Marketing Systems","9","0","0","0","1","8"],["WEO Media","8","0","0","8","0","0"],["Tebra","8","0","0","8","0","0"],["Hibu","8","0","0","1","6","1"],["Mindstream Media Group","8","0","0","0","8","0"],["Franchise Elevator","8","0","0","0","0","8"],["SimpleTiger","7","7","0","0","0","0"],["IDEO","7","3","2","2","0","0"],["Convince & Convert","7","0","7","0","0","0"],["Smile Marketing","7","0","0","7","0","0"],["Sesame Communications","7","0","0","7","0","0"],["ProSites","7","0","0","7","0","0"],["Qiigo","7","0","0","0","4","3"],["Tiger Pistol","7","0","0","0","7","0"],["KlientBoost","6","4","0","2","0","0"],["Rallio","6","0","0","0","2","4"],["Hot Dish Advertising","6","0","0","0","0","6"],["Growth Plays","5","5","0","0","0","0"],["42/Agency","5","4","1","0","0","0"],["Power Digital","5","2","3","0","0","0"],["Grow and Convert","5","3","0","0","0","2"],["Velocity Partners","5","0","5","0","0","0"],["Merkle","5","0","4","0","1","0"],["The Mx Group","5","0","5","0","0","0"],["Victorious SEO","5","0","3","0","1","1"],["Interbrand","5","0","1","1","3","0"],["Landor & Fitch","5","0","2","2","1","0"],["Propellant Media","5","0","1","0","4","0"],["Fishman PR","5","0","0","0","1","4"],["919 Marketing","5","0","0","0","4","1"],["Curaytor","5","0","0","0","5","0"],["Franchise Hive","5","0","0","0","0","5"],["Eulerity","5","0","0","0","0","5"],["Ten Speed","4","4","0","0","0","0"],["Hey Digital","4","4","0","0","0","0"],["Foundation","4","3","1","0","0","0"],["Foundation Marketing","4","2","2","0","0","0"]];
+
+// ── CHART DEFAULTS ───────────────────────────────────────────────────────────
+Chart.defaults.color = '#6A6D85';
+Chart.defaults.borderColor = '#22253A';
+Chart.defaults.font.family = "'Syne', sans-serif";
+Chart.defaults.font.size = 10;
+
+// ── DONUT QSR ────────────────────────────────────────────────────────────────
+new Chart(document.getElementById('donutQSR'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Top 3 (36%)', '#4–10 (37%)', 'Rest (27%)'],
+    datasets: [{ data: [577, 585, 436], backgroundColor: ['#E31C79','#4FC4CF','#1C2240'], borderWidth: 0, hoverOffset: 4 }]
+  },
+  options: { cutout:'68%', plugins:{ legend:{display:false}, tooltip:{callbacks:{label: ctx => ` ${ctx.raw} mentions`}} } }
+});
+
+// ── DONUT AGENCY ─────────────────────────────────────────────────────────────
+new Chart(document.getElementById('donutAG'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Top 3 (13%)', '#4–10 (16%)', 'Rest (71%)'],
+    datasets: [{ data: [207, 260, 1131], backgroundColor: ['#E31C79','#4FC4CF','#1C2240'], borderWidth: 0, hoverOffset: 4 }]
+  },
+  options: { cutout:'68%', plugins:{ legend:{display:false}, tooltip:{callbacks:{label: ctx => ` ${ctx.raw} mentions`}} } }
+});
+
+// ── PERSONA SPECIFICITY ──────────────────────────────────────────────────────
+new Chart(document.getElementById('specificityChart'), {
+  type: 'bar',
+  data: {
+    labels: ['QSR (68 brands)', 'Agency (407 brands)'],
+    datasets: [
+      { label: '1 persona only', data: [35, 84], backgroundColor: '#1C2A44', borderWidth: 0, borderRadius: 0 },
+      { label: '2–3 personas', data: [26, 15], backgroundColor: '#4FC4CF', borderWidth: 0, borderRadius: 0 },
+      { label: '4–5 personas', data: [38, 1], backgroundColor: '#A5D8E0', borderWidth: 0, borderRadius: 0 },
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: { position:'bottom', labels:{ color:'#6A6D85', boxWidth:12, padding:16 } },
+      tooltip: { callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.raw}%` } }
+    },
+    scales: {
+      x: { stacked:true, max:100, grid:{color:'#141728'}, ticks:{callback: v => v+'%'} },
+      y: { stacked:true, grid:{display:false} }
+    }
+  }
+});
+
+// ── TOP 20 QSR + AGENCY BARS ─────────────────────────────────────────────────
+const top20ChartOpts = (maxVal) => ({
+  indexAxis: 'y',
+  responsive: true,
+  plugins: {
+    legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ` ${ctx.raw} mentions` } }
+  },
+  scales: {
+    x: { max: Math.ceil(maxVal * 1.15), grid: { color: '#1E2235' }, ticks: { color: '#3D4060', font: { size: 9 } } },
+    y: { grid: { display: false }, ticks: { color: '#5A5C70', font: { size: 9 } } }
+  }
+});
+
+new Chart(document.getElementById('top20QSR'), {
+  type: 'bar',
+  data: {
+    labels: qsrLabels.slice(0,20),
+    datasets: [{ data: qsrValues.slice(0,20), backgroundColor: '#F472B6', borderWidth: 0, borderRadius: 2 }]
+  },
+  options: top20ChartOpts(237)
+});
+
+const agTop20Labels = ["Scorpion","Refine Labs","SOCi","Directive Consulting","Location3","Wonderist Agency","Curious Jane","Franchise Performance Group","SmartBug Media","Franchise FastLane","KickStart Dental Marketing","Firegang Dental Marketing","Seer Interactive","Cardinal Digital Marketing","Pain-Free Dental Marketing","Brand Journalists","Powered by Search","Hyperlocology","BrandMuscle","Single Grain"];
+const agTop20Values = [106,53,48,46,45,37,37,35,32,28,27,24,21,21,21,21,20,18,18,17];
+
+new Chart(document.getElementById('top20Agency'), {
+  type: 'bar',
+  data: {
+    labels: agTop20Labels,
+    datasets: [{ data: agTop20Values, backgroundColor: '#F472B6', borderWidth: 0, borderRadius: 2 }]
+  },
+  options: top20ChartOpts(106)
+});
+
+// ── QSR ROUTING LISTS ────────────────────────────────────────────────────────
+const qsrPersonas = {
+  marcus: { color:'#FF6B6B', data:[
+    {n:"Chick-fil-A",m:48},{n:"Wendy's",m:40},{n:"Panera Bread",m:29},{n:"McDonald's",m:25},
+    {n:"Chipotle",m:20},{n:"Taco Bell",m:15},{n:"Subway",m:14},{n:"Jersey Mike's",m:5},
+    {n:"Starbucks",m:4},{n:"Popeyes",m:4}
+  ]},
+  jenna: { color:'#4FC4CF', data:[
+    {n:"Chick-fil-A",m:54},{n:"Panera Bread",m:47},{n:"Wendy's",m:38},{n:"Chipotle",m:35},
+    {n:"Subway",m:30},{n:"McDonald's",m:24},{n:"Taco Bell",m:19},{n:"Starbucks",m:12},
+    {n:"Culver's",m:9},{n:"QDOBA",m:8}
+  ]},
+  tyler: { color:'#E31C79', data:[
+    {n:"Wendy's",m:59},{n:"Taco Bell",m:53},{n:"McDonald's",m:44},{n:"Jack in the Box",m:27},
+    {n:"Chick-fil-A",m:20},{n:"Chipotle",m:19},{n:"Burger King",m:16},{n:"Subway",m:15},
+    {n:"Popeyes",m:9},{n:"Raising Cane's",m:6}
+  ]},
+  priya: { color:'#A78BFA', data:[
+    {n:"Chipotle",m:54},{n:"Chick-fil-A",m:52},{n:"Wendy's",m:39},{n:"Subway",m:36},
+    {n:"Starbucks",m:28},{n:"McDonald's",m:22},{n:"Panera Bread",m:19},{n:"Taco Bell",m:13},
+    {n:"CAVA",m:11},{n:"El Pollo Loco",m:11}
+  ]},
+  dale: { color:'#F59E0B', data:[
+    {n:"Wendy's",m:61},{n:"McDonald's",m:36},{n:"Arby's",m:30},{n:"Burger King",m:24},
+    {n:"Taco Bell",m:21},{n:"Subway",m:17},{n:"Chick-fil-A",m:15},{n:"Hardee's",m:9},
+    {n:"Popeyes",m:9},{n:"Culver's",m:7}
+  ]}
+};
+
+Object.entries(qsrPersonas).forEach(([id, {color, data}]) => {
+  const container = document.getElementById(id+'List');
+  if (!container) return;
+  const maxM = Math.max(...data.map(d=>d.m));
+  data.forEach((a, i) => {
+    const bw = Math.round((a.m/maxM)*100);
+    container.innerHTML += `<div class="rcol-item">
+      <span class="rcol-rank">${i+1}</span>
+      <div style="flex:1;min-width:0;">
+        <div class="rcol-name">${a.n}</div>
+        <div class="rcol-bar" style="background:${color};width:${bw}%;"></div>
+      </div>
+      <span class="rcol-num" style="color:${color}">${a.m}</span>
+    </div>`;
+  });
+});
+
+// ── AGENCY ROUTING LISTS ──────────────────────────────────────────────────────
+const personas = {
+  jordan: { color:'#FF6B6B', data:[
+    {n:'Refine Labs',m:43},{n:'Directive Consulting',m:35},{n:'Powered by Search',m:20},
+    {n:'Single Grain',m:15},{n:'NoGood',m:16},{n:'Omniscient Digital',m:13},
+    {n:'Animalz',m:7},{n:'Kalungi',m:10},{n:'Proper Expression',m:8},{n:'SimpleTiger',m:7}
+  ]},
+  sandra: { color:'#4FC4CF', data:[
+    {n:'SmartBug Media',m:26},{n:'Seer Interactive',m:20},{n:'Walker Sands',m:14},
+    {n:'Brainrider',m:10},{n:'New Breed',m:9},{n:'Brainlabs',m:9},
+    {n:'Wpromote',m:10},{n:'Tinuiti',m:8},{n:'Convince & Convert',m:7},{n:'Siege Media',m:7}
+  ]},
+  ray: { color:'#E31C79', data:[
+    {n:'Wonderist Agency',m:36},{n:'KickStart Dental Marketing',m:27},{n:'Firegang Dental Marketing',m:24},
+    {n:'Pain-Free Dental Marketing',m:21},{n:'Cardinal Digital',m:13},{n:'Great Dental Websites',m:12},
+    {n:'Delmain',m:10},{n:'PBHS',m:9},{n:'PatientPop',m:9},{n:'WEO Media',m:8}
+  ]},
+  christine: { color:'#A78BFA', data:[
+    {n:'Scorpion',m:52},{n:'SOCi',m:45},{n:'Location3',m:40},{n:'BrandMuscle',m:18},
+    {n:'Hyperlocology',m:17},{n:'RevLocal',m:12},{n:'PowerChord',m:12},{n:'V Digital Services',m:10},
+    {n:'Mindstream Media Group',m:8},{n:'Tiger Pistol',m:7}
+  ]},
+  derek: { color:'#F59E0B', data:[
+    {n:'Scorpion',m:41},{n:'Franchise Performance Group',m:34},{n:'Curious Jane',m:30},
+    {n:'Franchise FastLane',m:28},{n:'Brand Journalists',m:21},{n:'TopFire Media',m:10},
+    {n:'Franchise Marketing Systems',m:8},{n:'Franchise Elevator',m:8},{n:'Hot Dish Advertising',m:6},{n:'Franchise Hive',m:5}
+  ]}
+};
+
+Object.entries(personas).forEach(([id, {color, data}]) => {
+  const container = document.getElementById(id+'List');
+  const maxM = Math.max(...data.map(d=>d.m));
+  data.forEach((a, i) => {
+    const bw = Math.round((a.m/maxM)*100);
+    container.innerHTML += `<div class="rcol-item">
+      <span class="rcol-rank">${i+1}</span>
+      <div style="flex:1;min-width:0;">
+        <div class="rcol-name">${a.n}</div>
+        <div class="rcol-bar" style="background:${color};width:${bw}%;"></div>
+      </div>
+      <span class="rcol-num" style="color:${color}">${a.m}</span>
+    </div>`;
+  });
+});
+
+// ── VENN SIDEBAR LISTS ────────────────────────────────────────────────────────
+const christineVennData = [
+  {n:'SOCi',m:45},{n:'Location3',m:40},{n:'BrandMuscle',m:18},
+  {n:'Hyperlocology',m:17},{n:'RevLocal',m:12},{n:'PowerChord',m:12},{n:'V Digital Services',m:10}
+];
+const derekVennData = [
+  {n:'Franchise Performance Group',m:34},{n:'Curious Jane',m:30},{n:'Franchise FastLane',m:28},
+  {n:'Brand Journalists',m:21},{n:'TopFire Media',m:10},{n:'Franchise Mktg Systems',m:8},{n:'Franchise Elevator',m:8}
+];
+christineVennData.forEach(a => {
+  document.getElementById('christineVenn').innerHTML += `<div class="venn-agency-row"><span>${a.n}</span><span class="venn-agency-num" style="color:#A78BFA">${a.m}</span></div>`;
+});
+derekVennData.forEach(a => {
+  document.getElementById('derekVenn').innerHTML += `<div class="venn-agency-row"><span>${a.n}</span><span class="venn-agency-num" style="color:#F59E0B">${a.m}</span></div>`;
+});
+
+// ── HEATMAP RENDERER ─────────────────────────────────────────────────────────
+function heatColor(v, lo, hi) {
+  const t = Math.max(0, Math.min(1, (v - lo) / (hi - lo)));
+  const r = Math.round(t < 0.5 ? 20 + t*2*160 : 180 + (t-0.5)*2*47);
+  const g = Math.round(t < 0.5 ? 22 + t*2*38  : 60  - (t-0.5)*2*32);
+  const b = Math.round(t < 0.5 ? 55 + t*2*90  : 145 - (t-0.5)*2*24);
+  return `rgb(${r},${g},${b})`;
+}
+function textCol(v, lo, hi) { return (v-lo)/(hi-lo) > 0.55 ? '#fff' : '#8A8CA8'; }
+
+function buildHeatmap(containerId, scaleId, rowLabels, colLabels, data, lo, hi) {
+  let ht = `<table class="heatmap-table"><thead><tr><th class="bh">Brand / Agency</th>`;
+  colLabels.forEach(p => { ht += `<th>${p}</th>`; });
+  ht += `</tr></thead><tbody>`;
+  rowLabels.forEach((lbl, ri) => {
+    ht += `<tr><td class="bn">${lbl}</td>`;
+    colLabels.forEach((_, ci) => {
+      const v = data[ci][ri];
+      ht += `<td><span class="hcell" style="background:${heatColor(v,lo,hi)};color:${textCol(v,lo,hi)}">${v.toFixed(0)}</span></td>`;
+    });
+    ht += `</tr>`;
+  });
+  ht += `</tbody></table>`;
+  document.getElementById(containerId).innerHTML = ht;
+  document.getElementById(scaleId).style.background = 'linear-gradient(to right, rgb(20,22,55), rgb(180,60,145), rgb(227,28,121))';
+}
+
+// ── QSR HEATMAP ──────────────────────────────────────────────────────────────
+const qsrHBrands = ["Arby's","Burger King","Chick-fil-A","Chipotle","Culver's","Domino's","Dunkin'","In-N-Out Burger","Jack in the Box","McDonald's","Panera Bread","Starbucks","Subway","Sweetgreen","Taco Bell","Wawa","Wendy's"];
+const qsrHVals = [
+  [44.7,40.7,60.3,48.9,46.7,30.8,40.6,46.6,45.7,58.1,45.4,34.4,54.1,47.4,58.6,50.7,57.8],
+  [41.6,37.4,61.0,49.3,49.2,30.8,36.9,46.3,41.7,57.0,45.2,31.6,51.7,47.6,54.6,46.2,55.7],
+  [42.8,41.3,55.8,49.2,47.5,32.1,41.7,47.9,51.3,61.3,38.4,33.5,50.5,44.7,65.6,48.9,58.4],
+  [40.0,36.1,57.1,51.7,43.7,27.9,34.8,43.9,41.0,53.6,39.1,33.9,50.9,50.0,56.2,47.2,50.5],
+  [45.9,41.7,54.0,43.4,46.8,28.3,36.1,49.6,43.9,57.5,38.6,29.5,50.3,39.7,55.9,45.4,60.6]
+];
+buildHeatmap('heatmapQSR','colorScaleQSR', qsrHBrands, ['Marcus','Jenna','Tyler','Priya','Dale'], qsrHVals, 27, 66);
+
+// ── AGENCY HEATMAP ───────────────────────────────────────────────────────────
+const agHAgencies = ["Powered by Search","Directive Consulting","Location3","Franchise Performance Group","Pain-Free Dental Marketing","Cardinal Digital Marketing","SmartBug Media","NoGood","Curious Jane","Scorpion","Wonderist Agency","KickStart Dental Marketing","Refine Labs","Great Dental Websites","SOCi","Franchise FastLane","BrandMuscle","Firegang Dental Marketing"];
+const agHVals = [
+  // Jordan, Sandra, Ray, Christine, Derek  (values per agency, row order matches agHAgencies)
+  [77.3,71.7,62.5,61.7,62.6],
+  [69.9,67.5,58.5,57.1,58.8],
+  [58.0,62.0,59.8,68.1,63.1],
+  [53.6,55.0,52.6,66.6,74.7],
+  [54.7,58.5,77.8,55.3,54.1],
+  [57.5,61.7,66.3,56.1,55.2],
+  [62.1,64.2,55.0,56.2,55.4],
+  [61.2,61.8,55.2,56.3,55.7],
+  [52.6,56.6,52.2,62.5,64.5],
+  [54.7,56.1,58.6,58.0,56.7],
+  [52.0,55.2,71.4,52.1,50.9],
+  [50.9,52.6,74.8,51.0,51.5],
+  [64.0,60.6,50.4,50.2,52.9],
+  [47.9,49.8,72.8,48.3,48.2],
+  [52.7,53.9,50.6,57.9,51.7],
+  [40.9,42.2,39.2,57.8,63.1],
+  [46.6,50.5,45.3,49.3,45.8],
+  [37.8,39.8,61.1,39.1,41.1]
+];
+// Reformat to [personaIndex][agencyIndex] for buildHeatmap
+const agHValsByPersona = [0,1,2,3,4].map(pi => agHVals.map(row => row[pi]));
+buildHeatmap('heatmapAgency','colorScaleAg', agHAgencies, ['Jordan','Sandra','Ray','Christine','Derek'], agHValsByPersona, 37, 78);
+
+// ── FULL QSR BAR (appendix) ───────────────────────────────────────────────────
+new Chart(document.getElementById('fullBarChart'), {
+  type: 'bar',
+  data: {
+    labels: qsrLabels,
+    datasets: [{ data: qsrValues, backgroundColor: qsrBg, borderColor: qsrBd, borderWidth: 1, borderRadius: 2 }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true,
+    plugins: { legend:{display:false}, tooltip:{callbacks:{label: ctx => ` ${ctx.raw} mentions`}} },
+    scales: {
+      x: { grid:{color:'#141728'}, ticks:{color:'#3D4060'} },
+      y: { grid:{display:false}, ticks:{color:'#5A5C70', font:{size:9}} }
+    }
+  }
+});
+
+// ── AGENCY BAR (appendix) ─────────────────────────────────────────────────────
+const agTop50 = agTableData.slice(0,50);
+const agBarLabels = agTop50.map(r => r[0]);
+const agBarValues = agTop50.map(r => parseInt(r[1]));
+const agP2Set = new Set(agHAgencies);
+const agBarBg = agBarLabels.map(n => agP2Set.has(n) ? '#E31C79' : '#1C1F33');
+const agBarBd = agBarLabels.map(n => agP2Set.has(n) ? 'rgba(227,28,121,0.5)' : '#22253A');
+new Chart(document.getElementById('agencyBarChart'), {
+  type: 'bar',
+  data: {
+    labels: agBarLabels,
+    datasets: [{ data: agBarValues, backgroundColor: agBarBg, borderColor: agBarBd, borderWidth: 1, borderRadius: 2 }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true,
+    plugins: { legend:{display:false}, tooltip:{callbacks:{label: ctx => ` ${ctx.raw} mentions`}} },
+    scales: {
+      x: { grid:{color:'#141728'}, ticks:{color:'#3D4060'} },
+      y: { grid:{display:false}, ticks:{color:'#5A5C70', font:{size:9}} }
+    }
+  }
+});
+
+// ── APPENDIX TABLES ───────────────────────────────────────────────────────────
+function buildTable(bodyId, data) {
+  const tbody = document.getElementById(bodyId);
+  data.forEach(row => {
+    const tr = document.createElement('tr');
+    row.forEach((cell, i) => {
+      const td = document.createElement('td');
+      td.textContent = cell;
+      if (i === 1) td.className = 'total';
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+}
+buildTable('qsrAppBody', qsrTableData);
+buildTable('agAppBody', agTableData);
+</script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+# Agency URL map for Stage 2 embedding.
+#
+# IMPORTANT: Populate this file AFTER Stage 1 runs and entity extraction
+# reveals which agencies surfaced frequently enough to embed (aim for
+# any agency with 5+ positive mentions across all personas).
+#
+# For each agency: pick pages that represent their brand voice and
+# service positioning — homepage, about/approach, services, case studies.
+# Avoid: careers, press releases, privacy policy, contact pages.
+#
+# Format:
+#
+# "Agency Name":
+#   urls:
+#     - https://www.agencysite.com
+#     - https://www.agencysite.com/about
+#     - https://www.agencysite.com/work
+#
+# Pre-seeded with agencies most likely to appear — add/remove after Stage 1.
+
+brands:
+
+  "Ogilvy":
+    urls:
+      - https://www.ogilvy.com
+      - https://www.ogilvy.com/about
+
+  "BBDO":
+    urls:
+      - https://www.bbdo.com
+      - https://www.bbdo.com/about
+
+  "Leo Burnett":
+    urls:
+      - https://leoburnett.com
+      - https://leoburnett.com/about
+
+  "McCann":
+    urls:
+      - https://mccann.com
+      - https://mccann.com/about-us
+
+  "Wieden+Kennedy":
+    urls:
+      - https://www.wk.com
+      - https://www.wk.com/about
+
+  "Droga5":
+    urls:
+      - https://droga5.com
+      - https://droga5.com/about
+
+  "R/GA":
+    urls:
+      - https://www.rga.com
+      - https://www.rga.com/about
+
+  "AKQA":
+    urls:
+      - https://www.akqa.com
+      - https://www.akqa.com/about-akqa
+
+  "Digitas":
+    urls:
+      - https://www.digitas.com
+      - https://www.digitas.com/en-us/about
+
+  "Merkle":
+    urls:
+      - https://www.merkle.com
+      - https://www.merkle.com/about-merkle
+
+  "WebFX":
+    urls:
+      - https://www.webfx.com
+      - https://www.webfx.com/about-webfx.html
+
+  "Thrive Internet Marketing Agency":
+    urls:
+      - https://thriveagency.com
+      - https://thriveagency.com/about-thrive/
+
+  "NP Digital":
+    urls:
+      - https://npdigital.com
+      - https://npdigital.com/about/
+
+  "Scorpion":
+    urls:
+      - https://www.scorpion.co
+      - https://www.scorpion.co/about-us/
+
+  # ── Surfaced from Stage 1 entity extraction ──────────────────────────────
+
+  "Refine Labs":
+    urls:
+      - https://refinelabs.com
+      - https://refinelabs.com/about-us
+
+  "Wonderist Agency":
+    urls:
+      - https://wonderistagency.com
+      - https://wonderistagency.com/about-us/
+
+  "Directive Consulting":
+    urls:
+      - https://directiveconsulting.com
+      - https://directiveconsulting.com/about/
+
+  "Firegang Dental Marketing":
+    urls:
+      - https://www.firegang.com
+      - https://www.firegang.com/about/
+
+  "Location3":
+    urls:
+      - https://location3.com/about/
+      - https://location3.com/services/
+
+  "KickStart Dental Marketing":
+    urls:
+      - https://kickstartdental.com
+      - https://kickstartdental.com/about/
+
+  "Pain-Free Dental Marketing":
+    urls:
+      - https://www.painfreedental.com/about/
+      - https://www.painfreedental.com/services/
+
+  "SOCi":
+    urls:
+      - https://meetsoci.com
+      - https://meetsoci.com/about/
+
+  "SmartBug Media":
+    urls:
+      - https://www.smartbugmedia.com
+      - https://www.smartbugmedia.com/about
+
+  "Cardinal Digital Marketing":
+    urls:
+      - https://cardinaldigitalmarketing.com
+      - https://cardinaldigitalmarketing.com/about/
+
+  "NoGood":
+    urls:
+      - https://nogood.io
+      - https://nogood.io/about-us/
+
+  "Great Dental Websites":
+    urls:
+      - https://www.greatdentalwebsites.com
+      - https://www.greatdentalwebsites.com/about-us/
+
+  "Curious Jane":
+    urls:
+      - https://www.curiousjane.com
+      - https://www.curiousjane.com/about/
+
+  # Raintree was acquired by Franchise FastLane in 2022 — crawl current brand
+  "Franchise FastLane":
+    urls:
+      - https://www.franchisefastlane.com
+      - https://www.franchisefastlane.com/about/
+
+  "Franchise Performance Group":
+    urls:
+      - https://www.franchiseperformancegroup.com
+      - https://www.franchiseperformancegroup.com/about/
+
+  "Single Grain":
+    urls:
+      - https://www.singlegrain.com
+      - https://www.singlegrain.com/about-us/
+
+  "Powered by Search":
+    urls:
+      - https://www.poweredbysearch.com
+      - https://www.poweredbysearch.com/about-us/
+
+  "New Breed":
+    urls:
+      - https://www.newbreed.com
+      - https://www.newbreed.com/about/
+
+  "TopFire Media":
+    urls:
+      - https://topfiremedia.com
+      - https://topfiremedia.com/about/
+
+  "Integrated Digital Strategies":
+    urls:
+      - https://www.idsfran.com
+      - https://www.idsfran.com/about/
+
+  "BrandMuscle":
+    urls:
+      - https://www.brandmuscle.com/platform/
+      - https://www.brandmuscle.com/about/
+
+  "Rallio":
+    urls:
+      - https://rallio.com
+      - https://rallio.com/about/
+
+  "Franchise Marketing Systems":
+    urls:
+      - https://www.franchisemarketingsystems.com
+      - https://www.franchisemarketingsystems.com/about/

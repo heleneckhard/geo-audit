@@ -1,0 +1,21 @@
+stage1:
+  model: gpt-4.1-2025-04-14
+  temperature: 1.0       # Keep at 1.0 — natural variance across runs is the point
+  num_runs: 3            # Increase to 5 for higher-confidence pattern detection
+  seed: null             # null = natural variance; set an integer for reproducible outputs
+  max_tokens: 1024
+  output_dir: outputs/stage1
+
+stage2:
+  extraction_model: gpt-4.1-2025-04-14
+  embedding_model: text-embedding-3-large
+  top_brands: 15          # scrape this many top brands by mention frequency
+  scrape_pages_per_brand: 3
+  chunk_size: 500         # approximate token count per embedding chunk
+  output_dir: outputs/stage2
+
+rate_limiting:
+  requests_per_minute: 60   # Adjust down if you hit 429s on a lower-tier API key
+  retry_attempts: 3
+  retry_wait_min_seconds: 2
+  retry_wait_max_seconds: 60

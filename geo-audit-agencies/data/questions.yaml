@@ -1,0 +1,153 @@
+# Question bank for GEO audit — Phase 2: Marketing Agencies
+# 5 categories × 5 questions = 25 total
+# All questions are persona-neutral in phrasing.
+# Persona context is injected entirely via system prompt.
+
+questions:
+
+  # ── Category 1: Agency Discovery ───────────────────────────────────────────
+  # Ambient, open-ended. Tests what surfaces with minimal constraint.
+  # Persona values shape which agencies and capabilities get named.
+
+  - id: Q1_01
+    category: agency_discovery
+    category_label: "Agency Discovery"
+    text: "I'm looking to hire a marketing agency. What are some good ones to look at?"
+
+  - id: Q1_02
+    category: agency_discovery
+    category_label: "Agency Discovery"
+    text: "What marketing agencies actually have a strong reputation right now?"
+
+  - id: Q1_03
+    category: agency_discovery
+    category_label: "Agency Discovery"
+    text: "Which digital marketing agencies do people actually like working with?"
+
+  - id: Q1_04
+    category: agency_discovery
+    category_label: "Agency Discovery"
+    text: "What's a marketing agency you'd genuinely recommend, and why?"
+
+  - id: Q1_05
+    category: agency_discovery
+    category_label: "Agency Discovery"
+    text: "Are there any marketing agencies that stand out as particularly good for businesses like mine?"
+
+  # ── Category 2: Capability / Channel Fit ───────────────────────────────────
+  # Tests which agencies get associated with specific capabilities.
+  # Persona's channel needs and priorities emerge from the system prompt.
+
+  - id: Q2_01
+    category: capability_fit
+    category_label: "Capability / Channel Fit"
+    text: "What agencies are best known for SEO and content marketing?"
+
+  - id: Q2_02
+    category: capability_fit
+    category_label: "Capability / Channel Fit"
+    text: "Which marketing agencies specialize in paid media and performance marketing?"
+
+  - id: Q2_03
+    category: capability_fit
+    category_label: "Capability / Channel Fit"
+    text: "What agency is known for strong brand strategy and creative work?"
+
+  - id: Q2_04
+    category: capability_fit
+    category_label: "Capability / Channel Fit"
+    text: "Which agencies are best at marketing for businesses with multiple locations?"
+
+  - id: Q2_05
+    category: capability_fit
+    category_label: "Capability / Channel Fit"
+    text: "What marketing agencies are known for actually generating leads, not just brand awareness?"
+
+  # ── Category 3: Comparative / Evaluative ───────────────────────────────────
+  # Tests which agencies win head-to-head when the model must rank or choose.
+
+  - id: Q3_01
+    category: comparative_evaluative
+    category_label: "Comparative / Evaluative"
+    text: "Which marketing agencies are actually known for delivering results, not just looking good in pitches?"
+
+  - id: Q3_02
+    category: comparative_evaluative
+    category_label: "Comparative / Evaluative"
+    text: "If you had to pick one marketing agency to work with for your type of business, which would you choose?"
+
+  - id: Q3_03
+    category: comparative_evaluative
+    category_label: "Comparative / Evaluative"
+    text: "What separates a great marketing agency from a mediocre one?"
+
+  - id: Q3_04
+    category: comparative_evaluative
+    category_label: "Comparative / Evaluative"
+    text: "What agencies are worth the money for a business at my stage?"
+
+  - id: Q3_05
+    category: comparative_evaluative
+    category_label: "Comparative / Evaluative"
+    text: "Which agencies are most transparent about how they measure success?"
+
+  # ── Category 4: Evaluation / Trust ─────────────────────────────────────────
+  # Tests what surfaces when the buyer is digging deeper, validating,
+  # or approaching the decision with skepticism.
+
+  - id: Q4_01
+    category: evaluation_trust
+    category_label: "Evaluation / Trust"
+    text: "What should I be skeptical of when a marketing agency is pitching me?"
+
+  - id: Q4_02
+    category: evaluation_trust
+    category_label: "Evaluation / Trust"
+    text: "Are there any boutique or smaller agencies that punch above their weight?"
+
+  - id: Q4_03
+    category: evaluation_trust
+    category_label: "Evaluation / Trust"
+    text: "What are the red flags that an agency isn't actually a good fit?"
+
+  - id: Q4_04
+    category: evaluation_trust
+    category_label: "Evaluation / Trust"
+    text: "What questions should I ask a marketing agency before signing a contract?"
+
+  - id: Q4_05
+    category: evaluation_trust
+    category_label: "Evaluation / Trust"
+    text: "Are there agencies doing genuinely innovative or interesting work right now?"
+
+  # ── Category 5: Strategic / Planning ───────────────────────────────────────
+  # Tests recommendations under high-stakes or longer-horizon decisions.
+
+  - id: Q5_01
+    category: strategic_planning
+    category_label: "Strategic / Planning"
+    text: >
+      I'm trying to decide between building an in-house marketing team versus using an agency.
+      How should I think about that decision?
+
+  - id: Q5_02
+    category: strategic_planning
+    category_label: "Strategic / Planning"
+    text: "What kind of marketing agency should I be looking for if I want to grow aggressively over the next two years?"
+
+  - id: Q5_03
+    category: strategic_planning
+    category_label: "Strategic / Planning"
+    text: "I've had bad experiences with agencies before. How do I find one that actually delivers?"
+
+  - id: Q5_04
+    category: strategic_planning
+    category_label: "Strategic / Planning"
+    text: >
+      What should I know about managing an agency relationship to actually get good results
+      out of it?
+
+  - id: Q5_05
+    category: strategic_planning
+    category_label: "Strategic / Planning"
+    text: "What type of marketing agency makes the most sense for a business that operates across many locations or markets?"

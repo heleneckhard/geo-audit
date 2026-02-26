@@ -1,0 +1,91 @@
+persona_id,persona_name,brand,similarity,sim_pct,mention_count,mention_pct,gap_score,gap_type
+P4,Christine,BrandMuscle,0.492986,0.1667,16,0.8333,0.6667,content_gap
+P5,Derek,SOCi,0.516717,0.3333,1,0.75,0.4167,content_gap
+P2,Sandra,SOCi,0.538729,0.3333,1,0.6389,0.3056,content_gap
+P2,Sandra,Scorpion,0.560839,0.5,4,0.8056,0.3056,content_gap
+P1,Jordan,Firegang Dental Marketing,0.37783,0.0556,0,0.3611,0.3056,content_gap
+P5,Derek,Firegang Dental Marketing,0.411214,0.0556,0,0.3611,0.3056,content_gap
+P4,Christine,Wonderist Agency,0.521291,0.3333,1,0.6389,0.3056,content_gap
+P4,Christine,Cardinal Digital Marketing,0.561293,0.4444,5,0.7222,0.2778,aligned
+P2,Sandra,Refine Labs,0.60603,0.6667,10,0.9167,0.25,aligned
+P2,Sandra,Firegang Dental Marketing,0.397991,0.0556,0,0.3056,0.25,aligned
+P3,Ray,Franchise FastLane,0.391879,0.0556,0,0.3056,0.25,aligned
+P4,Christine,Firegang Dental Marketing,0.391376,0.0556,0,0.3056,0.25,aligned
+P5,Derek,BrandMuscle,0.457931,0.1111,0,0.3611,0.25,aligned
+P1,Jordan,Franchise FastLane,0.408576,0.1111,0,0.3611,0.25,aligned
+P5,Derek,Scorpion,0.567135,0.6667,30,0.9167,0.25,aligned
+P4,Christine,SOCi,0.578968,0.7222,43,0.9444,0.2222,aligned
+P4,Christine,Scorpion,0.579729,0.7778,52,1.0,0.2222,aligned
+P3,Ray,Firegang Dental Marketing,0.610994,0.6667,23,0.8889,0.2222,aligned
+P4,Christine,Great Dental Websites,0.4825,0.1111,0,0.3056,0.1944,aligned
+P5,Derek,Great Dental Websites,0.481881,0.1667,0,0.3611,0.1944,aligned
+P3,Ray,BrandMuscle,0.45328,0.1111,0,0.3056,0.1944,aligned
+P2,Sandra,Franchise FastLane,0.421766,0.1111,0,0.3056,0.1944,aligned
+P1,Jordan,BrandMuscle,0.465732,0.1667,0,0.3611,0.1944,aligned
+P1,Jordan,Scorpion,0.547011,0.5556,1,0.7222,0.1667,aligned
+P3,Ray,Wonderist Agency,0.714357,0.8333,36,1.0,0.1667,aligned
+P3,Ray,Refine Labs,0.50396,0.1667,0,0.3056,0.1389,aligned
+P5,Derek,Wonderist Agency,0.508903,0.2222,0,0.3611,0.1389,aligned
+P2,Sandra,Great Dental Websites,0.497673,0.1667,0,0.3056,0.1389,aligned
+P1,Jordan,Great Dental Websites,0.479155,0.2222,0,0.3611,0.1389,aligned
+P1,Jordan,Refine Labs,0.639809,0.8889,42,1.0,0.1111,aligned
+P2,Sandra,SmartBug Media,0.641821,0.8889,26,1.0,0.1111,aligned
+P3,Ray,Directive Consulting,0.585205,0.5,1,0.6111,0.1111,aligned
+P3,Ray,Scorpion,0.585816,0.5556,7,0.6667,0.1111,aligned
+P1,Jordan,KickStart Dental Marketing,0.508782,0.2778,0,0.3611,0.0833,aligned
+P3,Ray,SOCi,0.506338,0.2222,0,0.3056,0.0833,aligned
+P5,Derek,KickStart Dental Marketing,0.515079,0.2778,0,0.3611,0.0833,aligned
+P2,Sandra,BrandMuscle,0.504903,0.2222,0,0.3056,0.0833,aligned
+P4,Christine,Refine Labs,0.502143,0.2222,0,0.3056,0.0833,aligned
+P1,Jordan,NoGood,0.611546,0.7778,16,0.8333,0.0556,aligned
+P4,Christine,KickStart Dental Marketing,0.509593,0.2778,0,0.3056,0.0278,aligned
+P2,Sandra,KickStart Dental Marketing,0.525772,0.2778,0,0.3056,0.0278,aligned
+P1,Jordan,Wonderist Agency,0.519896,0.3333,0,0.3611,0.0278,aligned
+P3,Ray,Curious Jane,0.521923,0.2778,0,0.3056,0.0278,aligned
+P2,Sandra,Cardinal Digital Marketing,0.616575,0.7222,2,0.7222,0.0,aligned
+P3,Ray,KickStart Dental Marketing,0.74758,0.9444,27,0.9444,0.0,aligned
+P5,Derek,Franchise FastLane,0.630536,0.8333,3,0.8333,0.0,aligned
+P3,Ray,Cardinal Digital Marketing,0.663184,0.7778,13,0.7778,0.0,aligned
+P5,Derek,Franchise Performance Group,0.746683,1.0,34,1.0,0.0,aligned
+P1,Jordan,Directive Consulting,0.698516,0.9444,34,0.9444,0.0,aligned
+P5,Derek,Refine Labs,0.528813,0.3889,0,0.3611,-0.0278,aligned
+P5,Derek,Curious Jane,0.6448,0.9444,30,0.9167,-0.0278,aligned
+P1,Jordan,Curious Jane,0.525906,0.3889,0,0.3611,-0.0278,aligned
+P2,Sandra,Location3,0.620316,0.8333,4,0.8056,-0.0278,aligned
+P2,Sandra,Directive Consulting,0.674685,0.9444,10,0.9167,-0.0278,aligned
+P3,Ray,Franchise Performance Group,0.525739,0.3333,0,0.3056,-0.0278,aligned
+P1,Jordan,SmartBug Media,0.620895,0.8333,6,0.7778,-0.0556,aligned
+P2,Sandra,Franchise Performance Group,0.550415,0.3889,0,0.3056,-0.0833,aligned
+P4,Christine,Pain-Free Dental Marketing,0.553481,0.3889,0,0.3056,-0.0833,aligned
+P5,Derek,Pain-Free Dental Marketing,0.541487,0.4444,0,0.3611,-0.0833,aligned
+P3,Ray,SmartBug Media,0.550012,0.3889,0,0.3056,-0.0833,aligned
+P1,Jordan,SOCi,0.526581,0.4444,0,0.3611,-0.0833,aligned
+P4,Christine,Location3,0.680915,1.0,40,0.8889,-0.1111,aligned
+P1,Jordan,Powered by Search,0.772991,1.0,20,0.8889,-0.1111,aligned
+P4,Christine,Curious Jane,0.624862,0.8889,7,0.7778,-0.1111,aligned
+P3,Ray,NoGood,0.552465,0.4444,0,0.3056,-0.1389,aligned
+P2,Sandra,Wonderist Agency,0.551756,0.4444,0,0.3056,-0.1389,aligned
+P2,Sandra,NoGood,0.618186,0.7778,1,0.6389,-0.1389,aligned
+P1,Jordan,Franchise Performance Group,0.535735,0.5,0,0.3611,-0.1389,aligned
+P5,Derek,Location3,0.630606,0.8889,1,0.75,-0.1389,aligned
+P5,Derek,Cardinal Digital Marketing,0.551924,0.5,0,0.3611,-0.1389,aligned
+P3,Ray,Pain-Free Dental Marketing,0.778132,1.0,21,0.8333,-0.1667,aligned
+P3,Ray,Great Dental Websites,0.727861,0.8889,12,0.7222,-0.1667,aligned
+P5,Derek,SmartBug Media,0.554479,0.5556,0,0.3611,-0.1944,aligned
+P4,Christine,SmartBug Media,0.561974,0.5,0,0.3056,-0.1944,aligned
+P2,Sandra,Curious Jane,0.565556,0.5556,0,0.3056,-0.25,aligned
+P5,Derek,NoGood,0.556834,0.6111,0,0.3611,-0.25,aligned
+P1,Jordan,Pain-Free Dental Marketing,0.547133,0.6111,0,0.3611,-0.25,aligned
+P4,Christine,NoGood,0.563346,0.5556,0,0.3056,-0.25,aligned
+P2,Sandra,Pain-Free Dental Marketing,0.584677,0.6111,0,0.3056,-0.3056,missed_opportunity
+P3,Ray,Location3,0.597584,0.6111,0,0.3056,-0.3056,missed_opportunity
+P1,Jordan,Cardinal Digital Marketing,0.575318,0.6667,0,0.3611,-0.3056,missed_opportunity
+P4,Christine,Franchise Performance Group,0.665519,0.9444,1,0.6389,-0.3056,missed_opportunity
+P4,Christine,Directive Consulting,0.57124,0.6111,0,0.3056,-0.3056,missed_opportunity
+P5,Derek,Directive Consulting,0.58847,0.7222,0,0.3611,-0.3611,missed_opportunity
+P4,Christine,Franchise FastLane,0.578058,0.6667,0,0.3056,-0.3611,missed_opportunity
+P1,Jordan,Location3,0.57977,0.7222,0,0.3611,-0.3611,missed_opportunity
+P3,Ray,Powered by Search,0.624846,0.7222,0,0.3056,-0.4167,missed_opportunity
+P5,Derek,Powered by Search,0.626184,0.7778,0,0.3611,-0.4167,missed_opportunity
+P4,Christine,Powered by Search,0.6169,0.8333,0,0.3056,-0.5278,missed_opportunity
+P2,Sandra,Powered by Search,0.716781,1.0,0,0.3056,-0.6944,missed_opportunity

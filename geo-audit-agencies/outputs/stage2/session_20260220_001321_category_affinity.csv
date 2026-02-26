@@ -1,0 +1,451 @@
+persona_id,persona_name,question_category,brand,similarity
+P1,Jordan,agency_discovery,BrandMuscle,0.4413158595561981
+P1,Jordan,agency_discovery,Cardinal Digital Marketing,0.5473488569259644
+P1,Jordan,agency_discovery,Curious Jane,0.4972682297229767
+P1,Jordan,agency_discovery,Directive Consulting,0.6785723567008972
+P1,Jordan,agency_discovery,Firegang Dental Marketing,0.36665910482406616
+P1,Jordan,agency_discovery,Franchise FastLane,0.39807525277137756
+P1,Jordan,agency_discovery,Franchise Performance Group,0.5172128677368164
+P1,Jordan,agency_discovery,Great Dental Websites,0.4646236300468445
+P1,Jordan,agency_discovery,KickStart Dental Marketing,0.48848217725753784
+P1,Jordan,agency_discovery,Location3,0.5497968792915344
+P1,Jordan,agency_discovery,NoGood,0.5898807644844055
+P1,Jordan,agency_discovery,Pain-Free Dental Marketing,0.5183814764022827
+P1,Jordan,agency_discovery,Powered by Search,0.7556911706924438
+P1,Jordan,agency_discovery,Refine Labs,0.6368579864501953
+P1,Jordan,agency_discovery,SOCi,0.5051981210708618
+P1,Jordan,agency_discovery,Scorpion,0.5264344215393066
+P1,Jordan,agency_discovery,SmartBug Media,0.5989888310432434
+P1,Jordan,agency_discovery,Wonderist Agency,0.4992726445198059
+P1,Jordan,capability_fit,BrandMuscle,0.48463165760040283
+P1,Jordan,capability_fit,Cardinal Digital Marketing,0.5665532946586609
+P1,Jordan,capability_fit,Curious Jane,0.5351800322532654
+P1,Jordan,capability_fit,Directive Consulting,0.7153794169425964
+P1,Jordan,capability_fit,Firegang Dental Marketing,0.4106281101703644
+P1,Jordan,capability_fit,Franchise FastLane,0.4121420979499817
+P1,Jordan,capability_fit,Franchise Performance Group,0.5313410758972168
+P1,Jordan,capability_fit,Great Dental Websites,0.49148327112197876
+P1,Jordan,capability_fit,KickStart Dental Marketing,0.5073865652084351
+P1,Jordan,capability_fit,Location3,0.6030224561691284
+P1,Jordan,capability_fit,NoGood,0.6056172251701355
+P1,Jordan,capability_fit,Pain-Free Dental Marketing,0.5442912578582764
+P1,Jordan,capability_fit,Powered by Search,0.756922721862793
+P1,Jordan,capability_fit,Refine Labs,0.6310070753097534
+P1,Jordan,capability_fit,SOCi,0.5308679342269897
+P1,Jordan,capability_fit,Scorpion,0.5544824004173279
+P1,Jordan,capability_fit,SmartBug Media,0.6090930104255676
+P1,Jordan,capability_fit,Wonderist Agency,0.5221343636512756
+P1,Jordan,comparative_evaluative,BrandMuscle,0.4538741707801819
+P1,Jordan,comparative_evaluative,Cardinal Digital Marketing,0.5717913508415222
+P1,Jordan,comparative_evaluative,Curious Jane,0.523764967918396
+P1,Jordan,comparative_evaluative,Directive Consulting,0.6939740777015686
+P1,Jordan,comparative_evaluative,Firegang Dental Marketing,0.3724559247493744
+P1,Jordan,comparative_evaluative,Franchise FastLane,0.40583154559135437
+P1,Jordan,comparative_evaluative,Franchise Performance Group,0.5266751050949097
+P1,Jordan,comparative_evaluative,Great Dental Websites,0.47353309392929077
+P1,Jordan,comparative_evaluative,KickStart Dental Marketing,0.5048507452011108
+P1,Jordan,comparative_evaluative,Location3,0.5679474472999573
+P1,Jordan,comparative_evaluative,NoGood,0.6063262820243835
+P1,Jordan,comparative_evaluative,Pain-Free Dental Marketing,0.5400391817092896
+P1,Jordan,comparative_evaluative,Powered by Search,0.7628666162490845
+P1,Jordan,comparative_evaluative,Refine Labs,0.6445813179016113
+P1,Jordan,comparative_evaluative,SOCi,0.5154405832290649
+P1,Jordan,comparative_evaluative,Scorpion,0.5362114906311035
+P1,Jordan,comparative_evaluative,SmartBug Media,0.6116398572921753
+P1,Jordan,comparative_evaluative,Wonderist Agency,0.5142419338226318
+P1,Jordan,evaluation_trust,BrandMuscle,0.4473209083080292
+P1,Jordan,evaluation_trust,Cardinal Digital Marketing,0.5604814291000366
+P1,Jordan,evaluation_trust,Curious Jane,0.5082244873046875
+P1,Jordan,evaluation_trust,Directive Consulting,0.6605794429779053
+P1,Jordan,evaluation_trust,Firegang Dental Marketing,0.3476155400276184
+P1,Jordan,evaluation_trust,Franchise FastLane,0.3856000006198883
+P1,Jordan,evaluation_trust,Franchise Performance Group,0.5192514657974243
+P1,Jordan,evaluation_trust,Great Dental Websites,0.46293458342552185
+P1,Jordan,evaluation_trust,KickStart Dental Marketing,0.49655553698539734
+P1,Jordan,evaluation_trust,Location3,0.5528892874717712
+P1,Jordan,evaluation_trust,NoGood,0.5972673296928406
+P1,Jordan,evaluation_trust,Pain-Free Dental Marketing,0.53711998462677
+P1,Jordan,evaluation_trust,Powered by Search,0.7523369193077087
+P1,Jordan,evaluation_trust,Refine Labs,0.6058472394943237
+P1,Jordan,evaluation_trust,SOCi,0.5149431228637695
+P1,Jordan,evaluation_trust,Scorpion,0.5319839715957642
+P1,Jordan,evaluation_trust,SmartBug Media,0.609656810760498
+P1,Jordan,evaluation_trust,Wonderist Agency,0.5092387199401855
+P1,Jordan,strategic_planning,BrandMuscle,0.45441603660583496
+P1,Jordan,strategic_planning,Cardinal Digital Marketing,0.5717927813529968
+P1,Jordan,strategic_planning,Curious Jane,0.5117149949073792
+P1,Jordan,strategic_planning,Directive Consulting,0.6725444197654724
+P1,Jordan,strategic_planning,Firegang Dental Marketing,0.35332775115966797
+P1,Jordan,strategic_planning,Franchise FastLane,0.3993348777294159
+P1,Jordan,strategic_planning,Franchise Performance Group,0.5293927192687988
+P1,Jordan,strategic_planning,Great Dental Websites,0.4541189968585968
+P1,Jordan,strategic_planning,KickStart Dental Marketing,0.4946151673793793
+P1,Jordan,strategic_planning,Location3,0.5665305852890015
+P1,Jordan,strategic_planning,NoGood,0.5959768295288086
+P1,Jordan,strategic_planning,Pain-Free Dental Marketing,0.540212869644165
+P1,Jordan,strategic_planning,Powered by Search,0.7575430870056152
+P1,Jordan,strategic_planning,Refine Labs,0.6143351197242737
+P1,Jordan,strategic_planning,SOCi,0.5127451419830322
+P1,Jordan,strategic_planning,Scorpion,0.5300992131233215
+P1,Jordan,strategic_planning,SmartBug Media,0.6114896535873413
+P1,Jordan,strategic_planning,Wonderist Agency,0.5014504790306091
+P2,Sandra,agency_discovery,BrandMuscle,0.49497804045677185
+P2,Sandra,agency_discovery,Cardinal Digital Marketing,0.5906306505203247
+P2,Sandra,agency_discovery,Curious Jane,0.5425928831100464
+P2,Sandra,agency_discovery,Directive Consulting,0.6541768312454224
+P2,Sandra,agency_discovery,Firegang Dental Marketing,0.396736741065979
+P2,Sandra,agency_discovery,Franchise FastLane,0.4061856269836426
+P2,Sandra,agency_discovery,Franchise Performance Group,0.521728515625
+P2,Sandra,agency_discovery,Great Dental Websites,0.494691401720047
+P2,Sandra,agency_discovery,KickStart Dental Marketing,0.5102455019950867
+P2,Sandra,agency_discovery,Location3,0.5939316749572754
+P2,Sandra,agency_discovery,NoGood,0.5889540314674377
+P2,Sandra,agency_discovery,Pain-Free Dental Marketing,0.5639121532440186
+P2,Sandra,agency_discovery,Powered by Search,0.6910973787307739
+P2,Sandra,agency_discovery,Refine Labs,0.5891959071159363
+P2,Sandra,agency_discovery,SOCi,0.5195025205612183
+P2,Sandra,agency_discovery,Scorpion,0.5429003238677979
+P2,Sandra,agency_discovery,SmartBug Media,0.6323087811470032
+P2,Sandra,agency_discovery,Wonderist Agency,0.5421154499053955
+P2,Sandra,capability_fit,BrandMuscle,0.5054895877838135
+P2,Sandra,capability_fit,Cardinal Digital Marketing,0.6106213927268982
+P2,Sandra,capability_fit,Curious Jane,0.576533317565918
+P2,Sandra,capability_fit,Directive Consulting,0.676077127456665
+P2,Sandra,capability_fit,Firegang Dental Marketing,0.4264066219329834
+P2,Sandra,capability_fit,Franchise FastLane,0.4345087707042694
+P2,Sandra,capability_fit,Franchise Performance Group,0.5611177682876587
+P2,Sandra,capability_fit,Great Dental Websites,0.5107172727584839
+P2,Sandra,capability_fit,KickStart Dental Marketing,0.5289980173110962
+P2,Sandra,capability_fit,Location3,0.6511953473091125
+P2,Sandra,capability_fit,NoGood,0.6211761832237244
+P2,Sandra,capability_fit,Pain-Free Dental Marketing,0.5767955780029297
+P2,Sandra,capability_fit,Powered by Search,0.7057462334632874
+P2,Sandra,capability_fit,Refine Labs,0.5972954630851746
+P2,Sandra,capability_fit,SOCi,0.5484219193458557
+P2,Sandra,capability_fit,Scorpion,0.5758658647537231
+P2,Sandra,capability_fit,SmartBug Media,0.6247063279151917
+P2,Sandra,capability_fit,Wonderist Agency,0.5525166392326355
+P2,Sandra,comparative_evaluative,BrandMuscle,0.48840880393981934
+P2,Sandra,comparative_evaluative,Cardinal Digital Marketing,0.6049720048904419
+P2,Sandra,comparative_evaluative,Curious Jane,0.5561580061912537
+P2,Sandra,comparative_evaluative,Directive Consulting,0.6695891618728638
+P2,Sandra,comparative_evaluative,Firegang Dental Marketing,0.39161378145217896
+P2,Sandra,comparative_evaluative,Franchise FastLane,0.40582048892974854
+P2,Sandra,comparative_evaluative,Franchise Performance Group,0.535187304019928
+P2,Sandra,comparative_evaluative,Great Dental Websites,0.48916810750961304
+P2,Sandra,comparative_evaluative,KickStart Dental Marketing,0.5146494507789612
+P2,Sandra,comparative_evaluative,Location3,0.5988622903823853
+P2,Sandra,comparative_evaluative,NoGood,0.6088013648986816
+P2,Sandra,comparative_evaluative,Pain-Free Dental Marketing,0.5724469423294067
+P2,Sandra,comparative_evaluative,Powered by Search,0.7127529978752136
+P2,Sandra,comparative_evaluative,Refine Labs,0.6033083200454712
+P2,Sandra,comparative_evaluative,SOCi,0.5239379405975342
+P2,Sandra,comparative_evaluative,Scorpion,0.5478346943855286
+P2,Sandra,comparative_evaluative,SmartBug Media,0.640195369720459
+P2,Sandra,comparative_evaluative,Wonderist Agency,0.5425322651863098
+P2,Sandra,evaluation_trust,BrandMuscle,0.47142019867897034
+P2,Sandra,evaluation_trust,Cardinal Digital Marketing,0.587103009223938
+P2,Sandra,evaluation_trust,Curious Jane,0.5339186787605286
+P2,Sandra,evaluation_trust,Directive Consulting,0.6324906945228577
+P2,Sandra,evaluation_trust,Firegang Dental Marketing,0.34767454862594604
+P2,Sandra,evaluation_trust,Franchise FastLane,0.38984858989715576
+P2,Sandra,evaluation_trust,Franchise Performance Group,0.5206475257873535
+P2,Sandra,evaluation_trust,Great Dental Websites,0.4553335905075073
+P2,Sandra,evaluation_trust,KickStart Dental Marketing,0.49539700150489807
+P2,Sandra,evaluation_trust,Location3,0.5638143420219421
+P2,Sandra,evaluation_trust,NoGood,0.5893510580062866
+P2,Sandra,evaluation_trust,Pain-Free Dental Marketing,0.5557590126991272
+P2,Sandra,evaluation_trust,Powered by Search,0.6778951287269592
+P2,Sandra,evaluation_trust,Refine Labs,0.5767690539360046
+P2,Sandra,evaluation_trust,SOCi,0.5064214468002319
+P2,Sandra,evaluation_trust,Scorpion,0.5177980661392212
+P2,Sandra,evaluation_trust,SmartBug Media,0.60616135597229
+P2,Sandra,evaluation_trust,Wonderist Agency,0.5219141840934753
+P2,Sandra,strategic_planning,BrandMuscle,0.4927486777305603
+P2,Sandra,strategic_planning,Cardinal Digital Marketing,0.6028115749359131
+P2,Sandra,strategic_planning,Curious Jane,0.5388683676719666
+P2,Sandra,strategic_planning,Directive Consulting,0.6456100344657898
+P2,Sandra,strategic_planning,Firegang Dental Marketing,0.3705110251903534
+P2,Sandra,strategic_planning,Franchise FastLane,0.41303500533103943
+P2,Sandra,strategic_planning,Franchise Performance Group,0.5362024307250977
+P2,Sandra,strategic_planning,Great Dental Websites,0.4674645960330963
+P2,Sandra,strategic_planning,KickStart Dental Marketing,0.5052791237831116
+P2,Sandra,strategic_planning,Location3,0.6063653230667114
+P2,Sandra,strategic_planning,NoGood,0.5957542657852173
+P2,Sandra,strategic_planning,Pain-Free Dental Marketing,0.5720831751823425
+P2,Sandra,strategic_planning,Powered by Search,0.6952017545700073
+P2,Sandra,strategic_planning,Refine Labs,0.5778188109397888
+P2,Sandra,strategic_planning,SOCi,0.5194103121757507
+P2,Sandra,strategic_planning,Scorpion,0.5405057668685913
+P2,Sandra,strategic_planning,SmartBug Media,0.6145168542861938
+P2,Sandra,strategic_planning,Wonderist Agency,0.5214422941207886
+P3,Ray,agency_discovery,BrandMuscle,0.4410461187362671
+P3,Ray,agency_discovery,Cardinal Digital Marketing,0.6362719535827637
+P3,Ray,agency_discovery,Curious Jane,0.5040196180343628
+P3,Ray,agency_discovery,Directive Consulting,0.5640562176704407
+P3,Ray,agency_discovery,Firegang Dental Marketing,0.6189619302749634
+P3,Ray,agency_discovery,Franchise FastLane,0.38419726490974426
+P3,Ray,agency_discovery,Franchise Performance Group,0.503277063369751
+P3,Ray,agency_discovery,Great Dental Websites,0.7290670871734619
+P3,Ray,agency_discovery,KickStart Dental Marketing,0.7407161593437195
+P3,Ray,agency_discovery,Location3,0.5704449415206909
+P3,Ray,agency_discovery,NoGood,0.5285494923591614
+P3,Ray,agency_discovery,Pain-Free Dental Marketing,0.7603945732116699
+P3,Ray,agency_discovery,Powered by Search,0.597252368927002
+P3,Ray,agency_discovery,Refine Labs,0.48533064126968384
+P3,Ray,agency_discovery,SOCi,0.4897221326828003
+P3,Ray,agency_discovery,Scorpion,0.5664911866188049
+P3,Ray,agency_discovery,SmartBug Media,0.5292854905128479
+P3,Ray,agency_discovery,Wonderist Agency,0.7183980941772461
+P3,Ray,capability_fit,BrandMuscle,0.45137298107147217
+P3,Ray,capability_fit,Cardinal Digital Marketing,0.6552595496177673
+P3,Ray,capability_fit,Curious Jane,0.5205805897712708
+P3,Ray,capability_fit,Directive Consulting,0.5754910707473755
+P3,Ray,capability_fit,Firegang Dental Marketing,0.6054764986038208
+P3,Ray,capability_fit,Franchise FastLane,0.39407557249069214
+P3,Ray,capability_fit,Franchise Performance Group,0.5151491165161133
+P3,Ray,capability_fit,Great Dental Websites,0.7109519243240356
+P3,Ray,capability_fit,KickStart Dental Marketing,0.7233673334121704
+P3,Ray,capability_fit,Location3,0.5931800007820129
+P3,Ray,capability_fit,NoGood,0.5436288714408875
+P3,Ray,capability_fit,Pain-Free Dental Marketing,0.7507613301277161
+P3,Ray,capability_fit,Powered by Search,0.5987051725387573
+P3,Ray,capability_fit,Refine Labs,0.5026758313179016
+P3,Ray,capability_fit,SOCi,0.49257320165634155
+P3,Ray,capability_fit,Scorpion,0.5780719518661499
+P3,Ray,capability_fit,SmartBug Media,0.5331577062606812
+P3,Ray,capability_fit,Wonderist Agency,0.6936014890670776
+P3,Ray,comparative_evaluative,BrandMuscle,0.4486265182495117
+P3,Ray,comparative_evaluative,Cardinal Digital Marketing,0.6552648544311523
+P3,Ray,comparative_evaluative,Curious Jane,0.5233938097953796
+P3,Ray,comparative_evaluative,Directive Consulting,0.5823587775230408
+P3,Ray,comparative_evaluative,Firegang Dental Marketing,0.6000135540962219
+P3,Ray,comparative_evaluative,Franchise FastLane,0.38901492953300476
+P3,Ray,comparative_evaluative,Franchise Performance Group,0.5206818580627441
+P3,Ray,comparative_evaluative,Great Dental Websites,0.715976893901825
+P3,Ray,comparative_evaluative,KickStart Dental Marketing,0.7332937121391296
+P3,Ray,comparative_evaluative,Location3,0.5935544967651367
+P3,Ray,comparative_evaluative,NoGood,0.5428563356399536
+P3,Ray,comparative_evaluative,Pain-Free Dental Marketing,0.7664632797241211
+P3,Ray,comparative_evaluative,Powered by Search,0.6240980625152588
+P3,Ray,comparative_evaluative,Refine Labs,0.4989356994628906
+P3,Ray,comparative_evaluative,SOCi,0.5020791888237
+P3,Ray,comparative_evaluative,Scorpion,0.5758716464042664
+P3,Ray,comparative_evaluative,SmartBug Media,0.5463109016418457
+P3,Ray,comparative_evaluative,Wonderist Agency,0.703165590763092
+P3,Ray,evaluation_trust,BrandMuscle,0.4422198235988617
+P3,Ray,evaluation_trust,Cardinal Digital Marketing,0.6497714519500732
+P3,Ray,evaluation_trust,Curious Jane,0.5069342851638794
+P3,Ray,evaluation_trust,Directive Consulting,0.5768460035324097
+P3,Ray,evaluation_trust,Firegang Dental Marketing,0.5858133435249329
+P3,Ray,evaluation_trust,Franchise FastLane,0.37573888897895813
+P3,Ray,evaluation_trust,Franchise Performance Group,0.5174773931503296
+P3,Ray,evaluation_trust,Great Dental Websites,0.7124094367027283
+P3,Ray,evaluation_trust,KickStart Dental Marketing,0.73944091796875
+P3,Ray,evaluation_trust,Location3,0.5820156335830688
+P3,Ray,evaluation_trust,NoGood,0.5547550320625305
+P3,Ray,evaluation_trust,Pain-Free Dental Marketing,0.7752014398574829
+P3,Ray,evaluation_trust,Powered by Search,0.6227193474769592
+P3,Ray,evaluation_trust,Refine Labs,0.49509745836257935
+P3,Ray,evaluation_trust,SOCi,0.5036035180091858
+P3,Ray,evaluation_trust,Scorpion,0.5791242122650146
+P3,Ray,evaluation_trust,SmartBug Media,0.5487597584724426
+P3,Ray,evaluation_trust,Wonderist Agency,0.7019115090370178
+P3,Ray,strategic_planning,BrandMuscle,0.4441234767436981
+P3,Ray,strategic_planning,Cardinal Digital Marketing,0.6624044179916382
+P3,Ray,strategic_planning,Curious Jane,0.5098608732223511
+P3,Ray,strategic_planning,Directive Consulting,0.5769953727722168
+P3,Ray,strategic_planning,Firegang Dental Marketing,0.591526985168457
+P3,Ray,strategic_planning,Franchise FastLane,0.3825764060020447
+P3,Ray,strategic_planning,Franchise Performance Group,0.526962161064148
+P3,Ray,strategic_planning,Great Dental Websites,0.7077240943908691
+P3,Ray,strategic_planning,KickStart Dental Marketing,0.7363241314888
+P3,Ray,strategic_planning,Location3,0.5974773168563843
+P3,Ray,strategic_planning,NoGood,0.5452006459236145
+P3,Ray,strategic_planning,Pain-Free Dental Marketing,0.770670473575592
+P3,Ray,strategic_planning,Powered by Search,0.6277569532394409
+P3,Ray,strategic_planning,Refine Labs,0.49452295899391174
+P3,Ray,strategic_planning,SOCi,0.5001503229141235
+P3,Ray,strategic_planning,Scorpion,0.5791571140289307
+P3,Ray,strategic_planning,SmartBug Media,0.5452725887298584
+P3,Ray,strategic_planning,Wonderist Agency,0.6926313638687134
+P4,Christine,agency_discovery,BrandMuscle,0.47248220443725586
+P4,Christine,agency_discovery,Cardinal Digital Marketing,0.5469843149185181
+P4,Christine,agency_discovery,Curious Jane,0.6038006544113159
+P4,Christine,agency_discovery,Directive Consulting,0.5510454177856445
+P4,Christine,agency_discovery,Firegang Dental Marketing,0.39865338802337646
+P4,Christine,agency_discovery,Franchise FastLane,0.5658639073371887
+P4,Christine,agency_discovery,Franchise Performance Group,0.6400169134140015
+P4,Christine,agency_discovery,Great Dental Websites,0.4803401529788971
+P4,Christine,agency_discovery,KickStart Dental Marketing,0.5012341141700745
+P4,Christine,agency_discovery,Location3,0.6674603819847107
+P4,Christine,agency_discovery,NoGood,0.539331316947937
+P4,Christine,agency_discovery,Pain-Free Dental Marketing,0.5309009552001953
+P4,Christine,agency_discovery,Powered by Search,0.5891678333282471
+P4,Christine,agency_discovery,Refine Labs,0.47425296902656555
+P4,Christine,agency_discovery,SOCi,0.5781869888305664
+P4,Christine,agency_discovery,Scorpion,0.6069515347480774
+P4,Christine,agency_discovery,SmartBug Media,0.5471531748771667
+P4,Christine,agency_discovery,Wonderist Agency,0.5086145401000977
+P4,Christine,capability_fit,BrandMuscle,0.4986206591129303
+P4,Christine,capability_fit,Cardinal Digital Marketing,0.5649145841598511
+P4,Christine,capability_fit,Curious Jane,0.6255941987037659
+P4,Christine,capability_fit,Directive Consulting,0.5774703621864319
+P4,Christine,capability_fit,Firegang Dental Marketing,0.43048861622810364
+P4,Christine,capability_fit,Franchise FastLane,0.5688185691833496
+P4,Christine,capability_fit,Franchise Performance Group,0.6600300073623657
+P4,Christine,capability_fit,Great Dental Websites,0.4966588020324707
+P4,Christine,capability_fit,KickStart Dental Marketing,0.5171370506286621
+P4,Christine,capability_fit,Location3,0.710950493812561
+P4,Christine,capability_fit,NoGood,0.5679270029067993
+P4,Christine,capability_fit,Pain-Free Dental Marketing,0.5522481203079224
+P4,Christine,capability_fit,Powered by Search,0.6076355576515198
+P4,Christine,capability_fit,Refine Labs,0.504002571105957
+P4,Christine,capability_fit,SOCi,0.5777297019958496
+P4,Christine,capability_fit,Scorpion,0.6103953123092651
+P4,Christine,capability_fit,SmartBug Media,0.5549737811088562
+P4,Christine,capability_fit,Wonderist Agency,0.5249012112617493
+P4,Christine,comparative_evaluative,BrandMuscle,0.47844135761260986
+P4,Christine,comparative_evaluative,Cardinal Digital Marketing,0.5581223368644714
+P4,Christine,comparative_evaluative,Curious Jane,0.6177409887313843
+P4,Christine,comparative_evaluative,Directive Consulting,0.5659487843513489
+P4,Christine,comparative_evaluative,Firegang Dental Marketing,0.3789365589618683
+P4,Christine,comparative_evaluative,Franchise FastLane,0.5609163045883179
+P4,Christine,comparative_evaluative,Franchise Performance Group,0.6454203128814697
+P4,Christine,comparative_evaluative,Great Dental Websites,0.47551825642585754
+P4,Christine,comparative_evaluative,KickStart Dental Marketing,0.5007790923118591
+P4,Christine,comparative_evaluative,Location3,0.6628264784812927
+P4,Christine,comparative_evaluative,NoGood,0.5562983155250549
+P4,Christine,comparative_evaluative,Pain-Free Dental Marketing,0.5467493534088135
+P4,Christine,comparative_evaluative,Powered by Search,0.6119841933250427
+P4,Christine,comparative_evaluative,Refine Labs,0.4962408244609833
+P4,Christine,comparative_evaluative,SOCi,0.5652115345001221
+P4,Christine,comparative_evaluative,Scorpion,0.5675879716873169
+P4,Christine,comparative_evaluative,SmartBug Media,0.5538131594657898
+P4,Christine,comparative_evaluative,Wonderist Agency,0.5160819888114929
+P4,Christine,evaluation_trust,BrandMuscle,0.4813592731952667
+P4,Christine,evaluation_trust,Cardinal Digital Marketing,0.5315455794334412
+P4,Christine,evaluation_trust,Curious Jane,0.6037886738777161
+P4,Christine,evaluation_trust,Directive Consulting,0.5445233583450317
+P4,Christine,evaluation_trust,Firegang Dental Marketing,0.3554638922214508
+P4,Christine,evaluation_trust,Franchise FastLane,0.5662326812744141
+P4,Christine,evaluation_trust,Franchise Performance Group,0.6531304717063904
+P4,Christine,evaluation_trust,Great Dental Websites,0.45480966567993164
+P4,Christine,evaluation_trust,KickStart Dental Marketing,0.4894828200340271
+P4,Christine,evaluation_trust,Location3,0.640105128288269
+P4,Christine,evaluation_trust,NoGood,0.5452147722244263
+P4,Christine,evaluation_trust,Pain-Free Dental Marketing,0.534003496170044
+P4,Christine,evaluation_trust,Powered by Search,0.5963456034660339
+P4,Christine,evaluation_trust,Refine Labs,0.48534634709358215
+P4,Christine,evaluation_trust,SOCi,0.5618436336517334
+P4,Christine,evaluation_trust,Scorpion,0.5271910429000854
+P4,Christine,evaluation_trust,SmartBug Media,0.5428735017776489
+P4,Christine,evaluation_trust,Wonderist Agency,0.5002323985099792
+P4,Christine,strategic_planning,BrandMuscle,0.47736841440200806
+P4,Christine,strategic_planning,Cardinal Digital Marketing,0.5400184988975525
+P4,Christine,strategic_planning,Curious Jane,0.6013916730880737
+P4,Christine,strategic_planning,Directive Consulting,0.5513837337493896
+P4,Christine,strategic_planning,Firegang Dental Marketing,0.3474251925945282
+P4,Christine,strategic_planning,Franchise FastLane,0.5616544485092163
+P4,Christine,strategic_planning,Franchise Performance Group,0.6524624824523926
+P4,Christine,strategic_planning,Great Dental Websites,0.4490537941455841
+P4,Christine,strategic_planning,KickStart Dental Marketing,0.480304479598999
+P4,Christine,strategic_planning,Location3,0.6443437337875366
+P4,Christine,strategic_planning,NoGood,0.5432146787643433
+P4,Christine,strategic_planning,Pain-Free Dental Marketing,0.5398550033569336
+P4,Christine,strategic_planning,Powered by Search,0.6085216999053955
+P4,Christine,strategic_planning,Refine Labs,0.4933706820011139
+P4,Christine,strategic_planning,SOCi,0.5445582866668701
+P4,Christine,strategic_planning,Scorpion,0.5180028080940247
+P4,Christine,strategic_planning,SmartBug Media,0.5461716651916504
+P4,Christine,strategic_planning,Wonderist Agency,0.49638649821281433
+P5,Derek,agency_discovery,BrandMuscle,0.44052034616470337
+P5,Derek,agency_discovery,Cardinal Digital Marketing,0.5316576957702637
+P5,Derek,agency_discovery,Curious Jane,0.6263149380683899
+P5,Derek,agency_discovery,Directive Consulting,0.5733001232147217
+P5,Derek,agency_discovery,Firegang Dental Marketing,0.4174841642379761
+P5,Derek,agency_discovery,Franchise FastLane,0.6318559646606445
+P5,Derek,agency_discovery,Franchise Performance Group,0.7325308322906494
+P5,Derek,agency_discovery,Great Dental Websites,0.47672271728515625
+P5,Derek,agency_discovery,KickStart Dental Marketing,0.5030751824378967
+P5,Derek,agency_discovery,Location3,0.6061890125274658
+P5,Derek,agency_discovery,NoGood,0.5326306819915771
+P5,Derek,agency_discovery,Pain-Free Dental Marketing,0.5193011164665222
+P5,Derek,agency_discovery,Powered by Search,0.6018456816673279
+P5,Derek,agency_discovery,Refine Labs,0.5119616985321045
+P5,Derek,agency_discovery,SOCi,0.502921462059021
+P5,Derek,agency_discovery,Scorpion,0.5702130198478699
+P5,Derek,agency_discovery,SmartBug Media,0.5356763601303101
+P5,Derek,agency_discovery,Wonderist Agency,0.49421441555023193
+P5,Derek,capability_fit,BrandMuscle,0.46013975143432617
+P5,Derek,capability_fit,Cardinal Digital Marketing,0.5477963089942932
+P5,Derek,capability_fit,Curious Jane,0.6464794278144836
+P5,Derek,capability_fit,Directive Consulting,0.5830579996109009
+P5,Derek,capability_fit,Firegang Dental Marketing,0.44078558683395386
+P5,Derek,capability_fit,Franchise FastLane,0.6221360564231873
+P5,Derek,capability_fit,Franchise Performance Group,0.747333288192749
+P5,Derek,capability_fit,Great Dental Websites,0.4876115024089813
+P5,Derek,capability_fit,KickStart Dental Marketing,0.5136401057243347
+P5,Derek,capability_fit,Location3,0.6456674933433533
+P5,Derek,capability_fit,NoGood,0.5591944456100464
+P5,Derek,capability_fit,Pain-Free Dental Marketing,0.5367705821990967
+P5,Derek,capability_fit,Powered by Search,0.6099318861961365
+P5,Derek,capability_fit,Refine Labs,0.5188968777656555
+P5,Derek,capability_fit,SOCi,0.5121386647224426
+P5,Derek,capability_fit,Scorpion,0.5829527378082275
+P5,Derek,capability_fit,SmartBug Media,0.5430994629859924
+P5,Derek,capability_fit,Wonderist Agency,0.508092999458313
+P5,Derek,comparative_evaluative,BrandMuscle,0.45420268177986145
+P5,Derek,comparative_evaluative,Cardinal Digital Marketing,0.5553914308547974
+P5,Derek,comparative_evaluative,Curious Jane,0.6561010479927063
+P5,Derek,comparative_evaluative,Directive Consulting,0.5908216238021851
+P5,Derek,comparative_evaluative,Firegang Dental Marketing,0.4093363285064697
+P5,Derek,comparative_evaluative,Franchise FastLane,0.6199411749839783
+P5,Derek,comparative_evaluative,Franchise Performance Group,0.7371580600738525
+P5,Derek,comparative_evaluative,Great Dental Websites,0.48346778750419617
+P5,Derek,comparative_evaluative,KickStart Dental Marketing,0.5119113326072693
+P5,Derek,comparative_evaluative,Location3,0.6191043853759766
+P5,Derek,comparative_evaluative,NoGood,0.5550851225852966
+P5,Derek,comparative_evaluative,Pain-Free Dental Marketing,0.5391289591789246
+P5,Derek,comparative_evaluative,Powered by Search,0.6252281665802002
+P5,Derek,comparative_evaluative,Refine Labs,0.5337998867034912
+P5,Derek,comparative_evaluative,SOCi,0.5149320363998413
+P5,Derek,comparative_evaluative,Scorpion,0.558810293674469
+P5,Derek,comparative_evaluative,SmartBug Media,0.5556684136390686
+P5,Derek,comparative_evaluative,Wonderist Agency,0.5121713876724243
+P5,Derek,evaluation_trust,BrandMuscle,0.442719042301178
+P5,Derek,evaluation_trust,Cardinal Digital Marketing,0.5350387692451477
+P5,Derek,evaluation_trust,Curious Jane,0.6188092827796936
+P5,Derek,evaluation_trust,Directive Consulting,0.5686520934104919
+P5,Derek,evaluation_trust,Firegang Dental Marketing,0.3737408220767975
+P5,Derek,evaluation_trust,Franchise FastLane,0.6065768003463745
+P5,Derek,evaluation_trust,Franchise Performance Group,0.7264437675476074
+P5,Derek,evaluation_trust,Great Dental Websites,0.4597127139568329
+P5,Derek,evaluation_trust,KickStart Dental Marketing,0.5010132193565369
+P5,Derek,evaluation_trust,Location3,0.6056324243545532
+P5,Derek,evaluation_trust,NoGood,0.5455914735794067
+P5,Derek,evaluation_trust,Pain-Free Dental Marketing,0.5294734835624695
+P5,Derek,evaluation_trust,Powered by Search,0.6161975860595703
+P5,Derek,evaluation_trust,Refine Labs,0.5154877305030823
+P5,Derek,evaluation_trust,SOCi,0.5044466853141785
+P5,Derek,evaluation_trust,Scorpion,0.5344164371490479
+P5,Derek,evaluation_trust,SmartBug Media,0.5447646975517273
+P5,Derek,evaluation_trust,Wonderist Agency,0.4927613139152527
+P5,Derek,strategic_planning,BrandMuscle,0.44908851385116577
+P5,Derek,strategic_planning,Cardinal Digital Marketing,0.5380082130432129
+P5,Derek,strategic_planning,Curious Jane,0.6158670783042908
+P5,Derek,strategic_planning,Directive Consulting,0.5711948275566101
+P5,Derek,strategic_planning,Firegang Dental Marketing,0.37575048208236694
+P5,Derek,strategic_planning,Franchise FastLane,0.6123107671737671
+P5,Derek,strategic_planning,Franchise Performance Group,0.719438374042511
+P5,Derek,strategic_planning,Great Dental Websites,0.4564448595046997
+P5,Derek,strategic_planning,KickStart Dental Marketing,0.49721798300743103
+P5,Derek,strategic_planning,Location3,0.6171972155570984
+P5,Derek,strategic_planning,NoGood,0.5394670367240906
+P5,Derek,strategic_planning,Pain-Free Dental Marketing,0.531961977481842
+P5,Derek,strategic_planning,Powered by Search,0.6189422607421875
+P5,Derek,strategic_planning,Refine Labs,0.5142949819564819
+P5,Derek,strategic_planning,SOCi,0.500502347946167
+P5,Derek,strategic_planning,Scorpion,0.5354796648025513
+P5,Derek,strategic_planning,SmartBug Media,0.5411092042922974
+P5,Derek,strategic_planning,Wonderist Agency,0.4894825220108032

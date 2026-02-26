@@ -1,0 +1,162 @@
+GEO AUDIT — ANALYSIS SUMMARY
+Session: 20260220_001321
+======================================================================
+
+AFFINITY MATRIX  (cosine similarity — higher = stronger content alignment)
+----------------------------------------------------------------------
+           BrandMuscle  Cardinal Digit  Curious Jane  Directive Cons  Firegang Denta  Franchise Fast  Franchise Perf  Great Dental W  KickStart Dent  Location3  NoGood  Pain-Free Dent  Powered by Sea  Refine Labs    SOCi  Scorpion  SmartBug Media  Wonderist Agen
+Jordan          0.4657          0.5753        0.5259          0.6985          0.3778          0.4086          0.5357          0.4792          0.5088     0.5798  0.6115          0.5471          0.7730       0.6398  0.5266    0.5470          0.6209          0.5199
+Sandra          0.5049          0.6166        0.5656          0.6747          0.3980          0.4218          0.5504          0.4977          0.5258     0.6203  0.6182          0.5847          0.7168       0.6060  0.5387    0.5608          0.6418          0.5518
+Ray             0.4533          0.6632        0.5219          0.5852          0.6110          0.3919          0.5257          0.7279          0.7476     0.5976  0.5525          0.7781          0.6248       0.5040  0.5063    0.5858          0.5500          0.7144
+Christine       0.4930          0.5613        0.6249          0.5712          0.3914          0.5781          0.6655          0.4825          0.5096     0.6809  0.5633          0.5535          0.6169       0.5021  0.5790    0.5797          0.5620          0.5213
+Derek           0.4579          0.5519        0.6448          0.5885          0.4112          0.6305          0.7467          0.4819          0.5151     0.6306  0.5568          0.5415          0.6262       0.5288  0.5167    0.5671          0.5545          0.5089
+
+
+TOP 5 BRANDS BY PERSONA  (cosine similarity to persona responses)
+----------------------------------------------------------------------
+
+  Jordan:
+    Powered by Search               0.7730
+    Directive Consulting            0.6985
+    Refine Labs                     0.6398
+    SmartBug Media                  0.6209
+    NoGood                          0.6115
+
+  Sandra:
+    Powered by Search               0.7168
+    Directive Consulting            0.6747
+    SmartBug Media                  0.6418
+    Location3                       0.6203
+    NoGood                          0.6182
+
+  Ray:
+    Pain-Free Dental Marketing      0.7781
+    KickStart Dental Marketing      0.7476
+    Great Dental Websites           0.7279
+    Wonderist Agency                0.7144
+    Cardinal Digital Marketing      0.6632
+
+  Christine:
+    Location3                       0.6809
+    Franchise Performance Group     0.6655
+    Curious Jane                    0.6249
+    Powered by Search               0.6169
+    Scorpion                        0.5797
+
+  Derek:
+    Franchise Performance Group     0.7467
+    Curious Jane                    0.6448
+    Location3                       0.6306
+    Franchise FastLane              0.6305
+    Powered by Search               0.6262
+
+
+TOP 5 BRANDS BY POSITIVE MENTION COUNT PER PERSONA
+----------------------------------------------------------------------
+
+  Jordan:
+    Refine Labs                     42 mentions
+    Directive Consulting            34 mentions
+    Powered by Search               20 mentions
+    NoGood                          16 mentions
+    SmartBug Media                  6 mentions
+
+  Sandra:
+    SmartBug Media                  26 mentions
+    Directive Consulting            10 mentions
+    Refine Labs                     10 mentions
+    Location3                       4 mentions
+    Scorpion                        4 mentions
+
+  Ray:
+    Wonderist Agency                36 mentions
+    KickStart Dental Marketing      27 mentions
+    Firegang Dental Marketing       23 mentions
+    Pain-Free Dental Marketing      21 mentions
+    Cardinal Digital Marketing      13 mentions
+
+  Christine:
+    Scorpion                        52 mentions
+    SOCi                            43 mentions
+    Location3                       40 mentions
+    BrandMuscle                     16 mentions
+    Curious Jane                    7 mentions
+
+  Derek:
+    Franchise Performance Group     34 mentions
+    Curious Jane                    30 mentions
+    Scorpion                        30 mentions
+    Franchise FastLane              3 mentions
+    Location3                       1 mentions
+
+
+CONTENT GAPS  (brand over-recommended relative to content alignment)
+A positive gap means the AI recommends this brand to this persona more
+than the brand's content similarity would predict.  Opportunity: add
+persona-relevant messaging to the brand's web content.
+----------------------------------------------------------------------
+  Christine                     BrandMuscle             gap=+0.667  mentions=16  sim=0.4930
+  Derek                         SOCi                    gap=+0.417  mentions=1  sim=0.5167
+  Sandra                        SOCi                    gap=+0.306  mentions=1  sim=0.5387
+  Sandra                        Scorpion                gap=+0.306  mentions=4  sim=0.5608
+  Jordan                        Firegang Dental Marketing  gap=+0.306  mentions=0  sim=0.3778
+  Derek                         Firegang Dental Marketing  gap=+0.306  mentions=0  sim=0.4112
+  Christine                     Wonderist Agency        gap=+0.306  mentions=1  sim=0.5213
+
+
+MISSED OPPORTUNITIES  (strong content alignment, low mention count)
+A negative gap means the brand's content resonates with this persona
+but the AI is not recommending them.  Could indicate a GEO or
+discoverability gap — the content is there but not surfacing.
+----------------------------------------------------------------------
+  Sandra                        Powered by Search       gap=-0.694  mentions=0  sim=0.7168
+  Christine                     Powered by Search       gap=-0.528  mentions=0  sim=0.6169
+  Ray                           Powered by Search       gap=-0.417  mentions=0  sim=0.6248
+  Derek                         Powered by Search       gap=-0.417  mentions=0  sim=0.6262
+  Derek                         Directive Consulting    gap=-0.361  mentions=0  sim=0.5885
+  Christine                     Franchise FastLane      gap=-0.361  mentions=0  sim=0.5781
+  Jordan                        Location3               gap=-0.361  mentions=0  sim=0.5798
+  Sandra                        Pain-Free Dental Marketing  gap=-0.306  mentions=0  sim=0.5847
+  Ray                           Location3               gap=-0.306  mentions=0  sim=0.5976
+  Jordan                        Cardinal Digital Marketing  gap=-0.306  mentions=0  sim=0.5753
+  Christine                     Franchise Performance Group  gap=-0.306  mentions=1  sim=0.6655
+  Christine                     Directive Consulting    gap=-0.306  mentions=0  sim=0.5712
+
+
+BEST-ALIGNED BRAND BY PERSONA × QUESTION CATEGORY
+----------------------------------------------------------------------
+
+  Jordan:
+    agency_discovery                        Powered by Search          (0.7557)
+    capability_fit                          Powered by Search          (0.7569)
+    comparative_evaluative                  Powered by Search          (0.7629)
+    evaluation_trust                        Powered by Search          (0.7523)
+    strategic_planning                      Powered by Search          (0.7575)
+
+  Sandra:
+    agency_discovery                        Powered by Search          (0.6911)
+    capability_fit                          Powered by Search          (0.7057)
+    comparative_evaluative                  Powered by Search          (0.7128)
+    evaluation_trust                        Powered by Search          (0.6779)
+    strategic_planning                      Powered by Search          (0.6952)
+
+  Ray:
+    agency_discovery                        Pain-Free Dental Marketing  (0.7604)
+    capability_fit                          Pain-Free Dental Marketing  (0.7508)
+    comparative_evaluative                  Pain-Free Dental Marketing  (0.7665)
+    evaluation_trust                        Pain-Free Dental Marketing  (0.7752)
+    strategic_planning                      Pain-Free Dental Marketing  (0.7707)
+
+  Christine:
+    agency_discovery                        Location3                  (0.6675)
+    capability_fit                          Location3                  (0.7110)
+    comparative_evaluative                  Location3                  (0.6628)
+    evaluation_trust                        Franchise Performance Group  (0.6531)
+    strategic_planning                      Franchise Performance Group  (0.6525)
+
+  Derek:
+    agency_discovery                        Franchise Performance Group  (0.7325)
+    capability_fit                          Franchise Performance Group  (0.7473)
+    comparative_evaluative                  Franchise Performance Group  (0.7372)
+    evaluation_trust                        Franchise Performance Group  (0.7264)
+    strategic_planning                      Franchise Performance Group  (0.7194)
